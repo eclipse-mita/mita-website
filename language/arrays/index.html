@@ -15,40 +15,40 @@
     
     <meta name="description" content="The documentation of Eclipse Mita.">
     
-    <link rel="canonical" href="../../mita/language/arrays/">
+    <link rel="canonical" href="../../language/arrays/">
     
 
-    <meta property="og:url" content="/mita/language/arrays/">
+    <meta property="og:url" content="/language/arrays/">
     <meta property="og:title" content="Eclipse Mita">
-    <meta property="og:image" content="/mita/images/mita.svg">
+    <meta property="og:image" content="/images/mita.svg">
     <meta name="apple-mobile-web-app-title" content="Eclipse Mita">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <link rel="shortcut icon" type="image/x-icon" href="../../mita/images/favicon.ico">
-    <link rel="icon" type="image/x-icon" href="../../mita/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
 
     <style>
       @font-face {
         font-family: 'Icon';
-        src: url('/mita/fonts/icon.eot');
-        src: url('/mita/fonts/icon.eot')
+        src: url('/fonts/icon.eot');
+        src: url('/fonts/icon.eot')
                format('embedded-opentype'),
-             url('/mita/fonts/icon.woff')
+             url('/fonts/icon.woff')
                format('woff'),
-             url('/mita/fonts/icon.ttf')
+             url('/fonts/icon.ttf')
                format('truetype'),
-             url('/mita/fonts/icon.svg')
+             url('/fonts/icon.svg')
                format('svg');
         font-weight: normal;
         font-style: normal;
       }
     </style>
 
-    <link rel="stylesheet" href="../../mita/stylesheets/application.css">
-    <link rel="stylesheet" href="../../mita/stylesheets/temporary.css">
-    <link rel="stylesheet" href="../../mita/stylesheets/palettes.css">
-    <link rel="stylesheet" href="../../mita/stylesheets/highlight/highlight.css">
+    <link rel="stylesheet" href="../../stylesheets/application.css">
+    <link rel="stylesheet" href="../../stylesheets/temporary.css">
+    <link rel="stylesheet" href="../../stylesheets/palettes.css">
+    <link rel="stylesheet" href="../../stylesheets/highlight/highlight.css">
 
     
     
@@ -64,9 +64,9 @@
     </style>
 
     
-    <link rel="stylesheet" href="../../mita/css/custom.css">
+    <link rel="stylesheet" href="../../css/custom.css">
     
-    <script src="../../mita/javascripts/modernizr.js"></script>
+    <script src="../../javascripts/modernizr.js"></script>
 
     
 
@@ -131,11 +131,11 @@
 <main class="main">
 	<div class="drawer">
 		<nav aria-label="Navigation">
-  <a href="../../mita/" class="project">
+  <a href="../../" class="project">
     <div class="banner">
       
         <div class="logo">
-          <img src="../../mita/images/mita.svg">
+          <img src="../../images/mita.svg">
         </div>
       
       <div class="name">
@@ -268,11 +268,14 @@
 
 
 
-<a  title="Arrays" href="../../language/arrays/">
+<a class="current" title="Arrays" href="../../language/arrays/">
 	
 	Arrays
 </a>
 
+
+<ul id="scrollspy">
+</ul>
 
 
       
@@ -397,7 +400,7 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
-<p>The only exception to that is returning arrays. While we try hard to do <a href="../../mita/concepts/#element-size-inference">element size inference</a>, in some cases we fail to correctly infer the size of your array and inform you about it. In that case you need to manually specify the array length:</p>
+<p>The only exception to that is returning arrays. While we try hard to do <a href="../../concepts/#element-size-inference">element size inference</a>, in some cases we fail to correctly infer the size of your array and inform you about it. In that case you need to manually specify the array length:</p>
 <div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">returnsArray</span><span class="p">()</span><span class="o">:</span> <span class="nx">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span> <span class="p">{</span>
   <span class="kd">let</span> <span class="nx">array1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">);</span>
   <span class="k">return</span> <span class="nx">array1</span><span class="p">;</span>
@@ -422,7 +425,7 @@
 
 <h2 id="bounds-checks">Bounds checks</h2>
 
-<p>Whenever you access parts of an array, be it by direct access or slices, we need to do a bounds check. In many cases this doesn&rsquo;t impart any runtime impact, since we can infer the bounds statically. If we can&rsquo;t, we generate bounds checks and throw an <code>IndexOutOfBoundsException</code> on failure. See <a href="../../mita/language/exceptions/">Exceptions</a> for more info.</p>
+<p>Whenever you access parts of an array, be it by direct access or slices, we need to do a bounds check. In many cases this doesn&rsquo;t impart any runtime impact, since we can infer the bounds statically. If we can&rsquo;t, we generate bounds checks and throw an <code>IndexOutOfBoundsException</code> on failure. See <a href="../../language/exceptions/">Exceptions</a> for more info.</p>
 
 
 			<aside class="copyright" role="note">
@@ -441,7 +444,7 @@
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="../../mita/language/types/" title="Types">
+      <a href="../../language/types/" title="Types">
         <span class="direction">
           Previous
         </span>
@@ -461,7 +464,7 @@
 
   <div class="next">
   
-      <a href="../../mita/language/functions/" title="Functions">
+      <a href="../../language/functions/" title="Functions">
         <span class="direction">
           Next
         </span>
@@ -505,7 +508,7 @@
     
     </script>
 
-    <script src="../../mita/javascripts/application.js"></script>
+    <script src="../../javascripts/application.js"></script>
     
 
     <script>

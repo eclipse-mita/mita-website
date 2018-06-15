@@ -3,82 +3,82 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/mita/language/introduction/</loc>
+    <loc>/language/introduction/</loc>
   </url>
   
   <url>
-    <loc>/mita/language/basics/</loc>
+    <loc>/language/basics/</loc>
   </url>
   
   <url>
-    <loc>/mita/language/packages/</loc>
+    <loc>/language/packages/</loc>
   </url>
   
   <url>
-    <loc>/mita/language/setup/</loc>
+    <loc>/language/setup/</loc>
   </url>
   
   <url>
-    <loc>/mita/faq/</loc>
+    <loc>/faq/</loc>
   </url>
   
   <url>
-    <loc>/mita/language/types/</loc>
+    <loc>/language/types/</loc>
   </url>
   
   <url>
-    <loc>/mita/language/arrays/</loc>
+    <loc>/language/arrays/</loc>
   </url>
   
   <url>
-    <loc>/mita/language/functions/</loc>
+    <loc>/language/functions/</loc>
   </url>
   
   <url>
-    <loc>/mita/platforms/</loc>
+    <loc>/platforms/</loc>
   </url>
   
   <url>
-    <loc>/mita/platforms/xdk110/</loc>
+    <loc>/platforms/xdk110/</loc>
   </url>
   
   <url>
-    <loc>/mita/language/foreignfunctioninterface/</loc>
+    <loc>/language/foreignfunctioninterface/</loc>
   </url>
   
   <url>
-    <loc>/mita/language/events/</loc>
+    <loc>/language/events/</loc>
   </url>
   
   <url>
-    <loc>/mita/language/exceptions/</loc>
+    <loc>/language/exceptions/</loc>
   </url>
   
   <url>
-    <loc>/mita/download/</loc>
+    <loc>/download/</loc>
     <lastmod>2017-07-18T14:18:49+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/mita/language/</loc>
+    <loc>/language/</loc>
   </url>
   
   <url>
-    <loc>/mita/categories/</loc>
+    <loc>/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/mita/concepts/</loc>
+    <loc>/concepts/</loc>
   </url>
   
   <url>
-    <loc>/mita/</loc>
+    <loc>/</loc>
     <lastmod>2017-07-18T14:18:49+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/mita/tags/</loc>
+    <loc>/tags/</loc>
     <priority>0</priority>
   </url>
   

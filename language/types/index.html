@@ -15,40 +15,40 @@
     
     <meta name="description" content="The documentation of Eclipse Mita.">
     
-    <link rel="canonical" href="../../mita/language/types/">
+    <link rel="canonical" href="../../language/types/">
     
 
-    <meta property="og:url" content="/mita/language/types/">
+    <meta property="og:url" content="/language/types/">
     <meta property="og:title" content="Eclipse Mita">
-    <meta property="og:image" content="/mita/images/mita.svg">
+    <meta property="og:image" content="/images/mita.svg">
     <meta name="apple-mobile-web-app-title" content="Eclipse Mita">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <link rel="shortcut icon" type="image/x-icon" href="../../mita/images/favicon.ico">
-    <link rel="icon" type="image/x-icon" href="../../mita/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
 
     <style>
       @font-face {
         font-family: 'Icon';
-        src: url('/mita/fonts/icon.eot');
-        src: url('/mita/fonts/icon.eot')
+        src: url('/fonts/icon.eot');
+        src: url('/fonts/icon.eot')
                format('embedded-opentype'),
-             url('/mita/fonts/icon.woff')
+             url('/fonts/icon.woff')
                format('woff'),
-             url('/mita/fonts/icon.ttf')
+             url('/fonts/icon.ttf')
                format('truetype'),
-             url('/mita/fonts/icon.svg')
+             url('/fonts/icon.svg')
                format('svg');
         font-weight: normal;
         font-style: normal;
       }
     </style>
 
-    <link rel="stylesheet" href="../../mita/stylesheets/application.css">
-    <link rel="stylesheet" href="../../mita/stylesheets/temporary.css">
-    <link rel="stylesheet" href="../../mita/stylesheets/palettes.css">
-    <link rel="stylesheet" href="../../mita/stylesheets/highlight/highlight.css">
+    <link rel="stylesheet" href="../../stylesheets/application.css">
+    <link rel="stylesheet" href="../../stylesheets/temporary.css">
+    <link rel="stylesheet" href="../../stylesheets/palettes.css">
+    <link rel="stylesheet" href="../../stylesheets/highlight/highlight.css">
 
     
     
@@ -64,9 +64,9 @@
     </style>
 
     
-    <link rel="stylesheet" href="../../mita/css/custom.css">
+    <link rel="stylesheet" href="../../css/custom.css">
     
-    <script src="../../mita/javascripts/modernizr.js"></script>
+    <script src="../../javascripts/modernizr.js"></script>
 
     
 
@@ -131,11 +131,11 @@
 <main class="main">
 	<div class="drawer">
 		<nav aria-label="Navigation">
-  <a href="../../mita/" class="project">
+  <a href="../../" class="project">
     <div class="banner">
       
         <div class="logo">
-          <img src="../../mita/images/mita.svg">
+          <img src="../../images/mita.svg">
         </div>
       
       <div class="name">
@@ -255,11 +255,14 @@
 
 
 
-<a  title="Types" href="../../language/types/">
+<a class="current" title="Types" href="../../language/types/">
 	
 	Types
 </a>
 
+
+<ul id="scrollspy">
+</ul>
 
 
       
@@ -376,7 +379,7 @@
 
 <h2 id="primitive-types">Primitive Types</h2>
 
-<p>We have already seen the <a href="../../mita/language/basics/#primitive-data-types">basic data types</a> supported by Mita.
+<p>We have already seen the <a href="../../language/basics/#primitive-data-types">basic data types</a> supported by Mita.
 Primitive types are also called <em>scalar types</em> in other languages, as they contain a single value.
 Complex types on the other hand represent more than a single value, or are defined by the programmer.
 There is one type where that distinction is not as clear as it may sound: strings.</p>
@@ -390,7 +393,7 @@ You as a programmer will have to tell the compiler how much space you would like
 <p>This is not how we think of strings nowadays.
 In Mita strings are first-class citizens, meaning that they feel like strings on other languages.
 You can simply initialize a variable with them, append them, pass them to a function and return them from one.
-Behind the scenes we use <a href="../../mita/concepts/#element-size-inference">element size inference</a> to try and compute the worst-case length of a string at compile time and allocate enough space.</p>
+Behind the scenes we use <a href="../../concepts/#element-size-inference">element size inference</a> to try and compute the worst-case length of a string at compile time and allocate enough space.</p>
 <div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">stringDemo() {</span>
 	<span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="s2">&#34;Hello &#34;</span><span class="p">;</span>
 	<span class="nx">msg</span> <span class="o">+=</span> <span class="s2">&#34;World&#34;</span><span class="p">;</span>
@@ -669,7 +672,7 @@ where(state) {
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="../../mita/faq/" title="Frequently Asked Questions">
+      <a href="../../faq/" title="Frequently Asked Questions">
         <span class="direction">
           Previous
         </span>
@@ -689,7 +692,7 @@ where(state) {
 
   <div class="next">
   
-      <a href="../../mita/language/arrays/" title="Arrays">
+      <a href="../../language/arrays/" title="Arrays">
         <span class="direction">
           Next
         </span>
@@ -733,7 +736,7 @@ where(state) {
     
     </script>
 
-    <script src="../../mita/javascripts/application.js"></script>
+    <script src="../../javascripts/application.js"></script>
     
 
     <script>
