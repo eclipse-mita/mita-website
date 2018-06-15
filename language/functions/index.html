@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Functions - Eclipse Mita</title>
+    <meta name="generator" content="Hugo 0.42.1" />
+
+    
+    <meta name="description" content="The documentation of Eclipse Mita.">
+    
+    <link rel="canonical" href="../../language/functions/">
+    
+
+    <meta property="og:url" content="/language/functions/">
+    <meta property="og:title" content="Eclipse Mita">
+    <meta property="og:image" content="/images/mita.svg">
+    <meta name="apple-mobile-web-app-title" content="Eclipse Mita">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('/fonts/icon.eot');
+        src: url('/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('/fonts/icon.woff')
+               format('woff'),
+             url('/fonts/icon.ttf')
+               format('truetype'),
+             url('/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="../../stylesheets/application.css">
+    <link rel="stylesheet" href="../../stylesheets/temporary.css">
+    <link rel="stylesheet" href="../../stylesheets/palettes.css">
+    <link rel="stylesheet" href="../../stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script src="../../javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-blue-grey palette-accent-light-blue">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Functions
+      </div>
+    </div>
+
+    
+    <div class="button button-twitter" role="button" aria-label="Twitter">
+       <a href="https://twitter.com/eclipse_mita" title="@eclipse_mita on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+    </div>
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/eclipse/mita" title="@eclipse/mita on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="../../" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="../../images/mita.svg">
+        </div>
+      
+      <div class="name">
+        <strong>Eclipse Mita </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Download" href="http://github.com/eclipse/mita">
+	
+	Download
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Concepts" href="../../concepts/">
+	
+	Concepts
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Language</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Introduction" href="../../language/introduction/">
+	
+	Introduction
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Basics" href="../../language/basics/">
+	
+	Basics
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Packages" href="../../language/packages/">
+	
+	Packages
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="System Setup" href="../../language/setup/">
+	
+	System Setup
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Types" href="../../language/types/">
+	
+	Types
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Arrays" href="../../language/arrays/">
+	
+	Arrays
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a class="current" title="Functions" href="../../language/functions/">
+	
+	Functions
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+      
+        
+        
+
+
+
+<a  title="Foreign Function Interface" href="../../language/foreignfunctioninterface/">
+	
+	Foreign Function Interface
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Events" href="../../language/events/">
+	
+	Events
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Exceptions" href="../../language/exceptions/">
+	
+	Exceptions
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Platforms</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="XDK110" href="../../platforms/xdk110/">
+	
+	XDK110
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Functions </h1>
+
+			
+
+<p>Functions play an important role in Mita.
+They give the language a modern feel through features that go beyond what C has to offer, such as <a href="#polymorphism">polymorphism</a> and <a href="#extension-methods">extension methods</a>.</p>
+
+<p>You have already seen the <code>fn</code> keyword, which allows you to declare new functions. Alternatively you can use <code>function</code> instead of <code>fn</code> if that suits your style better.
+By convention in Mita functions are named in <code>camel case</code> style. In <code>camel case</code>, words are separated by capital letters and for functions we start with a lower-case one.
+Here is an example that contains function definitions:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">helloWorld() {</span>
+	<span class="k">return</span> <span class="s2">&#34;hello world&#34;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">addOne</span><span class="p">(</span><span class="nx">x</span> : <span class="kt">int32</span><span class="p">)</span> <span class="o">:</span> <span class="nx">int32</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="return-values">Return Values</h2>
+
+<p>All functions have a return type. If a function does not return any value, its type is <code>void</code>.
+If you don&rsquo;t explicitly specify a return type, the compiler will infer the common type of all <code>return</code> statements.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="c1">// The compiler will infer bool as return type 
+</span><span class="c1"></span><span class="nx">fn</span> <span class="nx">isEvent</span><span class="p">(</span><span class="nx">x</span> : <span class="kt">int32</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="nx">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">fn</span> <span class="nx">giveAnotherOne</span><span class="p">()</span> <span class="o">:</span> <span class="nx">uint32</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="polymorphism">Polymorphism</h2>
+
+<p>Functions can share the same name as long as the types of their parameters differ.
+This concept is referred to as <code>polymorphism</code> and is useful to enable different behavior depending on the type of input.
+Suppose you wanted to serialize structures to JSON messages. Because of polymorphism you can write the following code:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kr">package</span> <span class="nx">main</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">platforms</span><span class="p">.</span><span class="nx">xdk110</span><span class="p">;</span>
+
+<span class="nx">struct</span> <span class="nx">AccelData</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">x</span> : <span class="kt">int32</span><span class="p">;</span>
+	<span class="kd">var</span> <span class="nx">y</span> : <span class="kt">int32</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">struct</span> <span class="nx">EnvData</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">temp</span> : <span class="kt">int32</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">fn</span> <span class="nx">toJSON</span><span class="p">(</span><span class="nx">data</span> : <span class="kt">AccelData</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="sb">`{ &#34;x&#34;: </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">x</span><span class="si">}</span><span class="sb">, &#34;y&#34;: </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">y</span><span class="si">}</span><span class="sb"> }`</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">fn</span> <span class="nx">toJSON</span><span class="p">(</span><span class="nx">data</span> : <span class="kt">EnvData</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="sb">`{ &#34;temp&#34;: </span><span class="si">${</span><span class="nx">data</span><span class="p">.</span><span class="nx">temp</span><span class="si">}</span><span class="sb"> }`</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">every</span> <span class="mi">1</span> <span class="nx">second</span> <span class="p">{</span>
+	<span class="kd">let</span> <span class="nx">environmentalState</span> <span class="o">=</span> <span class="nx">EnvData</span><span class="p">(</span><span class="nx">temp</span> <span class="o">=</span> <span class="nx">environment</span><span class="p">.</span><span class="nx">temperature</span><span class="p">.</span><span class="nx">read</span><span class="p">());</span>
+	<span class="nx">println</span><span class="p">(</span><span class="nx">toJSON</span><span class="p">(</span><span class="nx">environmentalState</span><span class="p">));</span>
+<span class="p">}</span></code></pre></div>
+<p>Notice how we have two functions called <code>toJSON</code>. Depending on the type of the parameter they are called with, the compiler chooses
+one or the other function.</p>
+
+<h2 id="extension-methods">Extension Methods</h2>
+
+<p>In the example above we called the <code>toJSON</code> function how you would expect a function call to look like: <code>toJSON(environmentalState)</code>.
+Mita offers another style of calling functions which we refer to as <em>extension methods</em>: <code>environmentalState.toJSON()</code>.
+With this style you can write the first argument of the function on the left side and call the function &ldquo;on that expression&rdquo;.
+This gives the expression an object oriented look and feel, even though it is still just a plain old function call.</p>
+
+<p>Extension methods are very powerful when they are combined with polymorphism.
+Considering the example above we could write code that looks very object oriented, but without incurring its complexity:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">printState</span><span class="p">(</span><span class="nx">accel</span> : <span class="kt">AccelData</span><span class="p">,</span> <span class="nx">env</span> : <span class="kt">EnvData</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">println</span><span class="p">(</span><span class="nx">accel</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">());</span>
+	<span class="nx">println</span><span class="p">(</span><span class="nx">env</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">());</span>
+<span class="p">}</span></code></pre></div>
+<p>Calling functions this way is not unique to Mita.
+<em>Go</em> supports a very similar concept (receivers), <em>C#</em> supports an extension method concept and <em>Xtend</em> even has the exact same concept.</p>
+
+<h2 id="named-parameters">Named Parameters</h2>
+
+<p>When invoking functions the parameters can be specified by position or name. The style of invocation must not be mixed. There are no optional parameters.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nx">y</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+<span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nx">x</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span> <span class="cm">/* compile error: parameter x has already been specified */</span>
+<span class="nx">foo</span><span class="p">(</span><span class="nx">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="cm">/* compile error: mixed positional and named parameters */</span>
+<span class="nx">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">y</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span> <span class="cm">/* compile error: mixed positional and named parameters */</span></code></pre></div>
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2018 The Eclipse Mita Project &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="../../language/arrays/" title="Arrays">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Arrays
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="../../platforms/xdk110/" title="XDK110">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              XDK110
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="../../javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

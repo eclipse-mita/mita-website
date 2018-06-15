@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Arrays - Eclipse Mita</title>
+    <meta name="generator" content="Hugo 0.42.1" />
+
+    
+    <meta name="description" content="The documentation of Eclipse Mita.">
+    
+    <link rel="canonical" href="../../language/arrays/">
+    
+
+    <meta property="og:url" content="/language/arrays/">
+    <meta property="og:title" content="Eclipse Mita">
+    <meta property="og:image" content="/images/mita.svg">
+    <meta name="apple-mobile-web-app-title" content="Eclipse Mita">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('/fonts/icon.eot');
+        src: url('/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('/fonts/icon.woff')
+               format('woff'),
+             url('/fonts/icon.ttf')
+               format('truetype'),
+             url('/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="../../stylesheets/application.css">
+    <link rel="stylesheet" href="../../stylesheets/temporary.css">
+    <link rel="stylesheet" href="../../stylesheets/palettes.css">
+    <link rel="stylesheet" href="../../stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script src="../../javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-blue-grey palette-accent-light-blue">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Arrays
+      </div>
+    </div>
+
+    
+    <div class="button button-twitter" role="button" aria-label="Twitter">
+       <a href="https://twitter.com/eclipse_mita" title="@eclipse_mita on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+    </div>
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/eclipse/mita" title="@eclipse/mita on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="../../" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="../../images/mita.svg">
+        </div>
+      
+      <div class="name">
+        <strong>Eclipse Mita </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Download" href="http://github.com/eclipse/mita">
+	
+	Download
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Concepts" href="../../concepts/">
+	
+	Concepts
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Language</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Introduction" href="../../language/introduction/">
+	
+	Introduction
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Basics" href="../../language/basics/">
+	
+	Basics
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Packages" href="../../language/packages/">
+	
+	Packages
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="System Setup" href="../../language/setup/">
+	
+	System Setup
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Types" href="../../language/types/">
+	
+	Types
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a class="current" title="Arrays" href="../../language/arrays/">
+	
+	Arrays
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+      
+        
+        
+
+
+
+<a  title="Functions" href="../../language/functions/">
+	
+	Functions
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Foreign Function Interface" href="../../language/foreignfunctioninterface/">
+	
+	Foreign Function Interface
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Events" href="../../language/events/">
+	
+	Events
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Exceptions" href="../../language/exceptions/">
+	
+	Exceptions
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Platforms</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="XDK110" href="../../platforms/xdk110/">
+	
+	XDK110
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Arrays </h1>
+
+			
+
+<p>Arrays are a fixed-size sequence of objects. In Mita, arrays can hold any type:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">var</span> <span class="nx">array1</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="nx">struct</span> <span class="nx">vec2d</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> : <span class="kt">int32</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">y</span> : <span class="kt">int32</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nx">array2</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">vec2d</span><span class="o">&gt;</span><span class="p">;</span></code></pre></div>
+<h2 id="initialization">Initialization</h2>
+
+<p>There are multiple ways to initialize and fill arrays:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">let</span> <span class="nx">array1</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">array2</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">];</span></code></pre></div>
+<h2 id="length">Length</h2>
+
+<p>Mita arrays know how long arrays are, unlike C arrays. This allows you to do a lot of things with arrays without knowing their size.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">result</span> <span class="o">+=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>The only exception to that is returning arrays. While we try hard to do <a href="../../concepts/#element-size-inference">element size inference</a>, in some cases we fail to correctly infer the size of your array and inform you about it. In that case you need to manually specify the array length:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">returnsArray</span><span class="p">()</span><span class="o">:</span> <span class="nx">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">array1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">array1</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="access">Access</h2>
+
+<p>You access arrays using the familiar square brackets <code>[]</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">let</span> <span class="nx">array1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">v1</span> <span class="o">=</span> <span class="nx">array1</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="nx">array1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nx">v1</span><span class="p">;</span></code></pre></div>
+<h2 id="slices">Slices</h2>
+
+<div class="admonition warning">
+<p class="admonition-title">Copy by value</p>
+<p>Everything is copy by value!</p>
+</div>
+
+<p>If you only need to take some parts of your array, you can use slices. A slice of an array is a <strong>copy</strong> of part of the array. For example, in the following code, <code>array2</code> contains the values <code>[2, 3]</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">let</span> <span class="nx">array1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">array2</span> <span class="o">=</span> <span class="nx">array1</span><span class="p">[</span><span class="nx">1</span>:<span class="kt">3</span><span class="p">];</span></code></pre></div>
+<p>You can leave out the upper or lower bound of the slice, or both.</p>
+
+<h2 id="bounds-checks">Bounds checks</h2>
+
+<p>Whenever you access parts of an array, be it by direct access or slices, we need to do a bounds check. In many cases this doesn&rsquo;t impart any runtime impact, since we can infer the bounds statically. If we can&rsquo;t, we generate bounds checks and throw an <code>IndexOutOfBoundsException</code> on failure. See <a href="../../language/exceptions/">Exceptions</a> for more info.</p>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2018 The Eclipse Mita Project &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="../../language/types/" title="Types">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Types
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="../../language/functions/" title="Functions">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Functions
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="../../javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Basics - Eclipse Mita</title>
+    <meta name="generator" content="Hugo 0.42.1" />
+
+    
+    <meta name="description" content="The documentation of Eclipse Mita.">
+    
+    <link rel="canonical" href="../../language/basics/">
+    
+
+    <meta property="og:url" content="/language/basics/">
+    <meta property="og:title" content="Eclipse Mita">
+    <meta property="og:image" content="/images/mita.svg">
+    <meta name="apple-mobile-web-app-title" content="Eclipse Mita">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('/fonts/icon.eot');
+        src: url('/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('/fonts/icon.woff')
+               format('woff'),
+             url('/fonts/icon.ttf')
+               format('truetype'),
+             url('/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="../../stylesheets/application.css">
+    <link rel="stylesheet" href="../../stylesheets/temporary.css">
+    <link rel="stylesheet" href="../../stylesheets/palettes.css">
+    <link rel="stylesheet" href="../../stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script src="../../javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-blue-grey palette-accent-light-blue">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Basics
+      </div>
+    </div>
+
+    
+    <div class="button button-twitter" role="button" aria-label="Twitter">
+       <a href="https://twitter.com/eclipse_mita" title="@eclipse_mita on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+    </div>
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/eclipse/mita" title="@eclipse/mita on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="../../" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="../../images/mita.svg">
+        </div>
+      
+      <div class="name">
+        <strong>Eclipse Mita </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Download" href="http://github.com/eclipse/mita">
+	
+	Download
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Concepts" href="../../concepts/">
+	
+	Concepts
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Language</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Introduction" href="../../language/introduction/">
+	
+	Introduction
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a class="current" title="Basics" href="../../language/basics/">
+	
+	Basics
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+      
+        
+        
+
+
+
+<a  title="Packages" href="../../language/packages/">
+	
+	Packages
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="System Setup" href="../../language/setup/">
+	
+	System Setup
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Types" href="../../language/types/">
+	
+	Types
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Arrays" href="../../language/arrays/">
+	
+	Arrays
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Functions" href="../../language/functions/">
+	
+	Functions
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Foreign Function Interface" href="../../language/foreignfunctioninterface/">
+	
+	Foreign Function Interface
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Events" href="../../language/events/">
+	
+	Events
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Exceptions" href="../../language/exceptions/">
+	
+	Exceptions
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Platforms</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="XDK110" href="../../platforms/xdk110/">
+	
+	XDK110
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Basics </h1>
+
+			
+
+<h2 id="variables">Variables</h2>
+
+<p>By default, variables in Mita are immutable, which helps us optimize the generated code.
+However, you can always choose to make variables mutable if you need it.
+When a variable is immutable, its value has to be set during declaration and cannot be changed afterwards.
+The following code snippet illustrates the idea (we&rsquo;ve omitted the package and import statements for brevity):</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">main() {</span>
+	<span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+	<span class="nx">println</span><span class="p">(</span><span class="sb">`The value of x is </span><span class="si">${</span><span class="nx">x</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+	
+	<span class="nx">x</span> <span class="o">=</span> <span class="mi">64</span><span class="p">;</span>
+	<span class="nx">println</span><span class="p">(</span><span class="sb">`The value of x is now </span><span class="si">${</span><span class="nx">x</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<p>When you save this code, you will see an error message <code>Assignment to constant not allowed.</code> at the <code>x = 64</code> statement.
+That&rsquo;s the compiler enforcing the immutability of <code>x</code>.</p>
+
+<p><img src="immutableAssignmentError.png" alt="Error assigning to constant" /></p>
+
+<p>To make variables mutable, use the <code>var</code> keyword. Then, you can re-assign a value to the variable after it was declared.
+For example</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="nx">x</span> <span class="o">=</span> <span class="mi">64</span><span class="p">;</span></code></pre></div>
+<p>does not produce any compiler errors, unlike the example above. Because we wrote <code>var</code> instead of <code>let</code>, <code>x</code> became mutable and thus could be re-assigned to a different value.</p>
+
+<div class="admonition note">
+<p class="admonition-title">Tip: be immutable where you can</p>
+<p>Using mutable variables instead of immutable ones can lead to less efficient code being generated.
+Thus, as a rule of thumb use immutable variables where you can.</p>
+</div>
+
+<h3 id="types-and-type-inference">Types and Type Inference</h3>
+
+<p>Until now we have never had to write the type of the variables we declared.
+Mita supports <em>type inference</em> so that you, the developer, does not have to tell the compiler things it already knows.
+However, there are times when we are unable to infer the type of a variable, for example when it is not initialized, or the compiler gets the type wrong.
+In those cases you can explicitly tell the compiler what type a variable should have. For example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">let</span> <span class="nx">x</span> : <span class="kt">uint8</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> 	<span class="c1">// x is forced to be uint8, compared to the otherwise inferred int32 
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">y</span> : <span class="kt">int16</span><span class="p">;</span>		<span class="err">// y does not have an explicit initialization, so we need to explicitly denote the type.</span></code></pre></div>
+<p>This syntax for specifying types is consistent throughout the language. You can use it to specify the types of function parameters, the return type of a function or the types of structure members.</p>
+
+<h3 id="scoping-and-shadowing">Scoping and Shadowing</h3>
+
+<p>In Mita variables are block scoped and there is no shadowing within the same block. This is unlike languages like Rust or Haskell, for example, where one would be able to re-use the same name in multiple variable declarations.
+The following is not legal Mita code, the compiler will complain that it <code>Cannot redeclare variable 'x'</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">main() {</span>
+	<span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+	<span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>		<span class="c1">// Compiler error: Cannot redeclare variable &#39;x&#39;
+</span><span class="c1"></span>	<span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>		<span class="c1">// Compiler error: Cannot redeclare variable &#39;x&#39;
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+<p>However, in a new block one can shadow a variable declared outside that block. The following code, for example, works just fine as it takes the <code>x</code> declared outside the <em>if block</em>, multiplies it by two and stores it in a <em>new immutable variable</em> also named x.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">main() {</span>
+	<span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+	
+	<span class="k">if</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+		<span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+		<span class="nx">println</span><span class="p">(</span><span class="sb">`x in block equals </span><span class="si">${</span><span class="nx">x</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>		<span class="c1">// Output: x in block equals 84
+</span><span class="c1"></span>	<span class="p">}</span>
+	
+	<span class="nx">println</span><span class="p">(</span><span class="sb">`x outside block equals </span><span class="si">${</span><span class="nx">x</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>		<span class="c1">// Output: x outside block equals 42
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+<h2 id="primitive-data-types">Primitive Data Types</h2>
+
+<p><a href="#types-and-type-inference">Previously</a> we have seen that Mita is a statically typed language, meaning that every expression in Mita has a data type, fixed at compile time.
+We distinguish between primitive and complex data types. Primitive data types consist of a single value, such as a number or a flag (other <a href="https://doc.rust-lang.org/book/second-edition/ch03-02-data-types.html">languages</a> call those <em>scalar data types</em>).
+Mita has three groups of primitive data types: integer, float and boolean.</p>
+
+<h3 id="integer">Integer</h3>
+
+<p>An integer is a &ldquo;whole number&rdquo;, i.e. one without a fraction. We already used integers in the previous section, specifically the <code>uint8</code> and <code>int16</code> types.
+All integer types prefixed with a <code>u</code> are <em>unsigned</em> types, meaning that they store positive values only but have a wider range than their signed counterparts.
+The number at the end of the type indicates their <em>width</em> in bits, that is how large a number they can store.</p>
+
+<table>
+<thead>
+<tr>
+<th>Width</th>
+<th>Signed</th>
+<th>Unsigned</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>8 bit</td>
+<td><code>int8</code></td>
+<td><code>uint8</code></td>
+</tr>
+
+<tr>
+<td>16 bit</td>
+<td><code>int16</code></td>
+<td><code>uint16</code></td>
+</tr>
+
+<tr>
+<td>32 bit</td>
+<td><code>int32</code></td>
+<td><code>uint32</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Each signed type can store values from -2<sup>(n-1)</sup> to 2<sup>(n-1)</sup> - 1, unsigned types can store values ranging from 0 to 2<sup>n</sup> - 1, where <code>n</code> is the width of the data type. For example, <code>uint8</code> can store integers up to 2<sup>8</sup>-1 = 255.</p>
+
+<p>You can write integer literals either in decimal form (e.g. <code>42</code>) or in hexadecimal form (<code>0xFF</code>). If you don&rsquo;t specify a type explicitly the compiler will infer the concrete data type based on first use. For example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">addOne</span><span class="p">(</span><span class="nx">x</span> : <span class="kt">int16</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">fn</span> <span class="nx">main() {</span>
+	<span class="kd">let</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">addOne</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span> <span class="c1">// 42 is infered as int16
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+<h3 id="floating-point">Floating Point</h3>
+
+<p>Mita supports a 32 bit wide single precision <code>float</code> datatype and a 64 bit wide double precision <code>double</code> floating point number type.
+By default floating point literals (e.g. <code>1.0</code>) are inferred as single precision <code>float</code>.</p>
+
+<h3 id="boolean">Boolean</h3>
+
+<p>Like in most other programming languages Mita supports a boolean type with two possible values: <code>true</code> and <code>false</code>. The boolean type in Mita is called <code>bool</code>. For example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">main() {</span>
+	<span class="kd">let</span> <span class="nx">isTrue</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+	<span class="kd">let</span> <span class="nx">falseByDefault</span> : <span class="kt">bool</span><span class="p">;</span> <span class="c1">// with explicit type, bool defaults to false.
+</span><span class="c1"></span>	
+	<span class="k">if</span><span class="p">(</span><span class="nx">isTrue</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">println</span><span class="p">(</span><span class="s2">&#34;It is true!&#34;</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<h3 id="operations-on-primitive-types">Operations on Primitive Types</h3>
+
+<p>Mita supports a range of operations on primitive values. These operations are supported on operands of the same type, or compatible smaller types (e.g. <code>int32 + int16</code>). No worries though, the compiler will tell you what&rsquo;s allowed and what isn&rsquo;t.</p>
+
+<ul>
+<li>multiplication: <code>*</code></li>
+<li>addition: <code>+</code></li>
+<li>subtraction: <code>-</code></li>
+<li>division: <code>/</code></li>
+<li>bit-wise negation: <code>~</code></li>
+<li>bit-shift left: <code>&lt;&lt;</code></li>
+<li>bit-shift right: <code>&gt;&gt;</code></li>
+<li>logical negation (bool only): <code>!</code></li>
+</ul>
+
+<h3 id="complex-types">Complex Types</h3>
+
+<p>Complex data types (such as strings or structures) need more elaboration than a single section could encompass. Head over to the <a href="../../language/types/">types section</a> to find out more.</p>
+
+<h2 id="control-structures">Control Structures</h2>
+
+<p>Code can branch using if statements</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">let</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">foo</span> <span class="o">&gt;=</span> <span class="mi">15</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">println</span><span class="p">(</span><span class="s2">&#34;That&#39;s high&#34;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">foo</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">println</span><span class="p">(</span><span class="s2">&#34;That&#39;s less high&#34;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">println</span><span class="p">(</span><span class="s2">&#34;That&#39;s not high&#34;</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<p>If-conditions must be boolean</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="k">if</span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span> <span class="cm">/* compiler error: Incompatible types int32 and boolean. */</span></code></pre></div>
+<p>Curly brackets for blocks are required</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="k">if</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="nx">printf</span><span class="p">(</span><span class="s2">&#34;Foo&#34;</span><span class="p">);</span> <span class="cm">/* syntax error: Missing { */</span></code></pre></div>
+<p>Traditional for loops are supported</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span></code></pre></div>
+<p>Traditional while loops are supported</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="k">while</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span></code></pre></div>
+<p>Do-while loops are supported</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="k">do</span> <span class="p">{</span> <span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span></code></pre></div>
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2018 The Eclipse Mita Project &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="../../language/introduction/" title="Introduction">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Introduction
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="../../language/packages/" title="Packages">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Packages
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="../../javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Types - Eclipse Mita</title>
+    <meta name="generator" content="Hugo 0.42.1" />
+
+    
+    <meta name="description" content="The documentation of Eclipse Mita.">
+    
+    <link rel="canonical" href="../../language/types/">
+    
+
+    <meta property="og:url" content="/language/types/">
+    <meta property="og:title" content="Eclipse Mita">
+    <meta property="og:image" content="/images/mita.svg">
+    <meta name="apple-mobile-web-app-title" content="Eclipse Mita">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('/fonts/icon.eot');
+        src: url('/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('/fonts/icon.woff')
+               format('woff'),
+             url('/fonts/icon.ttf')
+               format('truetype'),
+             url('/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="../../stylesheets/application.css">
+    <link rel="stylesheet" href="../../stylesheets/temporary.css">
+    <link rel="stylesheet" href="../../stylesheets/palettes.css">
+    <link rel="stylesheet" href="../../stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script src="../../javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-blue-grey palette-accent-light-blue">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Types
+      </div>
+    </div>
+
+    
+    <div class="button button-twitter" role="button" aria-label="Twitter">
+       <a href="https://twitter.com/eclipse_mita" title="@eclipse_mita on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+    </div>
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/eclipse/mita" title="@eclipse/mita on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="../../" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="../../images/mita.svg">
+        </div>
+      
+      <div class="name">
+        <strong>Eclipse Mita </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Download" href="http://github.com/eclipse/mita">
+	
+	Download
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Concepts" href="../../concepts/">
+	
+	Concepts
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Language</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Introduction" href="../../language/introduction/">
+	
+	Introduction
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Basics" href="../../language/basics/">
+	
+	Basics
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Packages" href="../../language/packages/">
+	
+	Packages
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="System Setup" href="../../language/setup/">
+	
+	System Setup
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a class="current" title="Types" href="../../language/types/">
+	
+	Types
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+      
+        
+        
+
+
+
+<a  title="Arrays" href="../../language/arrays/">
+	
+	Arrays
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Functions" href="../../language/functions/">
+	
+	Functions
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Foreign Function Interface" href="../../language/foreignfunctioninterface/">
+	
+	Foreign Function Interface
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Events" href="../../language/events/">
+	
+	Events
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Exceptions" href="../../language/exceptions/">
+	
+	Exceptions
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Platforms</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="XDK110" href="../../platforms/xdk110/">
+	
+	XDK110
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Types </h1>
+
+			
+
+<h2 id="primitive-types">Primitive Types</h2>
+
+<p>We have already seen the <a href="../../language/basics/#primitive-data-types">basic data types</a> supported by Mita.
+Primitive types are also called <em>scalar types</em> in other languages, as they contain a single value.
+Complex types on the other hand represent more than a single value, or are defined by the programmer.
+There is one type where that distinction is not as clear as it may sound: strings.</p>
+
+<h2 id="strings">Strings</h2>
+
+<p>In C there are no strings, but only arrays of characters and some conventions.
+There, strings are really non-scalar values as they consist of a list of individual bytes.
+You as a programmer will have to tell the compiler how much space you would like to reserve for your string.</p>
+
+<p>This is not how we think of strings nowadays.
+In Mita strings are first-class citizens, meaning that they feel like strings on other languages.
+You can simply initialize a variable with them, append them, pass them to a function and return them from one.
+Behind the scenes we use <a href="../../concepts/#element-size-inference">element size inference</a> to try and compute the worst-case length of a string at compile time and allocate enough space.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">stringDemo() {</span>
+	<span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="s2">&#34;Hello &#34;</span><span class="p">;</span>
+	<span class="nx">msg</span> <span class="o">+=</span> <span class="s2">&#34;World&#34;</span><span class="p">;</span>
+	
+	<span class="nx">println</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<p>There are cases where we cannot infer the length of a string, for example when it&rsquo;s modified within a loop.
+In such cases you will have to explicitly tell us how long your string can be in the worst-case:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">string</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">msg</span> <span class="o">+=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">i</span><span class="si">}</span><span class="sb"> `</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">println</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span></code></pre></div>
+<h2 id="enumerations">Enumerations</h2>
+
+<p>Enumerations are categorical values that we as programmers can define.
+An enumeration type groups a set of such categorical values.
+For example, if we wanted to describe a list of colors, we could define a color enumeration:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kr">enum</span> <span class="nx">Color</span> <span class="p">{</span>
+    <span class="nx">Red</span><span class="p">,</span>
+    <span class="nx">Green</span><span class="p">,</span>
+    <span class="nx">Blue</span>
+<span class="p">}</span></code></pre></div>
+<p>Compared to using integers for categorical values, enumerations provide type safety and a fixed set of values.
+Unlike C, however, integers and enumerations are not interchangeable in Mita.
+This is on purpose, as the loose interchangeability encourages bad coding style.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">Foo</span><span class="p">.</span><span class="nx">Bar</span> <span class="kr">as</span> <span class="nx">uint8</span> <span class="cm">/* compiler error: Types Foo and uint8_t are not compatible. */</span></code></pre></div>
+<h2 id="structures">Structures</h2>
+
+<p>Structures are custom, user-defined types for organizing data. Every structure member needs to be annotated with a type.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">struct</span> <span class="nx">Foo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">bar</span> : <span class="kt">uint32</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">foo</span> : <span class="kt">bool</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">baz</span><span class="p">;</span> <span class="cm">/* syntax error: Expected : not ; */</span>
+<span class="p">}</span></code></pre></div>
+<p>You can create structures by just calling them like a function with all of their members as parameters. Accessing structure members works the same as in other languages.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">struct</span> <span class="nx">vec2d</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span>: <span class="kt">int32</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">y</span>: <span class="kt">int32</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">fn</span> <span class="nx">incVec2d</span><span class="p">(</span><span class="nx">v</span>: <span class="kt">vec2d</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">w</span>: <span class="kt">vec2d</span><span class="p">;</span> <span class="cm">/* By default, all structure members are initialized with 0 */</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span>
+    <span class="nx">w</span> <span class="o">=</span> <span class="nx">vec2d</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="cm">/* as with other functions, you can provide arguments by name */</span>
+    <span class="nx">w</span> <span class="o">=</span> <span class="nx">vec2d</span><span class="p">(</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="nx">y</span> <span class="o">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">w</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="sum-types">Sum Types</h2>
+
+<p>A generalization of enumerations and structures are <a href="https://en.wikipedia.org/wiki/Algebraic_data_type">sum types</a>. You might also know them by the name &ldquo;tagged union&rdquo; or &ldquo;variadic type&rdquo;.</p>
+
+<p>Lets say you want to write a function <code>deviceState</code> that tells you in which state your device is. It tells you whether it is standing still, moving or has detected a shock. Furthermore, some of these states should contain some more information:</p>
+
+<ul>
+<li>While moving you want to know in which directions you are accelerating</li>
+<li>When you detect a shock you also want to store how strong the shock was</li>
+<li>No further information is stored when standing still</li>
+</ul>
+
+<p>Sum types can exactly model this kind of information. In Mita you write the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">alt</span> <span class="nx">DeviceState</span> <span class="p">{</span>
+    <span class="nx">NoMotion</span>
+  <span class="o">|</span> <span class="nx">Movement</span><span class="o">:</span> <span class="p">{</span><span class="nx">accelerationX</span> : <span class="kt">int32</span><span class="p">,</span> <span class="nx">accelerationY</span> : <span class="kt">int32</span><span class="p">,</span> <span class="nx">accelerationZ</span> : <span class="kt">int32</span><span class="p">}</span>
+  <span class="o">|</span> <span class="nx">Shock</span>: <span class="kt">uint32</span>
+<span class="p">}</span></code></pre></div>
+<p>This declares a type <code>DeviceState</code> with three different constructors:</p>
+
+<ul>
+<li><code>DeviceState.NoMotion</code>, which takes no arguments</li>
+<li><code>DeviceState.Movement</code>, which has three named arguments, one for each axis</li>
+<li><code>DeviceState.Shock</code>, which has one named argument: the amplitude of the shock</li>
+</ul>
+
+<p>So your function <code>deviceState</code> looks like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">deviceState</span><span class="p">()</span> <span class="o">:</span> <span class="nx">DeviceState</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">state</span> : <span class="kt">DeviceState</span><span class="p">;</span>
+    
+    <span class="cm">/* detect shock or movement */</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="nx">shockDetected</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">state</span> <span class="o">=</span> <span class="nx">DeviceState</span><span class="p">.</span><span class="nx">Shock</span><span class="p">(</span><span class="nx">accelerometer</span><span class="p">.</span><span class="nx">magnitude</span><span class="p">.</span><span class="nx">read</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">isMoving</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">state</span> <span class="o">=</span> <span class="nx">DeviceState</span><span class="p">.</span><span class="nx">Movement</span><span class="p">(</span>
+          <span class="nx">accelerationX</span> <span class="o">=</span> <span class="nx">accelerometer</span><span class="p">.</span><span class="nx">x_axis</span><span class="p">.</span><span class="nx">read</span><span class="p">(),</span>
+          <span class="nx">accelerationY</span> <span class="o">=</span> <span class="nx">accelerometer</span><span class="p">.</span><span class="nx">y_axis</span><span class="p">.</span><span class="nx">read</span><span class="p">(),</span>
+          <span class="nx">accelerationZ</span> <span class="o">=</span> <span class="nx">accelerometer</span><span class="p">.</span><span class="nx">z_axis</span><span class="p">.</span><span class="nx">read</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">state</span> <span class="o">=</span> <span class="nx">DeviceState</span><span class="p">.</span><span class="nx">NoMotion</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>Next, you need to access information stored in a sum type somehow. For this, Mita offers a construct similar to switch-cases you might know from other languages. There are two things you can do with a sum type:</p>
+
+<ul>
+<li>You can find out which alternative constructor you got</li>
+<li>You can find out what information is stored in it</li>
+</ul>
+
+<p>The first thing is just what enums do and looks like this:</p>
+
+<pre><code>var state : DeviceState = deviceState();
+
+where(state) {
+    is(DeviceState.NoMotion) {
+        println(&quot;Standing still.&quot;);
+    }
+    is(DeviceState.Movement) {
+        println(&quot;Device in motion.&quot;);
+    }
+    is(DeviceState.Shock) {
+        println(&quot;Shock detected!&quot;);
+    }
+}
+</code></pre>
+
+<p>To access data that comes with an alternative (e.g. <code>accelerationX</code> in <code>DeviceState.Movement</code>), you need to bind that data to variables:</p>
+
+<pre><code>var state : DeviceState = deviceState();
+
+where(state) {
+    is(DeviceState.NoMotion) {
+        println(&quot;Standing still.&quot;);
+    } 
+    is(DeviceState.Movement -&gt; x, y, z) {
+        println(`Device in motion: ${x} | ${y} | ${z}.`);
+    }
+    is(DeviceState.Shock -&gt; intensity) {
+        println(`Shock detected: ${intensity}!`);
+    }
+}
+</code></pre>
+
+<p>You can reuse existing structures directly if they are the only value in one alternative. This makes your code more reusable. For example, instead of defining <code>DeviceState.Movement</code> with three parameters, you can reuse an existing struct <code>vec3d_t</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">struct</span> <span class="nx">vec3d_t</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> : <span class="kt">int32</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">y</span> : <span class="kt">int32</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">z</span> : <span class="kt">int32</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">alt</span> <span class="nx">DeviceState</span> <span class="p">{</span>
+    <span class="nx">NoMotion</span>
+  <span class="o">|</span> <span class="nx">Movement</span>: <span class="kt">vec3d_t</span>
+  <span class="o">|</span> <span class="nx">Shock</span>: <span class="kt">uint32</span>
+<span class="p">}</span></code></pre></div>
+<p>The code for <code>deviceState</code> changes slightly, since <code>vec3d_t</code>&rsquo;s members have different names now. Constructing a <code>DeviceState.Movement</code> therefore looks like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">state</span> <span class="o">=</span> <span class="nx">DeviceState</span><span class="p">.</span><span class="nx">Movement</span><span class="p">(</span>
+    <span class="nx">x</span> <span class="o">=</span> <span class="nx">accelerometer</span><span class="p">.</span><span class="nx">x_axis</span><span class="p">.</span><span class="nx">read</span><span class="p">(),</span>
+    <span class="nx">y</span> <span class="o">=</span> <span class="nx">accelerometer</span><span class="p">.</span><span class="nx">y_axis</span><span class="p">.</span><span class="nx">read</span><span class="p">(),</span>
+    <span class="nx">z</span> <span class="o">=</span> <span class="nx">accelerometer</span><span class="p">.</span><span class="nx">z_axis</span><span class="p">.</span><span class="nx">read</span><span class="p">());</span></code></pre></div>
+<p>However you don&rsquo;t need to pass in a member of the struct at all; it is &ldquo;imported&rdquo; to
+<code>DeviceState.Movement</code>. Binding data contained in the alternative works just as before as well.</p>
+
+<p>Some more things you can do are:</p>
+
+<ul>
+<li>You can directly bind the whole element that was matched. This is especially useful for embedded types, since you get a variable of the embedded type instead of the sum type. The syntax for this is:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">is</span><span class="p">(</span><span class="nx">v</span> : <span class="kt">DeviceState.Movement</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* v has type vec3d_t here */</span>
+<span class="p">}</span></code></pre></div>
+<ul>
+<li>You can bind using named parameters, e.g. the <code>DeviceState.Movement</code> above has the named parameters <code>accelerationX</code>, <code>accelerationY</code> and <code>accelerationZ</code>. This looks like this:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">is</span><span class="p">(</span><span class="nx">DeviceState</span><span class="p">.</span><span class="nx">Movement</span> <span class="o">-&gt;</span> 
+    <span class="nx">x</span> <span class="o">=</span> <span class="nx">vec3d</span><span class="p">.</span><span class="nx">accelerationX</span><span class="p">,</span> 
+    <span class="nx">z</span> <span class="o">=</span> <span class="nx">vec3d</span><span class="p">.</span><span class="nx">accelerationZ</span><span class="p">,</span> 
+    <span class="nx">y</span> <span class="o">=</span> <span class="nx">vec3d</span><span class="p">.</span><span class="nx">accelerationY</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* Use a, b and c here */</span>  
+<span class="p">}</span></code></pre></div>
+<ul>
+<li>You can supply a default case with <code>isother { ... }</code>.</li>
+</ul>
+
+<p>Matching happens in the order you specify.</p>
+
+<p>Here you can see a comprehensive example using all the available syntax:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">struct</span> <span class="nx">vec2d_t</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> : <span class="kt">int32</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">y</span> : <span class="kt">int32</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">alt</span> <span class="nx">anyVec</span> <span class="p">{</span> 
+    <span class="nx">vec0d</span> <span class="cm">/* singleton, like an enumeration value */</span> 
+  <span class="o">|</span> <span class="nx">vec1d</span> : <span class="kt">int32</span> 
+  <span class="o">|</span> <span class="nx">vec2d</span> : <span class="kt">vec2d_t</span> <span class="cm">/* embedded structure */</span>
+  <span class="o">|</span> <span class="nx">vec3d</span> <span class="o">:</span> <span class="p">{</span><span class="nx">x</span>: <span class="kt">int32</span><span class="p">,</span> <span class="nx">y</span>: <span class="kt">int32</span><span class="p">,</span> <span class="nx">z</span>: <span class="kt">int32</span><span class="p">}</span> <span class="cm">/* named members */</span>
+  <span class="o">|</span> <span class="nx">vec4d</span> : <span class="kt">int32</span><span class="p">,</span> <span class="nx">int32</span><span class="p">,</span> <span class="nx">int32</span><span class="p">,</span> <span class="nx">int32</span> <span class="cm">/* anonymous members */</span>
+<span class="p">}</span>
+
+<span class="nx">exception</span> <span class="nx">UnknownTypeException</span><span class="p">;</span>
+
+<span class="nx">fn</span> <span class="nx">incVecs</span><span class="p">(</span><span class="nx">a</span>: <span class="kt">anyVec</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">b</span> : <span class="kt">anyVec</span><span class="p">;</span>
+    <span class="nx">where</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">is</span><span class="p">(</span><span class="nx">anyVec</span><span class="p">.</span><span class="nx">vec0d</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">b</span> <span class="o">=</span> <span class="nx">anyVec</span><span class="p">.</span><span class="nx">vec0d</span><span class="p">();</span> 
+        <span class="p">}</span> 
+        <span class="nx">is</span><span class="p">(</span><span class="nx">anyVec</span><span class="p">.</span><span class="nx">vec1d</span> <span class="o">-&gt;</span> <span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">b</span> <span class="o">=</span> <span class="nx">anyVec</span><span class="p">.</span><span class="nx">vec1d</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">is</span><span class="p">(</span><span class="nx">v</span>: <span class="kt">anyVec.vec2d</span><span class="p">)</span> <span class="p">{</span>
+          <span class="cm">/* v is of type vec2d_t */</span>
+          <span class="nx">b</span> <span class="o">=</span> <span class="nx">anyVec</span><span class="p">.</span><span class="nx">vec2d</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">v</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">is</span><span class="p">(</span><span class="nx">anyVec</span><span class="p">.</span><span class="nx">vec3d</span> <span class="o">-&gt;</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">vec3d</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">vec3d</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="nx">z</span> <span class="o">=</span> <span class="nx">vec3d</span><span class="p">.</span><span class="nx">z</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">b</span> <span class="o">=</span> <span class="nx">anyVec</span><span class="p">.</span><span class="nx">vec3d</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">z</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">is</span><span class="p">(</span><span class="nx">anyVec</span><span class="p">.</span><span class="nx">vec4d</span> <span class="o">-&gt;</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">z</span><span class="p">,</span> <span class="nx">w</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">b</span> <span class="o">=</span> <span class="nx">anyVec</span><span class="p">.</span><span class="nx">vec4d</span><span class="p">(</span><span class="nx">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">z</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">w</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span> 
+        <span class="cm">/* you can specify a default case */</span>
+        <span class="nx">isother</span> <span class="p">{</span>
+           <span class="k">throw</span> <span class="nx">UnknownTypeException</span><span class="p">;</span>
+        <span class="p">}</span> 
+    <span class="p">}</span> 
+    <span class="k">return</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="optionals">Optionals</h2>
+
+<p>All types can be made optional using the <code>?</code> operator:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">let</span> <span class="nx">intOpt</span> : <span class="kt">uint32?</span><span class="p">;</span>
+<span class="nx">struct</span> <span class="nx">strct</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> : <span class="kt">uint32</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nx">structOpt</span> : <span class="kt">strct?</span><span class="p">;</span></code></pre></div>
+<p>Initializing can be done either by implicit upcasting in most cases, or by explicit construction using <code>some</code> and <code>none</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">let</span> <span class="nx">x</span> : <span class="kt">uint32?</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">y</span> <span class="o">=</span> <span class="nx">some</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">z</span> : <span class="kt">int32?</span> <span class="o">=</span> <span class="nx">none</span><span class="p">();</span></code></pre></div>
+<p>To check if an optional contains a value you use the function <code>hasValue</code>. If an optional has a value you can get it with the function <code>value</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">let</span> <span class="nx">foo</span> : <span class="kt">uint32?</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">hasValue</span><span class="p">())</span> <span class="p">{</span>
+    <span class="nx">println</span><span class="p">(</span><span class="sb">`foo has value </span><span class="si">${</span><span class="nx">foo</span><span class="p">.</span><span class="nx">value</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<h2 id="references">References</h2>
+
+<p>Since all assignment semantics are copy by value you need a way to specify you want to have another reference to some object. For this you can use references. Unlike C pointers, references may never refer to nothing. To emphasize this, their type is annotated with an ampersand <code>&amp;</code> instead of an asterix <code>*</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">var</span> <span class="nx">someInt</span> : <span class="kt">int32</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">refToSomeInt</span> <span class="o">:</span> <span class="o">&amp;</span><span class="nx">int32</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">someInt</span><span class="p">;</span>
+<span class="o">*</span><span class="nx">refToSomeInt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span></code></pre></div>
+<p>You can reference references as well. However, you need to store every intermediate reference explicitly.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">var</span> <span class="nx">someInt</span> : <span class="kt">int32</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">refToSomeInt</span> <span class="o">:</span> <span class="o">&amp;</span><span class="nx">int32</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">someInt</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">doubleRef</span> <span class="o">:</span> <span class="o">&amp;&amp;</span><span class="nx">int32</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">refToSomeInt</span><span class="p">;</span>
+<span class="o">**</span><span class="nx">doubleRef</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span></code></pre></div>
+<p>Since our language is heapless, there are some restrictions on how you can modify and pass references. The compiler forbids you from using them in some way that might lead to accessing invalid memory. These rules are as follows:</p>
+
+<ul>
+<li>You can always read contents of references</li>
+<li>You can never return references or anything that might contain references</li>
+<li>You can always pass references to another function</li>
+<li>You can always reference value types</li>
+<li>You can always modify values that are referenced (that is the base values that are referenced)</li>
+<li>You can do whatever you want to (contents of) values that you didn&rsquo;t get by reference</li>
+<li>You can only modify your own referenced references</li>
+</ul>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2018 The Eclipse Mita Project &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="../../faq/" title="Frequently Asked Questions">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Frequently Asked Questions
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="../../language/arrays/" title="Arrays">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Arrays
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="../../javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
