@@ -2,79 +2,79 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Eclipse Mita</title>
-    <link>/</link>
+    <link>/mita/</link>
     <description>Recent content on Eclipse Mita</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 18 Jul 2017 14:18:49 +0200</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/mita/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Introduction</title>
-      <link>/language/introduction/</link>
+      <link>/mita/language/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/language/introduction/</guid>
+      <guid>/mita/language/introduction/</guid>
       <description>Mita is a programming language that is focused on making Internet-Of-Things things easier to program, especially for developers without embedded development background. Its language design and feature-set are meant to make anyone coming from a world of Javascript, Typescript, Java, Swift or Go feel right at home. Compared to C you do not have to care about allocating memory, strings behave naturally, as do arrays. Featuring powerful abstractions and a model-driven system configuration approach we can often tell at compile time if something will not work.</description>
     </item>
     
     <item>
       <title>Basics</title>
-      <link>/language/basics/</link>
+      <link>/mita/language/basics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/language/basics/</guid>
+      <guid>/mita/language/basics/</guid>
       <description>Variables By default, variables in Mita are immutable, which helps us optimize the generated code. However, you can always choose to make variables mutable if you need it. When a variable is immutable, its value has to be set during declaration and cannot be changed afterwards. The following code snippet illustrates the idea (we&amp;rsquo;ve omitted the package and import statements for brevity):
 fn main() { let x = 42; println(`The value of x is ${x}`); x = 64; println(`The value of x is now ${x}`); } When you save this code, you will see an error message Assignment to constant not allowed.</description>
     </item>
     
     <item>
       <title>Packages</title>
-      <link>/language/packages/</link>
+      <link>/mita/language/packages/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/language/packages/</guid>
+      <guid>/mita/language/packages/</guid>
       <description>In Mita code is organized in packages, which serve multiple purposes:
  Divide the namespace: Mita programs have one global namespace per .x file. Unlike Java for example, there are no means to qualify the name of an element. Packages are used to keep this namespace clean. Only things which are explicitly imported from other packages are visible in that namespace. See Importing Packages for more details. Group code: packages are a formidable way to group code which conceptually belongs together.</description>
     </item>
     
     <item>
       <title>System Setup</title>
-      <link>/language/setup/</link>
+      <link>/mita/language/setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/language/setup/</guid>
+      <guid>/mita/language/setup/</guid>
       <description>System resources have properties which we can configure. For example, an accelerometer has an acceleration range, a filter bandwidth and some power modes which we can change. If we wanted to use Bluetooth for communication we would have to set up the GATT characteristics, device name and advertising interval. If we wanted to connect to a WLAN network, we would have to configure the network name and a preshared key.</description>
     </item>
     
     <item>
       <title>Frequently Asked Questions</title>
-      <link>/faq/</link>
+      <link>/mita/faq/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/faq/</guid>
+      <guid>/mita/faq/</guid>
       <description>Who is builds Mita? BCDS
 Why would you invent a new programming language? Because nothing that was out there was suitable.</description>
     </item>
     
     <item>
       <title>Types</title>
-      <link>/language/types/</link>
+      <link>/mita/language/types/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/language/types/</guid>
+      <guid>/mita/language/types/</guid>
       <description>Primitive Types We have already seen the basic data types supported by Mita. Primitive types are also called scalar types in other languages, as they contain a single value. Complex types on the other hand represent more than a single value, or are defined by the programmer. There is one type where that distinction is not as clear as it may sound: strings.
 Strings In C there are no strings, but only arrays of characters and some conventions.</description>
     </item>
     
     <item>
       <title>Arrays</title>
-      <link>/language/arrays/</link>
+      <link>/mita/language/arrays/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/language/arrays/</guid>
+      <guid>/mita/language/arrays/</guid>
       <description>Arrays are a fixed-size sequence of objects. In Mita, arrays can hold any type:
 var array1 : array&amp;lt;int32&amp;gt;; struct vec2d { var x : int32; var y : int32; } let array2 : array&amp;lt;vec2d&amp;gt;; Initialization There are multiple ways to initialize and fill arrays:
 let array1 : array&amp;lt;int32&amp;gt; = new array&amp;lt;int32&amp;gt;(size = 10); let array2 : array&amp;lt;int32&amp;gt; = [1,2,3,4]; Length Mita arrays know how long arrays are, unlike C arrays.</description>
@@ -82,20 +82,20 @@ let array1 : array&amp;lt;int32&amp;gt; = new array&amp;lt;int32&amp;gt;(size = 
     
     <item>
       <title>Functions</title>
-      <link>/language/functions/</link>
+      <link>/mita/language/functions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/language/functions/</guid>
+      <guid>/mita/language/functions/</guid>
       <description>Functions play an important role in Mita. They give the language a modern feel through features that go beyond what C has to offer, such as polymorphism and extension methods.
 You have already seen the fn keyword, which allows you to declare new functions. Alternatively you can use function instead of fn if that suits your style better. By convention in Mita functions are named in camel case style. In camel case, words are separated by capital letters and for functions we start with a lower-case one.</description>
     </item>
     
     <item>
       <title>XDK110</title>
-      <link>/platforms/xdk110/</link>
+      <link>/mita/platforms/xdk110/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/platforms/xdk110/</guid>
+      <guid>/mita/platforms/xdk110/</guid>
       <description>The Bosch Cross Domain Development Kit (XDK) is a programmable sensor device for building IoT applications. It contains a wide range of sensors and means of connectivity, is extensible using its extension bus. Due to its versatility it also serves as reference platform for Mita.
 To learn more about the XDK head over to http://xdk.io.
 Sensor: environment (BME280) Configuration Items    Name Description     optional power_mode : BME280_PowerMode Defaults to BME280_PowerMode.</description>
@@ -103,19 +103,19 @@ Sensor: environment (BME280) Configuration Items    Name Description     optiona
     
     <item>
       <title>Foreign Function Interface</title>
-      <link>/language/foreignfunctioninterface/</link>
+      <link>/mita/language/foreignfunctioninterface/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/language/foreignfunctioninterface/</guid>
+      <guid>/mita/language/foreignfunctioninterface/</guid>
       <description>Mita transpiles to C code, i.e. the compiler produces C code rather than a binary executable. This begs the question if we can call existing C code from within Mita programs. Such integration of the &amp;ldquo;target language&amp;rdquo; is referred to as foreign function interface (or FFI in short) because the functions we wish to call from within Mita are defined in a foreign language: C. Other languages sport similar concepts, for example TypeScript supports declarations which allow you to use code written in JavaScript (the language TypeScript compiles to).</description>
     </item>
     
     <item>
       <title>Events</title>
-      <link>/language/events/</link>
+      <link>/mita/language/events/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/language/events/</guid>
+      <guid>/mita/language/events/</guid>
       <description>System resources and time define events. All events can be handled using the every keyword.
 every accelerometer.any_motion { } every 60 seconds { } Time comes in different resolutions:
  milliseconds seconds minutes hours  Most platforms can only define a limited amount of timers. Therefore the number of time event handlers is limited by that amount. Furthermore, since time is a limited resource, especially on embedded devices, events can be handled multiple times.</description>
@@ -123,10 +123,10 @@ every accelerometer.any_motion { } every 60 seconds { } Time comes in different 
     
     <item>
       <title>Exceptions</title>
-      <link>/language/exceptions/</link>
+      <link>/mita/language/exceptions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/language/exceptions/</guid>
+      <guid>/mita/language/exceptions/</guid>
       <description>Exceptions Exceptions are special types defined by the exception keyword:
 exception FooException; Exceptions can be thrown, which returns control flow to the caller. If the exception is not caught by the caller it propagates further. If the exception is never caught it causes a system reset.
 throw FooException; Exceptions can be caught with the familiar try...catch syntax:
@@ -135,19 +135,19 @@ try { throw FooException; } catch(FooException) { println(&amp;#34;Caught FooExc
     
     <item>
       <title>Download</title>
-      <link>/download/</link>
+      <link>/mita/download/</link>
       <pubDate>Tue, 18 Jul 2017 14:18:49 +0200</pubDate>
       
-      <guid>/download/</guid>
+      <guid>/mita/download/</guid>
       <description>TBD</description>
     </item>
     
     <item>
       <title>Concepts</title>
-      <link>/concepts/</link>
+      <link>/mita/concepts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/concepts/</guid>
+      <guid>/mita/concepts/</guid>
       <description>Platform TLDR; A platform is the thing you are writing programs for.
 Platforms describe the thing that you are writing software for; this thing is literally the piece of hardware and software platform running on it. You do not have create that platform. Platforms consist of something you can configure (configuration items), something you can read from at runtime (modalities), something you can send and receive data through (signals) and something you can react to (events).</description>
     </item>

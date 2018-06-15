@@ -15,40 +15,40 @@
     
     <meta name="description" content="The documentation of Eclipse Mita.">
     
-    <link rel="canonical" href="../concepts/">
+    <link rel="canonical" href="../mita/concepts/">
     
 
-    <meta property="og:url" content="/concepts/">
+    <meta property="og:url" content="/mita/concepts/">
     <meta property="og:title" content="Eclipse Mita">
-    <meta property="og:image" content="/images/mita.svg">
+    <meta property="og:image" content="/mita/images/mita.svg">
     <meta name="apple-mobile-web-app-title" content="Eclipse Mita">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../mita/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../mita/images/favicon.ico">
 
     <style>
       @font-face {
         font-family: 'Icon';
-        src: url('/fonts/icon.eot');
-        src: url('/fonts/icon.eot')
+        src: url('/mita/fonts/icon.eot');
+        src: url('/mita/fonts/icon.eot')
                format('embedded-opentype'),
-             url('/fonts/icon.woff')
+             url('/mita/fonts/icon.woff')
                format('woff'),
-             url('/fonts/icon.ttf')
+             url('/mita/fonts/icon.ttf')
                format('truetype'),
-             url('/fonts/icon.svg')
+             url('/mita/fonts/icon.svg')
                format('svg');
         font-weight: normal;
         font-style: normal;
       }
     </style>
 
-    <link rel="stylesheet" href="../stylesheets/application.css">
-    <link rel="stylesheet" href="../stylesheets/temporary.css">
-    <link rel="stylesheet" href="../stylesheets/palettes.css">
-    <link rel="stylesheet" href="../stylesheets/highlight/highlight.css">
+    <link rel="stylesheet" href="../mita/stylesheets/application.css">
+    <link rel="stylesheet" href="../mita/stylesheets/temporary.css">
+    <link rel="stylesheet" href="../mita/stylesheets/palettes.css">
+    <link rel="stylesheet" href="../mita/stylesheets/highlight/highlight.css">
 
     
     
@@ -64,9 +64,9 @@
     </style>
 
     
-    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="../mita/css/custom.css">
     
-    <script src="../javascripts/modernizr.js"></script>
+    <script src="../mita/javascripts/modernizr.js"></script>
 
     
 
@@ -131,11 +131,11 @@
 <main class="main">
 	<div class="drawer">
 		<nav aria-label="Navigation">
-  <a href="../" class="project">
+  <a href="../mita/" class="project">
     <div class="banner">
       
         <div class="logo">
-          <img src="../images/mita.svg">
+          <img src="../mita/images/mita.svg">
         </div>
       
       <div class="name">
@@ -406,7 +406,7 @@ a bunch of sensors such as an accelerometer or temperature sensor,
 and maybe some low-level input/output like <a href="https://en.wikipedia.org/wiki/GPIO">general-purpose IO</a>, <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus">SPI</a> or <a href="https://en.wikipedia.org/wiki/I2C">I2C</a>.</p>
 
 <p>In Mita we call those components system resources, as they are finite resources available to you as developer.
-Some system resources can be instantiated multiple times (see the <a href="../language/setup/">setup section</a>), others only exist once.
+Some system resources can be instantiated multiple times (see the <a href="../mita/language/setup/">setup section</a>), others only exist once.
 However, all system resources share the same features. They can be configured using <em>configuration-items</em>, can provide data at runtime using <em>modalities</em>, can offer means to communicate with the outside world using <em>signals</em> and can provide <em>events</em> for you to react to.</p>
 
 <h3 id="configuration-items">Configuration Items</h3>
@@ -416,7 +416,7 @@ For example, an acceleration sensor might have a range in which it is capable of
 Or a light sensor might take some time to measure how much light is available - the more time spent measuring the better the measurement, but the longer it takes. This measurement time can be configured.
 Configuration items all have a data type and are prescribed by the platform definition.</p>
 
-<p>For example, the Bosch Cross Domain Development Kit (<a href="../platforms/xdk110/">XDK110 platform</a>) supports a light sensor where one can configure the measurement time (they call it <em>integration time</em>):</p>
+<p>For example, the Bosch Cross Domain Development Kit (<a href="../mita/platforms/xdk110/">XDK110 platform</a>) supports a light sensor where one can configure the measurement time (they call it <em>integration time</em>):</p>
 <div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kr">package</span> <span class="nx">main</span><span class="p">;</span>
 <span class="kr">import</span> <span class="nx">platforms</span><span class="p">.</span><span class="nx">xdk110</span><span class="p">;</span>
 
@@ -426,7 +426,7 @@ Configuration items all have a data type and are prescribed by the platform defi
 <h3 id="modalities">Modalities</h3>
 
 <p>Modalities are things that can change at runtime, for example sensor values or the signal strength of a radio. Modalities are prescribed by the platform definition. You as developer do not have to set them up but they are simply available to you.
-There is a read method defined for them which allows you to read the modality at any time. For example, take the light sensor of the (<a href="../platforms/xdk110/">XDK110 platform</a>):</p>
+There is a read method defined for them which allows you to read the modality at any time. For example, take the light sensor of the (<a href="../mita/platforms/xdk110/">XDK110 platform</a>):</p>
 <div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kr">package</span> <span class="nx">main</span><span class="p">;</span>
 <span class="kr">import</span> <span class="nx">platforms</span><span class="p">.</span><span class="nx">xdk110</span><span class="p">;</span>
 
@@ -444,7 +444,7 @@ There is a read method defined for them which allows you to read the modality at
 	
 	<span class="c1">// x, y, z come from the same sample
 </span><span class="c1"></span><span class="p">}</span></code></pre></div>
-<p>The code generator that ships with the system resource (in this case the code generator provided by the <a href="../platforms/xdk110/">XDK110 platform</a>) can choose to group modality access, so that the data read from them is coherent.</p>
+<p>The code generator that ships with the system resource (in this case the code generator provided by the <a href="../mita/platforms/xdk110/">XDK110 platform</a>) can choose to group modality access, so that the data read from them is coherent.</p>
 
 <h3 id="signals">Signals</h3>
 
@@ -543,7 +543,7 @@ we can tell you if that access will work out or not; before you run your code.</
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="../download/" title="Download">
+      <a href="../mita/download/" title="Download">
         <span class="direction">
           Previous
         </span>
@@ -591,7 +591,7 @@ we can tell you if that access will work out or not; before you run your code.</
     
     </script>
 
-    <script src="../javascripts/application.js"></script>
+    <script src="../mita/javascripts/application.js"></script>
     
 
     <script>

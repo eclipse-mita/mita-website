@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Platforms on Eclipse Mita</title>
-    <link>/platforms/</link>
+    <link>/mita/platforms/</link>
     <description>Recent content in Platforms on Eclipse Mita</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="/platforms/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/mita/platforms/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>XDK110</title>
-      <link>/platforms/xdk110/</link>
+      <link>/mita/platforms/xdk110/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/platforms/xdk110/</guid>
+      <guid>/mita/platforms/xdk110/</guid>
       <description>The Bosch Cross Domain Development Kit (XDK) is a programmable sensor device for building IoT applications. It contains a wide range of sensors and means of connectivity, is extensible using its extension bus. Due to its versatility it also serves as reference platform for Mita.
 To learn more about the XDK head over to http://xdk.io.
 Sensor: environment (BME280) Configuration Items    Name Description     optional power_mode : BME280_PowerMode Defaults to BME280_PowerMode.</description>
