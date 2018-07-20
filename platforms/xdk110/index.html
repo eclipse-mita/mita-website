@@ -34,9 +34,9 @@
         src: url('/fonts/icon.eot');
         src: url('/fonts/icon.eot')
                format('embedded-opentype'),
-             url('/mita/fonts/icon.woff')
+             url('/fonts/icon.woff')
                format('woff'),
-             url('/mita/fonts/icon.ttf')
+             url('/fonts/icon.ttf')
                format('truetype'),
              url('/fonts/icon.svg')
                format('svg');
@@ -377,651 +377,1055 @@
 
 			
 
+<h2 id="overview-the-xdk110">Overview: The XDK110</h2>
+
 <p>The Bosch Cross Domain Development Kit (XDK) is a programmable sensor device for building IoT applications.
-It contains a wide range of sensors and means of connectivity, is extensible using its extension bus.
+It contains a wide range of sensors and means of connectivity and is extensible using its extension bus.
 Due to its versatility it also serves as reference platform for Mita.</p>
 
 <p>To learn more about the XDK head over to <a href="http://xdk.io">http://xdk.io</a>.</p>
 
-<h2 id="sensor-environment-bme280">Sensor: environment (BME280)</h2>
+<h3 id="implemented-system-resources">Implemented System Resources</h3>
 
-<h3 id="configuration-items">Configuration Items</h3>
+<p>Currently implemented sensors, connectivities and buses in the XDK110 platform:</p>
 
 <table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>power_mode</b> : <span class="kt">BME280_PowerMode</span></pre></div></td>
-            <td>Defaults to <i>BME280_PowerMode.Normal</i>. The BME280 power mode</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>standby_time</b> : <span class="kt">uint32</span></pre></div></td>
-            <td>The standby time used in normal mode in milliseconds.
-            Beware that the value supplied here will be clipped to the nearest valid value.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>temperature_oversampling</b> : <span class="kt">BME280_Oversampling</span></pre></div></td>
-            <td>Reduces noise in the temperature measurement by over sampling.
-            Higher over sampling settings reduce noise but increase measurement time and power consumption.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>pressure_oversampling</b> : <span class="kt">BME280_Oversampling</span></pre></div></td>
-            <td>Reduces noise in the pressure measurement by over sampling.
-            Higher over sampling settings reduce noise but increase measurement time and power consumption.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>humidity_oversampling</b> : <span class="kt">BME280_Oversampling</span></pre></div></td>
-            <td>Reduces noise in the humidity measurement by over sampling.
-            Higher over sampling settings reduce noise but increase measurement time and power consumption.</td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th>Sensors</th>
+<th>Connectivities</th>
+<th>Buses</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="#accelerometer-bma280">Accelerometer</a></td>
+<td><a href="#led">LED</a></td>
+<td><a href="#GPIO">GPIO</a></td>
+</tr>
+
+<tr>
+<td><a href="#gyroscope-calibrated-sensor-fusion">Gyroscope</a></td>
+<td><a href="#ble">BLE</a></td>
+<td><a href="#I2C">I2C</a></td>
+</tr>
+
+<tr>
+<td><a href="#environment-bme280">Humidity</a></td>
+<td><a href="#wlan">WLAN</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#light-max44009">Light</a></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#environment-bme280">Pressure</a></td>
+<td><a href="#mqtt">MQTT</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#environment-bme280">Temperature</a></td>
+<td><a href="#rest-over-http">REST over HTTP</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#buttons">Two buttons</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>For the gyroscope you can choose from three different variants:</p>
+
+<ol>
+<li>Pre-calibrated, more robust through sensor fusion</li>
+<li>Direct access to BMI160</li>
+<li>Direct access to BMG160</li>
+</ol>
+
+<h2 id="configuration">Configuration</h2>
+
+<h3 id="binary-name">Binary Name</h3>
+
+<p>To customize the produced binary name configure <code>XDK110.applicationName : string</code>. The default name is <code>MitaApplication</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">XDK110</span> <span class="p">{</span>
+  <span class="nx">applicationName</span> <span class="o">=</span> <span class="s2">&#34;ShockDetector&#34;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<h3 id="sensors">Sensors</h3>
+
+<p>Any sensor can be used without configuring it. It will be initialized with sensible defaults. If you want to change a sensor&rsquo;s default hardware parameters just set it up, e.g. the accelerometer:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">accelerometer</span> <span class="p">{</span>
+  <span class="c1">// change the bandwidth of the low-pass filter
+</span><span class="c1"></span>  <span class="nx">bandwidth</span> <span class="o">=</span> <span class="nx">BW_1000Hz</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>Content assist (<code>CTRL+Space</code>) will provide you with all available configuration items and their valid values.</p>
+
+<p>Temperature, pressure and humidity are available from a single resource: <code>environment</code>.</p>
+
+<h3 id="connectivities">Connectivities</h3>
+
+<h4 id="hardware">Hardware</h4>
+
+<p>Hardware connectivities are available as named singletons: this means that you can configure each connectivity only once and need to give it a name. These connectivities however offer multiple instantiation of their signals. This means that for example the LED resource can provide up to three different signals for the yellow, orange and red LED.</p>
+
+<h4 id="software">Software</h4>
+
+<p>Software connectivities can have as many instances as you want. Both HTTP REST and MQTT require you to specify a WLAN instance as a transport layer.</p>
+
+<h3 id="buses">Buses</h3>
+
+<h4 id="gpio">GPIO</h4>
+
+<p>GPIO is a named singleton: you can instantiate it once and need to give it a name. Each of the 21 available GPIO pins can be configured as either input or output. Input pins can be operated in different modes:</p>
+
+<ul>
+<li>pull up/pull down: the pin is connected to high or low via a resistor, so that if the pin is not driven from the outside it returns to a set state.</li>
+<li>pull up with glitch filter: like pull up except for small glitches being filtered out.</li>
+<li>no pull: the pin floats freely, i.e. if it is not driven it keeps its current state except for environmental influences and self-drain.</li>
+</ul>
+
+<h4 id="i2c">I2C</h4>
+
+<p>I2C can be instantiated multiple times so you can model different devices on the same bus. You can exchange either single words from one to four byte or complete messages as arrays of integer words. For multi-byte words, both little and big endianess are supported with the default being the XDK&rsquo;s endianess, little endian.</p>
+
+<h3 id="events">Events</h3>
+
+<p>Some sensors provide events you can react to. These events are things like &ldquo;device moved&rdquo; (<code>accelerometer.any_motion</code>) or &ldquo;button was pressed&rdquo; (<code>button_one</code>/<code>button_two.pressed</code>).</p>
+
+<p>The platform itself provides a special <code>startup</code> event which is triggered after the device has fully started up. This means that all resources are initialized, for example WLAN is connected, sensors collect data, and all events are enabled.</p>
+
+<h1 id="specification">Specification</h1>
+
+<h2 id="sensors-1">Sensors</h2>
+
+<h3 id="accelerometer-bma280">Accelerometer (BMA280)</h3>
+
+<p>The BMA280 is a tri axial, low-g acceleration sensor with digital output for consumer applications. It allows measurements of acceleration in three perpendicular axes.</p>
+
+<h4 id="configuration-1">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td><code>range : BMA280_Range</code></td>
+<td>The range of acceleration we want to measure. Default: <code>2G</code></td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>bandwidth : BMA280_Bandwidth</code></td>
+<td>The low-pass filter bandwidth used by the BMA. Default: <code>500Hz</code></td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>any_motion_threshold : uint32</code></td>
+<td>The threshold of acceleration that has to be crossed before an any motion event is triggered. Default: <code>20</code></td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>no_motion_threshold : uint32</code></td>
+<td>The threshold of acceleration that must not be exceeded for a no motion event to be triggered. Default: <code>20</code></td>
+</tr>
+</tbody>
 </table>
 
 <h4 id="modalities">Modalities</h4>
 
 <table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>temperature</b> : <span class="kt">int32</span></pre></div></td>
-            <td>The temperature in milli-celcius</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>pressure</b> : <span class="kt">uint32</span></pre></div></td>
-            <td>The pressure in pascal</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>humidity</b> : <span class="kt">float</span></pre></div></td>
-            <td>The relative humidity as percentage</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>humidity_fixed_point</b> : <span class="kt">uint32</span></pre></div></td>
-            <td>The relative humidity as percentage in Q22.10 integer format.
-            Divide this value by 1024 to get the percentage.</td>
-        </tr>
-    </tbody>
-</table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<h2 id="sensor-accelerometer-bma280">Sensor: accelerometer (BMA280)</h2>
+<tbody>
+<tr>
+<td></td>
+<td><code>x_axis : int32</code></td>
+<td>The X axis of the BMA280.</td>
+</tr>
 
-<h3 id="configuration-items-1">Configuration Items</h3>
+<tr>
+<td></td>
+<td><code>y_axis : int32</code></td>
+<td>The Y axis of the BMA280.</td>
+</tr>
 
-<table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>range</b> : <span class="kt">BMA280_Range</span></pre></div></td>
-            <td>Defaults to <i>BMA280_Range.Range_2G</i>. The range of acceleration we want to measure.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>bandwidth</b> : <span class="kt">BMA280_Bandwidth</span></pre></div></td>
-            <td>Defaults to <i>BMA280_Bandwidth.BW_500Hz</i>. The low-pass filter bandwidth used by the BMA.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>any_motion_threshold</b> : <span class="kt">uint32</span></pre></div></td>
-            <td>Defaults to <i>20</i>. The threshold of acceleration that has to be crossed before an any motion event is triggered.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>no_motion_threshold</b> : <span class="kt">uint32</span></pre></div></td>
-            <td>Defaults to <i>20</i>. The threshold of acceleration that must not be exceeded for a no motion event to be triggered.</td>
-        </tr>
-    </tbody>
-</table>
+<tr>
+<td></td>
+<td><code>z_axis : int32</code></td>
+<td>The Z axis of the BMA280.</td>
+</tr>
 
-<h4 id="modalities-1">Modalities</h4>
-
-<table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>x_axis</b> : <span class="kt">int32</span></pre></div></td>
-            <td>The X axis of the BMA280</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>y_axis</b> : <span class="kt">int32</span></pre></div></td>
-            <td>The Y axis of the BMA280</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>z_axis</b> : <span class="kt">int32</span></pre></div></td>
-            <td>The Z axis of the BMA280</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>magnitude</b> : <span class="kt">uint32</span></pre></div></td>
-            <td>The L2 norm of the acceleration vector: sqrt(x^2 + y^2 + z^2)</td>
-        </tr>
-    </tbody>
-</table>
-
-<h4 id="events">Events</h4>
-
-<table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>any_motion</b></pre></div></td>
-            <td>The any motion event (also called activity) uses the change between two successive
-            acceleration measurements to detect changes in motion. An event is generated when this change
-            exceeds the any_motion_threshold.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>no_motion</b></pre></div></td>
-            <td>The no motion event (also called any inactivity) uses the change between two successive
-            acceleration measurements to detect changes in motion. An event is generated when this change
-            consecutively stays below the no_motion_threshold.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>low_g</b></pre></div></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>high_g</b></pre></div></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>single_tap</b></pre></div></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>double_tap</b></pre></div></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>flat</b></pre></div></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>orientation</b></pre></div></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>fifo_full</b></pre></div></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>fifo_wml</b></pre></div></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>new_data</b></pre></div></td>
-            <td>This event serves the asynchronous reading of data. It is generated after storing a new value
-            of z-axis acceleration data in the data register.</td>
-        </tr>
-    </tbody>
-</table>
-
-<h2 id="sensor-light-max44009">Sensor: light (MAX44009)</h2>
-
-<h3 id="configuration-items-2">Configuration Items</h3>
-
-<table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>manual_mode</b> : <span class="kt">bool</span></pre></div></td>
-            <td>Defaults to <i>false</i>. Enables the manual configuration of integration time and high brightness mode.
-            If set to false (default) the chip automatically selects those values.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>integration_time</b> : <span class="kt">MAX44009_IntegrationTime</span></pre></div></td>
-            <td>Defaults to <i>MAX44009_IntegrationTime.MS_800</i>. The integration time is the time the sensor collects light for. In automatic mode
-            (manual mode set to false) the chip automatically selects the integration time.
-            
-            This configuration item is only used when manual_mode is set to true.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>high_brightness</b> : <span class="kt">bool</span></pre></div></td>
-            <td>Defaults to <i>false</i>. Set to true so that only 1/8 of the photo diode current goes to the ADC. This mode is used in
-            high-brightness situations to avoid saturation/clipping effects of the ADC.
-            
-            This configuration item is only used when manual_mode is set to true.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>continuous_mode</b> : <span class="kt">bool</span></pre></div></td>
-            <td>Defaults to <i>false</i>. In default mode (false) the IC measures lux intensity only once every 800ms regardless
-            of integration time. This mode allows the part to operate at its lowest possible supply current.
-            
-            In continuous mode (true) the IC continuously measures lux intensity. That is, as soon as one
-            reading is finished, a new one begins. If integration time is 6.25ms, readings are taken every 6.25ms.
-            If integration time is 800ms, readings are taken every 800ms. In this mode, the part consumes slightly
-            higher power than in the default mode.</td>
-        </tr>
-    </tbody>
-</table>
-
-<h4 id="modalities-2">Modalities</h4>
-
-<table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>intensity</b> : <span class="kt">uint32</span></pre></div></td>
-            <td>The light intensity in millilux.</td>
-        </tr>
-    </tbody>
-</table>
-
-<h2 id="sensor-button-one-button">Sensor: button_one (Button)</h2>
-
-<h4 id="modalities-3">Modalities</h4>
-
-<table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>is_pressed</b> : <span class="kt">bool</span></pre></div></td>
-            <td>True if the button is pressed in this very right moment. False otherwise.</td>
-        </tr>
-    </tbody>
+<tr>
+<td></td>
+<td><code>magnitude : int32</code></td>
+<td>The L2 norm of the acceleration vector: <code>sqrt(x^2 + y^2 + z^2)</code></td>
+</tr>
+</tbody>
 </table>
 
 <h4 id="events-1">Events</h4>
 
 <table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>pressed</b></pre></div></td>
-            <td>Fires after the button was pressed.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>released</b></pre></div></td>
-            <td>Fires after the button was released.</td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>any_motion</code></td>
+<td>The any motion event (also called activity) uses the change between two successive acceleration measurements to detect changes in motion. An event is generated when this change exceeds the any_motion_threshold.</td>
+</tr>
+
+<tr>
+<td><code>no_motion</code></td>
+<td>The no motion event (also called any inactivity) uses the change between two successive acceleration measurements to detect changes in motion. An event is generated when this change consecutively stays below the no_motion_threshold.</td>
+</tr>
+
+<tr>
+<td><code>low_g</code></td>
+<td>The low g event is based on comparing acceleration to a threshold which is most useful for free-fall detection.</td>
+</tr>
+
+<tr>
+<td><code>high_g</code></td>
+<td>The high g event is based on comparing acceleration to a threshold to detect shocks or other high acceleration events.</td>
+</tr>
+
+<tr>
+<td><code>single_tap</code></td>
+<td>A single tap is an event triggered by high activity followed shortly by no activity.</td>
+</tr>
+
+<tr>
+<td><code>double_tap</code></td>
+<td>A double tap consists of two single tap events right after one another.</td>
+</tr>
+
+<tr>
+<td><code>flat</code></td>
+<td>The flat event is triggered when the device is flat on the ground.</td>
+</tr>
+
+<tr>
+<td><code>orientation</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>fifo_full</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>fifo_wml</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>new_data</code></td>
+<td>This event serves the asynchronous reading of data. It is generated after storing a new value of z-axis acceleration data in the data register.</td>
+</tr>
+</tbody>
 </table>
 
-<h2 id="sensor-button-two-button">Sensor: button_two (Button)</h2>
+<h3 id="gyroscope-calibrated-sensor-fusion">Gyroscope (Calibrated, Sensor Fusion)</h3>
+
+<p>This sensor is a front end for a software library that improves on accuracy and physical limititations of the built-in sensors using sensor fusion.</p>
+
+<p>Alternatively you can access two hardware sensors directly: <a href="#sensor-gyroscope-bmi160">BMI160</a> and <a href="#sensor-gyroscope-bmg160">BMG160</a></p>
+
+<p>This virtual sensor only offers modalities.</p>
+
+<h5 id="modalities-1">Modalities</h5>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>x_axis : int32</code></td>
+<td>The X axis of the gyroscope</td>
+</tr>
+
+<tr>
+<td><code>y_axis : int32</code></td>
+<td>The Y axis of the gyroscope</td>
+</tr>
+
+<tr>
+<td><code>z_axis : int32</code></td>
+<td>The Z axis of the gyroscope</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="gyroscope-bmi160">Gyroscope (BMI160)</h3>
+
+<p>The BMI160 is a small, low power, low noise 16-bit inertial measurement unit  designed for use in mobile applications like augmented reality or indoor navigation  which require highly accurate, real-time sensor data.</p>
+
+<h4 id="configuration-2">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td><code>bandwidth : BMI160_Bandwidth</code></td>
+<td>The low-pass filter bandwidth used by the BMI160. Default: 39.9Hz.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>range : BMI160_Range</code></td>
+<td>The range the BMI160 should measure in. Default: 2000 deg/s.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="modalities-2">Modalities</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>x_axis : int32</code></td>
+<td>The X axis of the BMI160</td>
+</tr>
+
+<tr>
+<td><code>y_axis : int32</code></td>
+<td>The Y axis of the BMI160</td>
+</tr>
+
+<tr>
+<td><code>z_axis : int32</code></td>
+<td>The Z axis of the BMI160</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="gyroscope-bmg160">Gyroscope (BMG160)</h3>
+
+<p>The BMG160 is an ultra-small, digital 3-axis angular rate sensor with a measurement range up to 2000°/s and a digital resolution of 16 bit for consumer electronics applications.</p>
+
+<h4 id="configuration-3">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td><code>bandwidth : BMI160_Bandwidth</code></td>
+<td>The low-pass filter bandwidth used by the BMG160. Default: 523Hz.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>range : BMI160_Range</code></td>
+<td>The measurement range of the BMG160. Default: 2000 deg/s.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="modalities-3">Modalities</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>x_axis : int32</code></td>
+<td>The X axis of the BMG160</td>
+</tr>
+
+<tr>
+<td><code>y_axis : int32</code></td>
+<td>The Y axis of the BMG160</td>
+</tr>
+
+<tr>
+<td><code>z_axis : int32</code></td>
+<td>The Z axis of the BMG160</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="environment-bme280">Environment (BME280)</h3>
+
+<p>The BME280 is a combined digital <strong>humidity</strong>, <strong>pressure</strong> and <strong>temperature</strong> sensor based on proven sensing principles.</p>
+
+<h4 id="configuration-4">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td><code>power_mode : BME280_PowerMode</code></td>
+<td>The BME280 power mode. Default: <code>Normal</code>.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>standby_time : uint32</code></td>
+<td>The standby time used in normal mode in milliseconds. Beware that the value supplied here will be clipped to the nearest valid value.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>temperature_oversampling : BME280_Oversampling</code></td>
+<td>Reduces noise in the temperature measurement by over sampling. Higher oversampling settings reduce noise but increase measurement time and power consumption.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>pressure_oversampling : BME280_Oversampling</code></td>
+<td>Reduces noise in the pressure measurement by over sampling. Higher oversampling settings reduce noise but increase measurement time and power consumption.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>humidity_oversampling : BME280_Oversampling</code></td>
+<td>Reduces noise in the humidity measurement by over sampling. Higher oversampling settings reduce noise but increase measurement time and power consumption.</td>
+</tr>
+</tbody>
+</table>
 
 <h4 id="modalities-4">Modalities</h4>
 
 <table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>is_pressed</b> : <span class="kt">bool</span></pre></div></td>
-            <td>True if the button is pressed in this very right moment. False otherwise.</td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>temperature : int32</code></td>
+<td>The temperature reported by the BME280.</td>
+</tr>
+
+<tr>
+<td><code>pressure : uint32</code></td>
+<td>The pressure reported by the BME280.</td>
+</tr>
+
+<tr>
+<td><code>humidity : float</code></td>
+<td>The humidity reported by the BME280.</td>
+</tr>
+
+<tr>
+<td><code>humidity_fixed_point : uint32</code></td>
+<td>The humidity reported by the BME280 in fixed-point representation: divide by 1024 to get the percentage.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="light-max44009">Light(MAX44009)</h3>
+
+<p>The XDK light sensor.</p>
+
+<h4 id="configuration-5">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td><code>manual_mode : bool</code></td>
+<td>Enables the manual configuration of integration time and high brightness mode. If set to <code>false</code> (default) the chip automatically selects those values. Default: <code>false</code>.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>integration_time : MAX44009_IntegrationTime</code></td>
+<td>The integration time is the time the sensor collects light for. In automatic mode (manual mode set to <code>false</code>) the chip automatically selects the integration time. Default: 800ms.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>high_brightness : bool</code></td>
+<td>Set to <code>true</code> so that only <sup>1</sup>&frasl;<sub>8</sub> of the photo diode current goes to the ADC. This mode is used in high-brightness situations to avoid saturation/clipping effects of the ADC. Default: <code>false</code>.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>continuous_mode : bool</code></td>
+<td>In default mode (<code>false</code>) the IC measures lux intensity only once every 800ms regardless of integration time. This mode allows the part to operate at its lowest possible supply current. <br><br> In continuous mode (<code>true</code>) the IC continuously measures lux intensity. That is, as soon as one reading is finished, a new one begins. If integration time is 6.25ms, readings are taken every 6.25ms. If integration time is 800ms, readings are taken every 800ms. In this mode, the part consumes slightly higher power than in the default mode. Default: <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="modalities-5">Modalities</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>intensity : uint32</code></td>
+<td>The light intensity of the MAX44009.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="buttons">Buttons</h3>
+
+<p>The XDK features two buttons. Pressed and released are encoded by <code>true</code> and <code>false</code> in Mita. Button presses can be detected using event handlers, i.e. <code>every button_one.pressed</code>.</p>
+
+<h4 id="modalities-6">Modalities</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>is_pressed : bool</code></td>
+<td>True if the button is pressed in this very right moment. False otherwise.</td>
+</tr>
+</tbody>
 </table>
 
 <h4 id="events-2">Events</h4>
 
 <table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>pressed</b></pre></div></td>
-            <td>Fires after the button was pressed.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>released</b></pre></div></td>
-            <td>Fires after the button was released.</td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>pressed</code></td>
+<td>Fires after the button was pressed.</td>
+</tr>
+
+<tr>
+<td><code>released</code></td>
+<td>Fires after the button was released.</td>
+</tr>
+</tbody>
 </table>
 
-<h2 id="connectivity-ble">Connectivity: BLE</h2>
+<h2 id="connectivities-1">Connectivities</h2>
 
-<p>BLE is Bluetooth Low Energy using GATT profiles.
-At the moment we only support slave mode where the XDK becomes a device that can be connected to (as compared to connecting to some other device).</p>
+<h3 id="led">LED</h3>
 
-<h3 id="configuration-items-3">Configuration Items</h3>
+<p>The XDK features three custom usable LEDs in red, orange and yellow. On and off are encoded using <code>true</code> and <code>false</code> in Mita.</p>
+
+<h4 id="modalities-7">Modalities</h4>
 
 <table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>deviceName</b> : <span class="kt">string</span></pre></div></td>
-            <td>The name of the device as advertised via GAP.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>serviceUid</b> : <span class="kt">uint32</span></pre></div></td>
-            <td>The last four bytes of the UUID of the GATT service we'll create.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>advertisingInterval</b> : <span class="kt">int16</span></pre></div></td>
-            <td>Defaults to <i>1000</i>. The advertising interval in milliseconds.</td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Parameters</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>light_up : bool</code></td>
+<td>Represents one of the three LEDs.</td>
+<td><code>color : LedColor</code></td>
+<td>One of <code>Yellow</code>, <code>Orange</code> or <code>Red</code>.</td>
+</tr>
+</tbody>
 </table>
 
-<h3 id="variable-configuration-items">Variable Configuration Items</h3>
+<h3 id="ble">BLE</h3>
+
+<p>BLE (Bluetooth Low Energy) allows the XDK to communicate over short range, up to 50m, with various devices like smartphones. In BLE a server continuously advertises all characteristics and clients can connect without requiring further interaction or authentification.</p>
+
+<h4 id="configuration-6">Configuration</h4>
 
 <table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-            <td>Parameters</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>bool_characteristic</b> : <span class="kt">bool</span></pre></div></td>
-            <td>Creates a boolean GATT characteristic.</td>
-            <td>
-                <ul>
-                <li>
-                    <div class="highlight"><pre> <b>UUID</b> : <span class="kt">uint32</span></pre></div>
-                    The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.
-                </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>uint32_characteristic</b> : <span class="kt">uint32</span></pre></div></td>
-            <td>Creates an unsigned integer GATT characteristic.</td>
-            <td>
-                <ul>
-                <li>
-                    <div class="highlight"><pre> <b>UUID</b> : <span class="kt">uint32</span></pre></div>
-                    The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.
-                </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>int32_characteristic</b> : <span class="kt">int32</span></pre></div></td>
-            <td>Creates a signed integer GATT characteristic.</td>
-            <td>
-                <ul>
-                <li>
-                    <div class="highlight"><pre> <b>UUID</b> : <span class="kt">uint32</span></pre></div>
-                    The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.
-                </li>
-                </ul>
-            </td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td><code>deviceName : string</code></td>
+<td>The name of the device as advertised via GAP.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>macAddress : string</code></td>
+<td>MAC address of the device. Must start with <code>FC-D6-BD</code>. You may use either colon <code>:</code> or dash <code>-</code> as byte separators.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>serviceUID : uint32</code></td>
+<td>The last four bytes of the UUID of the GATT service we&rsquo;ll create.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>advertisingInterval : int16</code></td>
+<td>The GAP advertisement interval. Default: <code>1000</code>.</td>
+</tr>
+</tbody>
 </table>
 
-<h2 id="connectivity-led">Connectivity: LED</h2>
-
-<p>Displays state using three differently colored LEDs on the device.</p>
-
-<h3 id="variable-configuration-items-1">Variable Configuration Items</h3>
+<h4 id="signals">Signals</h4>
 
 <table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-            <td>Parameters</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>light_up</b> : <span class="kt">bool</span></pre></div></td>
-            <td></td>
-            <td>
-                <ul>
-                <li>
-                    <div class="highlight"><pre> <b>color</b> : <span class="kt">LedColor</span></pre></div>
-                </li>
-                </ul>
-            </td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Parameters</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>bool_characteristic() : bool</code></td>
+<td>A boolean GATT characteristic.</td>
+<td><code>UUID : uint32</code></td>
+<td>The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.</td>
+</tr>
+
+<tr>
+<td><code>uint32_characteristic() : uint32</code></td>
+<td>An unsigned integer GATT characteristic.</td>
+<td><code>UUID : uint32</code></td>
+<td>The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.</td>
+</tr>
+
+<tr>
+<td><code>int32_characteristic() : int32</code></td>
+<td>A signed integer GATT characteristic.</td>
+<td><code>UUID : uint32</code></td>
+<td>The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.</td>
+</tr>
+</tbody>
 </table>
 
-<h2 id="connectivity-wlan">Connectivity: WLAN</h2>
+<h3 id="wlan">WLAN</h3>
 
-<p>Specifies the connection to a wireless wide-area network, also refered to as WiFi.</p>
+<p>WLAN is one of the hardware connectivities available on the XDK. Configuration is done using <a href="../../language/types/#sum-types">sum types</a>. Even though the concept of sum types may be daunting they are actually very easy to use.
+Say you want to configure <code>authentification</code>. Content assist (<code>CTRL+Space</code>) offers you three different choices: <code>None</code>, <code>Enterprise</code> and <code>Personal</code>. Each accepts a different number of parameters. For example to configure a WLAN with WPA2 Personal you would write this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">WLAN</span> <span class="p">{</span>
+  <span class="nx">authentification</span> <span class="o">=</span> <span class="nx">Personal</span><span class="p">(</span><span class="nx">psk</span> <span class="o">=</span> <span class="s2">&#34;mySecretKey&#34;</span><span class="p">);</span>
+  <span class="cm">/* ... */</span>
+<span class="p">}</span></code></pre></div>
+<p>Configuring IP address works the same: you can choose from either <code>Dhcp</code> or <code>Static</code>.</p>
 
-<h3 id="configuration-items-4">Configuration Items</h3>
+<p>Content assist will help you fill in all parameters.</p>
+
+<h4 id="configuration-7">Configuration</h4>
 
 <table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>ssid</b> : <span class="kt">string</span></pre></div></td>
-            <td>The SSID of the WLAN network we want to connect to.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>psk</b> : <span class="kt">string</span></pre></div></td>
-            <td>The pre-shared key of the WLAN we're connecting to. Note that this
-            setting implies WPA2-PSK as authentication method. At this moment
-            the WLAN connectivity does not support enterprise WLAN.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>useDHCP</b> : <span class="kt">bool</span></pre></div></td>
-            <td>Defaults to <i>true</i>. If true we'll attempt to configure the wireless interface using DHCP and
-            all static settings will be ignored. If false, the static settings have to
-            be present.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>staticIP</b> : <span class="kt">string</span></pre></div></td>
-            <td>The static IP address to use. This field has to be in the number-dot
-            customary for IPv4 addresses (see IETF draft-main-ipaddr-text-rep-02).
-            If useDHCP is true this field is ignored. If useDHCP is false, this field
-            is mandatory.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>staticGW</b> : <span class="kt">string</span></pre></div></td>
-            <td>The IP address of the default gateway. This field has to be in the number-dot
-            customary for IPv4 addresses (see IETF draft-main-ipaddr-text-rep-02).
-            If useDHCP is true this field is ignored. If useDHCP is false, this field
-            is recommended.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>staticDNS</b> : <span class="kt">string</span></pre></div></td>
-            <td>The IP address of the default DNS server. This field has to be in the number-dot
-            customary for IPv4 addresses (see IETF draft-main-ipaddr-text-rep-02).
-            If useDHCP is true this field is ignored. If useDHCP is false, this field
-            is recommended.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>staticMask</b> : <span class="kt">string</span></pre></div></td>
-            <td>The IP address of the default Subnet Mask. This field has to be in the number-dot
-            customary for IPv4 addresses (see IETF draft-main-ipaddr-text-rep-02).
-            If useDHCP is true this field is ignored. If useDHCP is false, this field
-            is recommended.</td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Required</strong></td>
+<td><code>authentification : Authentification</code></td>
+<td>How to authenticate to the WLAN network.</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>ssid : string</code></td>
+<td>The SSID of the WLAN network we want to connect to.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>isHostPgmEnabled : bool</code></td>
+<td>If true, server certificate will be uploaded to the WLAN chip CC3100. Make sure to update service pack of the WLAN and then upload the certificate. Certificate must placed under <code>XDK110/common/certs/XDKDummy</code>. Default: <code>false</code>.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>ipConfiguration : IpConfiguration</code></td>
+<td>How to configure IP address. Default: <code>Dhcp()</code>.</td>
+</tr>
+</tbody>
 </table>
 
-<h2 id="connectivity-mqtt">Connectivity: MQTT</h2>
+<h3 id="mqtt">MQTT</h3>
 
-<p>MQTT (Message Queuing Telemetry Transport) is an ISO standard (ISO/IEC PRF 20922) publish-subscribe-based messaging protocol.
-This MQTT connectivity requires WLAN to be setup as well.</p>
+<p>MQTT is a messaging protocol for low bandwidth networks. Current implementation is based on the serval stack.</p>
 
-<h3 id="configuration-items-5">Configuration Items</h3>
+<h4 id="configuration-8">Configuration</h4>
 
 <table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>transport</b> : <span class="kt">WLAN</span></pre></div></td>
-            <td>The underlying transport connectivity we use to send the data out. In the future we might also
-            support LoRa here.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>url</b> : <span class="kt">string</span></pre></div></td>
-            <td>The URL pointing to the MQTT broker, for example: mqtt://does-not.exist:8000</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>clientId</b> : <span class="kt">string</span></pre></div></td>
-            <td>The client identifier (here: clientID) is a identifier of each MQTT client
-            connecting to a MQTT broker. It needs to be unique for the broker to
-            know the state of the client.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>cleanSession</b> : <span class="kt">bool</span></pre></div></td>
-            <td>Defaults to <i>false</i>. The clean session flag indicates to the broker whether the client wants
-            to establish a clean session or a persistent session where all
-            subscriptions and messages (QoS 1 & 2) are stored for the client.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>keepAliveInterval</b> : <span class="kt">uint32</span></pre></div></td>
-            <td>Defaults to <i>60</i>. The keep alive interval (in seconds) is the time the client commits to for
-            when sending regular pings to the broker. The broker responds to the
-            pings enabling both sides to determine if the other one is still alive and
-            reachable.</td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Required</strong></td>
+<td><code>transport : WLAN</code></td>
+<td>The transport layer used for communication.</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>url : string</code></td>
+<td>The URL pointing to the MQTT broker, for example: <code>mqtt://does-not.exist:1883</code>.</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>clientId : string</code></td>
+<td>A unique name the broker can use to identify devices. No two clients may have the same name per broker.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>cleanSession : bool</code></td>
+<td>The clean session flag indicates to the broker whether the client wants to establish a clean session or a persistent session where all subscriptions and messages (QoS 1 &amp; 2) are stored for the client. Default: <code>false</code>.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>keepAliveInterval : uint32</code></td>
+<td>The keep alive interval (in seconds) is the time the client commits to for when sending regular pings to the broker. The broker responds to the pings enabling both sides to determine if the other one is still alive and reachable. Default: <code>60</code>.</td>
+</tr>
+</tbody>
 </table>
 
-<h3 id="variable-configuration-items-2">Variable Configuration Items</h3>
+<h4 id="signals-1">Signals</h4>
 
 <table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-            <td>Parameters</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>topic</b> : <span class="kt">string</span></pre></div></td>
-            <td>Publishes a message to a particular topic.</td>
-            <td>
-                <ul>
-                <li>
-                    <div class="highlight"><pre> <b>name</b> : <span class="kt">string</span></pre></div>
-                </li>
-                <li>
-                    <div class="highlight"><pre><small>optional</small>  <b>qos</b> : <span class="kt">uint32</span></pre></div>
-                </li>
-                </ul>
-            </td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Parameters</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>topic : string</code></td>
+<td>Publishes a message to a particular topic.</td>
+<td><code>name : string</code></td>
+<td>The topic&rsquo;s name.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>qos : uint32</code></td>
+<td>Default: <code>0</code></td>
+</tr>
+</tbody>
 </table>
 
-<h2 id="connectivity-httprestclient">Connectivity: HttpRestClient</h2>
+<h3 id="rest-over-http">REST over HTTP</h3>
 
-<p>Implements an HTTP REST Client over WIFI</p>
+<p>Using REST you can easily talk to servers over HTTP. REST defines a stateless interface with a simple URL scheme. Normally a REST server consists of a versioned endpoint like <code>http://api.github.com/v3</code> which then provides different resources, for example <code>api.github.com/v3/repos/eclipse/mita/branches</code> and <code>/repos/eclipse/mita/issues</code>.</p>
 
-<h3 id="configuration-items-6">Configuration Items</h3>
+<p>Currently only writing is supported.</p>
+
+<h4 id="configuration-9">Configuration</h4>
 
 <table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>transport</b> : <span class="kt">WLAN</span></pre></div></td>
-            <td>The underlying transport connectivity we use to send the data out. In the future we might also
-            support LoRa here.</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><b>endpointBase</b> : <span class="kt">string</span></pre></div></td>
-            <td>The part of the endpoint URL common to all requests, e.g. http://foobar.com/api/v1</td>
-        </tr>
-        <tr>
-            <td><div class="highlight"><pre><small>optional</small> <b>header</b> : <span class="kt">string</span></pre></div></td>
-            <td>A custom header which is added to each HTTP request. Example:
-              X-Auth: MySecretToken\nX-Version: 1.0</td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Required</strong></td>
+<td><code>transport : WLAN</code></td>
+<td>The transport layer used for communication.</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>endpointBase : string</code></td>
+<td>The server URL base to which REST requests are made.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>headerContent : string</code></td>
+<td>A custom header which is added to each HTTP request. Example: <code>&quot;X-Auth: MySecretToken\nX-Version: 1.0&quot;</code>.</td>
+</tr>
+</tbody>
 </table>
 
-<h3 id="variable-configuration-items-3">Variable Configuration Items</h3>
+<h4 id="signal">Signal</h4>
 
 <table>
-    <thead>
-        <tr>
-            <td>Name</td>
-            <td>Description</td>
-            <td>Parameters</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><div class="highlight"><pre><b>resource</b> : <span class="kt">string</span></pre></div></td>
-            <td></td>
-            <td>
-                <ul>
-                <li>
-                    <div class="highlight"><pre> <b>endpoint</b> : <span class="kt">string</span></pre></div>
-                </li>
-                <li>
-                    <div class="highlight"><pre><small>optional</small>  <b>contentType</b> : <span class="kt">string</span></pre></div>
-                </li>
-                <li>
-                    <div class="highlight"><pre><small>optional</small>  <b>writeMethod</b> : <span class="kt">HttpMethod</span></pre></div>
-                </li>
-                <li>
-                    <div class="highlight"><pre><small>optional</small>  <b>readMethod</b> : <span class="kt">HttpMethod</span></pre></div>
-                </li>
-                </ul>
-            </td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Parameters</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>resource : string</code></td>
+<td>A REST resource on the server.</td>
+<td><code>endpoint : string</code></td>
+<td>The REST path to the resource.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>writeMethod : HttpMethod</code></td>
+<td>Which method to use when writing. Default: <code>POST</code></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>readMethod : HttpMethod</code></td>
+<td>Which method to use when reading. Default: <code>GET</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="buses-1">Buses</h2>
+
+<h3 id="gpio-1">GPIO</h3>
+
+<p>GPIO provides bit-wise communication with the environment. Low (0V) and high (3.3V) are represented by <code>false</code> and <code>true</code>.</p>
+
+<h4 id="signals-2">Signals</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Parameters</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>digitalIn : bool</code></td>
+<td>A GPIO-pin configured in input mode.</td>
+<td><code>pin : GPIOPin</code></td>
+<td>which pin to configure.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>mode : GPIOMode</code></td>
+<td>whether this pin is pull up, pull down or floating.</td>
+</tr>
+
+<tr>
+<td><code>digitalOut : bool</code></td>
+<td>A GPIO-pin configured in output mode.</td>
+<td><code>pin : GPIOPin</code></td>
+<td>which pin to configure.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>initialValue : bool</code></td>
+<td>The pin&rsquo;s initial value after startup. Default is low (<code>false</code>).</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="i2c-1">I2C</h3>
+
+<p>The I2C bus provides access to interfaced devices via I2C.</p>
+
+<h4 id="configuration-10">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Required</strong></td>
+<td><code>deviceAddress: uint8</code></td>
+<td>The slave address identifying the interfaced device on the I2C bus.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>byteOrder : ByteOrder</code></td>
+<td>Byte ordering for multi-byte words. Default is little endian, the XDK&rsquo;s internal order.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="signals-3">Signals</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Parameters</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>register_</code><em>intType</em><code>:</code><em>intType</em></td>
+<td>A device register of size and sign specified by <em>intType</em>.</td>
+<td><code>address : uint8</code></td>
+<td>the register&rsquo;s address.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>I2CMode : I2CMode</code></td>
+<td>whether this register is read, write, both or none. This only has an effect on validation, not on initialization.</td>
+</tr>
+
+<tr>
+<td><code>array_register_</code> <em>intType</em> <code>: array&lt;</code><em>intType</em><code>&gt;</code></td>
+<td>A device register consisting of multiple words of size and sign specified by <em>intType</em>.</td>
+<td><code>address : uint8</code></td>
+<td>the register&rsquo;s starting address.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>I2CMode : I2CMode</code></td>
+<td>whether this register is read, write, both or none. This only has an effect on validation, not on initialization.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>length : uint8</code></td>
+<td>how many words this register consists of.</td>
+</tr>
+</tbody>
 </table>
 
 
