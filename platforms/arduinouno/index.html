@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Arduino Uno - Eclipse Mita</title>
+    <meta name="generator" content="Hugo 0.40.1" />
+
+    
+    <meta name="description" content="The documentation of Eclipse Mita.">
+    
+    <link rel="canonical" href="../../platforms/arduinouno/">
+    
+
+    <meta property="og:url" content="/platforms/arduinouno/">
+    <meta property="og:title" content="Eclipse Mita">
+    <meta property="og:image" content="/images/mita.svg">
+    <meta name="apple-mobile-web-app-title" content="Eclipse Mita">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('/fonts/icon.eot');
+        src: url('/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('/fonts/icon.woff')
+               format('woff'),
+             url('/fonts/icon.ttf')
+               format('truetype'),
+             url('/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="../../stylesheets/application.css">
+    <link rel="stylesheet" href="../../stylesheets/temporary.css">
+    <link rel="stylesheet" href="../../stylesheets/palettes.css">
+    <link rel="stylesheet" href="../../stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script src="../../javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-blue-grey palette-accent-light-blue">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Arduino Uno
+      </div>
+    </div>
+
+    
+    <div class="button button-twitter" role="button" aria-label="Twitter">
+       <a href="https://twitter.com/eclipse_mita" title="@eclipse_mita on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+    </div>
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/eclipse/mita" title="@eclipse/mita on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="../../" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="../../images/mita.svg">
+        </div>
+      
+      <div class="name">
+        <strong>Eclipse Mita </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Download" href="http://github.com/eclipse/mita">
+	
+	Download
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Concepts" href="../../concepts/">
+	
+	Concepts
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Language</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Introduction" href="../../language/introduction/">
+	
+	Introduction
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Basics" href="../../language/basics/">
+	
+	Basics
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Packages" href="../../language/packages/">
+	
+	Packages
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="System Setup" href="../../language/setup/">
+	
+	System Setup
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Types" href="../../language/types/">
+	
+	Types
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Arrays" href="../../language/arrays/">
+	
+	Arrays
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Functions" href="../../language/functions/">
+	
+	Functions
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Foreign Function Interface" href="../../language/foreignfunctioninterface/">
+	
+	Foreign Function Interface
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Events" href="../../language/events/">
+	
+	Events
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Exceptions" href="../../language/exceptions/">
+	
+	Exceptions
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Platforms</span>
+    <ul>
+      
+        
+        
+
+
+
+<a class="current" title="Arduino Uno" href="../../platforms/arduinouno/">
+	
+	Arduino Uno
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+      
+        
+        
+
+
+
+<a  title="XDK110" href="../../platforms/xdk110/">
+	
+	XDK110
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Arduino Uno </h1>
+
+			
+
+<p>The <a href="https://www.arduino.cc/en/Main/ArduinoBoardUno?setlang=en">Arduino Uno</a> is a popular platform for &ldquo;physical computing&rdquo; and first steps in embedded computing.
+It is based on an 8-bit Atmega microcontroller and ships with a powerful hardware abstraction library.
+Currently, the Mita Arduino Uno platform supports basic functionality, namely working with buttons and GPIO pins.</p>
+
+<h2 id="sensor-button-one-button">Sensor: button_one (Button)</h2>
+
+<h4 id="modalities">Modalities</h4>
+
+<table>
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><div class="highlight"><pre><b>is_pressed</b> : <span class="kt">bool</span></pre></div></td>
+            <td>True if the button is pressed in this very right moment. False otherwise.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4 id="events">Events</h4>
+
+<table>
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><div class="highlight"><pre><b>pressed</b></pre></div></td>
+            <td>Fires after the button was pressed.</td>
+        </tr>
+        <tr>
+            <td><div class="highlight"><pre><b>released</b></pre></div></td>
+            <td>Fires after the button was released.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="sensor-button-two-button">Sensor: button_two (Button)</h2>
+
+<h4 id="modalities-1">Modalities</h4>
+
+<table>
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><div class="highlight"><pre><b>is_pressed</b> : <span class="kt">bool</span></pre></div></td>
+            <td>True if the button is pressed in this very right moment. False otherwise.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4 id="events-1">Events</h4>
+
+<table>
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><div class="highlight"><pre><b>pressed</b></pre></div></td>
+            <td>Fires after the button was pressed.</td>
+        </tr>
+        <tr>
+            <td><div class="highlight"><pre><b>released</b></pre></div></td>
+            <td>Fires after the button was released.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="buses-gpio">Buses: GPIO</h2>
+
+<p>Can be used to write and read digital ports, as known from the Arduino Uno</p>
+
+<h3 id="signals">Signals</h3>
+
+<table>
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Parameters</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><div class="highlight"><pre><b>pinMode</b> : <span class="kt">bool</span></pre></div></td>
+            <td></td>
+            <td>
+                <ul>
+                <li>
+                    <div class="highlight"><pre> <b>pin</b> : <span class="kt">LedColor</span></pre></div>
+                </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p>##Example</p>
+
+<p>This example uses the first button connected to the hardware Pin 1 and two leds connected to pin 12 and 13.
+The yellow led can get turned off by pressing the button one and turned off again by pressing the button again.
+The red led will get turned on for one second and then turned off for one second.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kr">package</span> <span class="nx">main</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">platforms</span><span class="p">.</span><span class="nx">arduino</span><span class="p">.</span><span class="nx">uno</span><span class="p">;</span>
+
+<span class="nx">setup</span> <span class="nx">hmi</span> : <span class="kt">GPIO</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">yellow</span> <span class="o">=</span> <span class="nx">pinMode</span><span class="p">(</span><span class="nx">p13</span><span class="p">,</span> <span class="nx">OUTPUT</span><span class="p">);</span>
+	<span class="kd">var</span> <span class="nx">red</span> <span class="o">=</span> <span class="nx">pinMode</span><span class="p">(</span><span class="nx">p12</span><span class="p">,</span> <span class="nx">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">every</span> <span class="nx">button_one</span><span class="p">.</span><span class="nx">pressed</span> <span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="nx">hmi</span><span class="p">.</span><span class="nx">yellow</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">hmi</span><span class="p">.</span><span class="nx">yellow</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="nx">hmi</span><span class="p">.</span><span class="nx">yellow</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">every</span> <span class="mi">1</span> <span class="nx">second</span> <span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="nx">hmi</span><span class="p">.</span><span class="nx">red</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span> <span class="o">==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">hmi</span><span class="p">.</span><span class="nx">red</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="nx">hmi</span><span class="p">.</span><span class="nx">red</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>##Interrupt controlled event loop</p>
+
+<p>Instead of using an event queue, as the XDK 110 does, we have implemented a control with boolean flags.
+Each event, such as timed events or the pressed and released event, are captured in their own ISR.
+Within the context of the ISR single flags will be set for each occurred event.
+The flags will be handled in an endless loop, after the initialization of the Arduino Uno.</p>
+
+<p>In the example a flag will be used for the event of 1 second and the pressed event of the button_one.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nx">getHandleEvery1Second1_flag</span><span class="p">()</span> <span class="o">==</span> <span class="kc">true</span><span class="p">){</span>
+		<span class="nx">setHandleEvery1Second1_flag</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+		<span class="nx">HandleEvery1Second1</span><span class="p">();</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nx">getHandleEveryButton_onePressed1_flag</span><span class="p">()</span> <span class="o">==</span> <span class="kc">true</span><span class="p">){</span>
+		<span class="nx">setHandleEveryButton_onePressed1_flag</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+		<span class="nx">HandleEveryButton_onePressed1</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>As mentioned before, the flags are set in the ISR:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">ISR</span><span class="p">(</span><span class="nx">INT1_vect</span><span class="p">){</span>
+	<span class="kr">volatile</span> <span class="kr">int</span> <span class="nx">oldState</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="kr">volatile</span> <span class="kr">int</span> <span class="nx">currentState</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="nx">oldState</span> <span class="o">=</span> <span class="p">(</span><span class="nx">PIND</span> <span class="o">&amp;</span> <span class="nx">_BV</span><span class="p">(</span><span class="nx">PIND3</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="nx">HIGH</span> : <span class="kt">LOW</span><span class="p">;</span>
+	<span class="c1">// delay for debounce could be placed here
+</span><span class="c1"></span>	<span class="nx">currentState</span> <span class="o">=</span> <span class="p">(</span><span class="nx">PIND</span> <span class="o">&amp;</span> <span class="nx">_BV</span><span class="p">(</span><span class="nx">PIND3</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="nx">HIGH</span> : <span class="kt">LOW</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nx">LOW</span> <span class="o">==</span> <span class="nx">oldState</span> <span class="o">&amp;&amp;</span> <span class="nx">LOW</span> <span class="o">==</span> <span class="nx">currentState</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">ButtonTwoPressed</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">HIGH</span> <span class="o">==</span> <span class="nx">oldState</span> <span class="o">&amp;&amp;</span> <span class="nx">HIGH</span> <span class="o">==</span> <span class="nx">currentState</span><span class="p">){</span>
+		<span class="nx">ButtonTwoReleased</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>##How to use the Arduino Uno platform</p>
+
+<p>Mita-generated code for the Arduino platform requires a small runtime library which is located in the Arduino platform package /org.eclipse.mita.platform.arduino.uno/ArduinoMitaRuntime. To use this runtime, and to compile/flash the generated code, we have found the  <a href="https://marketplace.eclipse.org/content/avr-eclipse-plugin">AVR Plugin</a> handy. We have listed the steps we use below:</p>
+
+<ul>
+<li>Create a new C Project</li>
+<li>Choose an AVR project</li>
+<li>Set up the atmega 328p (Arduino Uno)</li>
+<li>Add a new file with .mita extension</li>
+<li>After creating a .mita file, a wizard will be opened to convert as the project as a Xtext project. Click on Yes. You also can edit the nature in the .project file.</li>
+<li>Add Paths &amp; Symbols (src-gen, base and folder, which contains the ArduinoMitaRuntime files). Therefore, right click the project and open the Properties. Open C/C++ Build and open Paths &amp; Symbols.</li>
+<li>Set up Programmer - can be found in the project properties under AVR</li>
+<li>Create your application</li>
+<li>Compile &amp; flash</li>
+</ul>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2018 The Eclipse Mita Project &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="../../language/events/" title="Events">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Events
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="../../language/exceptions/" title="Exceptions">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Exceptions
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="../../javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

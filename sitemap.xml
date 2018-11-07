@@ -51,6 +51,10 @@
   </url>
   
   <url>
+    <loc>/platforms/arduinouno/</loc>
+  </url>
+  
+  <url>
     <loc>/language/exceptions/</loc>
   </url>
   

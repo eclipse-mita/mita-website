@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>XDK110 - Eclipse Mita</title>
-    <meta name="generator" content="Hugo 0.42.1" />
+    <meta name="generator" content="Hugo 0.40.1" />
 
     
     <meta name="description" content="The documentation of Eclipse Mita.">
@@ -344,6 +344,19 @@
 
 
 
+<a  title="Arduino Uno" href="../../platforms/arduinouno/">
+	
+	Arduino Uno
+</a>
+
+
+
+      
+        
+        
+
+
+
 <a class="current" title="XDK110" href="../../platforms/xdk110/">
 	
 	XDK110
@@ -407,8 +420,14 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <tr>
 <td><a href="#gyroscope-calibrated-sensor-fusion">Gyroscope</a></td>
-<td><a href="#ble">BLE</a></td>
+<td><a href="#adc">ADC</a></td>
 <td><a href="#I2C">I2C</a></td>
+</tr>
+
+<tr>
+<td><a href="#magnetometer-bmm150">Magnetometer</a></td>
+<td><a href="#ble">BLE</a></td>
+<td></td>
 </tr>
 
 <tr>
@@ -431,6 +450,12 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <tr>
 <td><a href="#environment-bme280">Temperature</a></td>
+<td><a href="#eclipse-hono">Eclipse Hono over MQTT</a></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="#noise-sensor">Noise sensor</a></td>
 <td><a href="#rest-over-http">REST over HTTP</a></td>
 <td></td>
 </tr>
@@ -455,9 +480,21 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <h3 id="binary-name">Binary Name</h3>
 
-<p>To customize the produced binary name configure <code>XDK110.applicationName : string</code>. The default name is <code>MitaApplication</code>:</p>
+<p>To customize the produced binary name configure <code>XDK110.applicationName: string</code> . The default name is <code>MitaApplication</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">XDK110</span> <span class="p">{</span>
   <span class="nx">applicationName</span> <span class="o">=</span> <span class="s2">&#34;ShockDetector&#34;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<h3 id="startup-delay">Startup Delay</h3>
+
+<p>To debug the startup process you can configure a startup delay so the XDK can connect via USB before setting up devices, connectivity, etc.:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">XDK110</span> <span class="p">{</span>
+  <span class="nx">startupDelay</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">;</span> <span class="cm">/* wait 5 seconds before initialization */</span>
+<span class="p">}</span></code></pre></div>
+<h3 id="extension-bus-power">Extension Bus Power</h3>
+
+<p>Per default the XDK doesn&rsquo;t power the 2.5V and 3.3V lines on its extension bus. Some system resources like I2C or GPIO already change this, however in some cases you need to do this manually for example when using the ADC with a microphone:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">XDK110</span> <span class="p">{</span>
+  <span class="nx">powerExternalDevices</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
 <h3 id="sensors">Sensors</h3>
 
@@ -524,25 +561,25 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 <tbody>
 <tr>
 <td></td>
-<td><code>range : BMA280_Range</code></td>
+<td><code>range: BMA280_Range</code></td>
 <td>The range of acceleration we want to measure. Default: <code>2G</code></td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>bandwidth : BMA280_Bandwidth</code></td>
+<td><code>bandwidth: BMA280_Bandwidth</code></td>
 <td>The low-pass filter bandwidth used by the BMA. Default: <code>500Hz</code></td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>any_motion_threshold : uint32</code></td>
+<td><code>any_motion_threshold: uint32</code></td>
 <td>The threshold of acceleration that has to be crossed before an any motion event is triggered. Default: <code>20</code></td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>no_motion_threshold : uint32</code></td>
+<td><code>no_motion_threshold: uint32</code></td>
 <td>The threshold of acceleration that must not be exceeded for a no motion event to be triggered. Default: <code>20</code></td>
 </tr>
 </tbody>
@@ -562,25 +599,25 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 <tbody>
 <tr>
 <td></td>
-<td><code>x_axis : int32</code></td>
+<td><code>x_axis: int32</code></td>
 <td>The X axis of the BMA280.</td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>y_axis : int32</code></td>
+<td><code>y_axis: int32</code></td>
 <td>The Y axis of the BMA280.</td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>z_axis : int32</code></td>
+<td><code>z_axis: int32</code></td>
 <td>The Z axis of the BMA280.</td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>magnitude : int32</code></td>
+<td><code>magnitude: int32</code></td>
 <td>The L2 norm of the acceleration vector: <code>sqrt(x^2 + y^2 + z^2)</code></td>
 </tr>
 </tbody>
@@ -674,17 +711,17 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <tbody>
 <tr>
-<td><code>x_axis : int32</code></td>
+<td><code>x_axis: int32</code></td>
 <td>The X axis of the gyroscope</td>
 </tr>
 
 <tr>
-<td><code>y_axis : int32</code></td>
+<td><code>y_axis: int32</code></td>
 <td>The Y axis of the gyroscope</td>
 </tr>
 
 <tr>
-<td><code>z_axis : int32</code></td>
+<td><code>z_axis: int32</code></td>
 <td>The Z axis of the gyroscope</td>
 </tr>
 </tbody>
@@ -708,13 +745,13 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 <tbody>
 <tr>
 <td></td>
-<td><code>bandwidth : BMI160_Bandwidth</code></td>
+<td><code>bandwidth: BMI160_Bandwidth</code></td>
 <td>The low-pass filter bandwidth used by the BMI160. Default: 39.9Hz.</td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>range : BMI160_Range</code></td>
+<td><code>range: BMI160_Range</code></td>
 <td>The range the BMI160 should measure in. Default: 2000 deg/s.</td>
 </tr>
 </tbody>
@@ -732,17 +769,17 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <tbody>
 <tr>
-<td><code>x_axis : int32</code></td>
+<td><code>x_axis: int32</code></td>
 <td>The X axis of the BMI160</td>
 </tr>
 
 <tr>
-<td><code>y_axis : int32</code></td>
+<td><code>y_axis: int32</code></td>
 <td>The Y axis of the BMI160</td>
 </tr>
 
 <tr>
-<td><code>z_axis : int32</code></td>
+<td><code>z_axis: int32</code></td>
 <td>The Z axis of the BMI160</td>
 </tr>
 </tbody>
@@ -766,13 +803,13 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 <tbody>
 <tr>
 <td></td>
-<td><code>bandwidth : BMI160_Bandwidth</code></td>
+<td><code>bandwidth: BMI160_Bandwidth</code></td>
 <td>The low-pass filter bandwidth used by the BMG160. Default: 523Hz.</td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>range : BMI160_Range</code></td>
+<td><code>range: BMI160_Range</code></td>
 <td>The measurement range of the BMG160. Default: 2000 deg/s.</td>
 </tr>
 </tbody>
@@ -790,25 +827,25 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <tbody>
 <tr>
-<td><code>x_axis : int32</code></td>
+<td><code>x_axis: int32</code></td>
 <td>The X axis of the BMG160</td>
 </tr>
 
 <tr>
-<td><code>y_axis : int32</code></td>
+<td><code>y_axis: int32</code></td>
 <td>The Y axis of the BMG160</td>
 </tr>
 
 <tr>
-<td><code>z_axis : int32</code></td>
+<td><code>z_axis: int32</code></td>
 <td>The Z axis of the BMG160</td>
 </tr>
 </tbody>
 </table>
 
-<h3 id="environment-bme280">Environment (BME280)</h3>
+<h3 id="magnetometer-bmm150">Magnetometer (BMM150)</h3>
 
-<p>The BME280 is a combined digital <strong>humidity</strong>, <strong>pressure</strong> and <strong>temperature</strong> sensor based on proven sensing principles.</p>
+<p>The BMM150 is a low power and low noise 3-axis digital geomagnetic sensor to be used in compass applications.</p>
 
 <h4 id="configuration-4">Configuration</h4>
 
@@ -824,32 +861,8 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 <tbody>
 <tr>
 <td></td>
-<td><code>power_mode : BME280_PowerMode</code></td>
-<td>The BME280 power mode. Default: <code>Normal</code>.</td>
-</tr>
-
-<tr>
-<td></td>
-<td><code>standby_time : uint32</code></td>
-<td>The standby time used in normal mode in milliseconds. Beware that the value supplied here will be clipped to the nearest valid value.</td>
-</tr>
-
-<tr>
-<td></td>
-<td><code>temperature_oversampling : BME280_Oversampling</code></td>
-<td>Reduces noise in the temperature measurement by over sampling. Higher oversampling settings reduce noise but increase measurement time and power consumption.</td>
-</tr>
-
-<tr>
-<td></td>
-<td><code>pressure_oversampling : BME280_Oversampling</code></td>
-<td>Reduces noise in the pressure measurement by over sampling. Higher oversampling settings reduce noise but increase measurement time and power consumption.</td>
-</tr>
-
-<tr>
-<td></td>
-<td><code>humidity_oversampling : BME280_Oversampling</code></td>
-<td>Reduces noise in the humidity measurement by over sampling. Higher oversampling settings reduce noise but increase measurement time and power consumption.</td>
+<td><code>mode: BMM150_Preset</code></td>
+<td>One of four preset modes. Default: <code>Regular</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -866,30 +879,30 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <tbody>
 <tr>
-<td><code>temperature : int32</code></td>
-<td>The temperature reported by the BME280.</td>
+<td><code>x_axis: int32</code></td>
+<td>The X axis of the BMM150</td>
 </tr>
 
 <tr>
-<td><code>pressure : uint32</code></td>
-<td>The pressure reported by the BME280.</td>
+<td><code>y_axis: int32</code></td>
+<td>The Y axis of the BMM150</td>
 </tr>
 
 <tr>
-<td><code>humidity : float</code></td>
-<td>The humidity reported by the BME280.</td>
+<td><code>z_axis: int32</code></td>
+<td>The Z axis of the BMM150</td>
 </tr>
 
 <tr>
-<td><code>humidity_fixed_point : uint32</code></td>
-<td>The humidity reported by the BME280 in fixed-point representation: divide by 1024 to get the percentage.</td>
+<td><code>resistance: uint16</code></td>
+<td>The resistance of the BMM150</td>
 </tr>
 </tbody>
 </table>
 
-<h3 id="light-max44009">Light(MAX44009)</h3>
+<h3 id="environment-bme280">Environment (BME280)</h3>
 
-<p>The XDK light sensor.</p>
+<p>The BME280 is a combined digital <strong>humidity</strong>, <strong>pressure</strong> and <strong>temperature</strong> sensor based on proven sensing principles.</p>
 
 <h4 id="configuration-5">Configuration</h4>
 
@@ -905,26 +918,32 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 <tbody>
 <tr>
 <td></td>
-<td><code>manual_mode : bool</code></td>
-<td>Enables the manual configuration of integration time and high brightness mode. If set to <code>false</code> (default) the chip automatically selects those values. Default: <code>false</code>.</td>
+<td><code>power_mode: BME280_PowerMode</code></td>
+<td>The BME280 power mode. Default: <code>Normal</code>.</td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>integration_time : MAX44009_IntegrationTime</code></td>
-<td>The integration time is the time the sensor collects light for. In automatic mode (manual mode set to <code>false</code>) the chip automatically selects the integration time. Default: 800ms.</td>
+<td><code>standby_time: uint32</code></td>
+<td>The standby time used in normal mode in milliseconds. Beware that the value supplied here will be clipped to the nearest valid value.</td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>high_brightness : bool</code></td>
-<td>Set to <code>true</code> so that only <sup>1</sup>&frasl;<sub>8</sub> of the photo diode current goes to the ADC. This mode is used in high-brightness situations to avoid saturation/clipping effects of the ADC. Default: <code>false</code>.</td>
+<td><code>temperature_oversampling: BME280_Oversampling</code></td>
+<td>Reduces noise in the temperature measurement by over sampling. Higher oversampling settings reduce noise but increase measurement time and power consumption.</td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>continuous_mode : bool</code></td>
-<td>In default mode (<code>false</code>) the IC measures lux intensity only once every 800ms regardless of integration time. This mode allows the part to operate at its lowest possible supply current. <br><br> In continuous mode (<code>true</code>) the IC continuously measures lux intensity. That is, as soon as one reading is finished, a new one begins. If integration time is 6.25ms, readings are taken every 6.25ms. If integration time is 800ms, readings are taken every 800ms. In this mode, the part consumes slightly higher power than in the default mode. Default: <code>false</code>.</td>
+<td><code>pressure_oversampling: BME280_Oversampling</code></td>
+<td>Reduces noise in the pressure measurement by over sampling. Higher oversampling settings reduce noise but increase measurement time and power consumption.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>humidity_oversampling: BME280_Oversampling</code></td>
+<td>Reduces noise in the humidity measurement by over sampling. Higher oversampling settings reduce noise but increase measurement time and power consumption.</td>
 </tr>
 </tbody>
 </table>
@@ -941,15 +960,68 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <tbody>
 <tr>
-<td><code>intensity : uint32</code></td>
-<td>The light intensity of the MAX44009.</td>
+<td><code>temperature: int32</code></td>
+<td>The temperature reported by the BME280.</td>
+</tr>
+
+<tr>
+<td><code>pressure: uint32</code></td>
+<td>The pressure reported by the BME280.</td>
+</tr>
+
+<tr>
+<td><code>humidity: float</code></td>
+<td>The humidity reported by the BME280.</td>
+</tr>
+
+<tr>
+<td><code>humidity_fixed_point: uint32</code></td>
+<td>The humidity reported by the BME280 in fixed-point representation: divide by 1024 to get the percentage.</td>
 </tr>
 </tbody>
 </table>
 
-<h3 id="buttons">Buttons</h3>
+<h3 id="light-max44009">Light(MAX44009)</h3>
 
-<p>The XDK features two buttons. Pressed and released are encoded by <code>true</code> and <code>false</code> in Mita. Button presses can be detected using event handlers, i.e. <code>every button_one.pressed</code>.</p>
+<p>The XDK light sensor.</p>
+
+<h4 id="configuration-6">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td><code>manual_mode: bool</code></td>
+<td>Enables the manual configuration of integration time and high brightness mode. If set to <code>false</code> (default) the chip automatically selects those values. Default: <code>false</code>.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>integration_time: MAX44009_IntegrationTime</code></td>
+<td>The integration time is the time the sensor collects light for. In automatic mode (manual mode set to <code>false</code>) the chip automatically selects the integration time. Default: 800ms.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>high_brightness: bool</code></td>
+<td>Set to <code>true</code> so that only <sup>1</sup>&frasl;<sub>8</sub> of the photo diode current goes to the ADC. This mode is used in high-brightness situations to avoid saturation/clipping effects of the ADC. Default: <code>false</code>.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>continuous_mode: bool</code></td>
+<td>In default mode (<code>false</code>) the IC measures lux intensity only once every 800ms regardless of integration time. This mode allows the part to operate at its lowest possible supply current. <br><br> In continuous mode (<code>true</code>) the IC continuously measures lux intensity. That is, as soon as one reading is finished, a new one begins. If integration time is 6.25ms, readings are taken every 6.25ms. If integration time is 800ms, readings are taken every 800ms. In this mode, the part consumes slightly higher power than in the default mode. Default: <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
 
 <h4 id="modalities-6">Modalities</h4>
 
@@ -963,7 +1035,77 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <tbody>
 <tr>
-<td><code>is_pressed : bool</code></td>
+<td><code>intensity: uint32</code></td>
+<td>The light intensity of the MAX44009.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="noise-sensor">Noise Sensor</h3>
+
+<p>The noise sensor uses the XDK&rsquo;s microphone to detect noise around it. The noise is calculated over 256 microphone samples. Note that this value is without unit and needs to be calibrated/converted by your application if you require absolute noise level measurements.</p>
+
+<h4 id="configuration-7">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td><code>samplingFrequency: uint32</code></td>
+<td>How often the microphone is sampled in Hertz. Default: <code>2560Hz</code>.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>timeout: uint32</code></td>
+<td>If not enough samples are ready how long to wait for additional samples in milliseconds. Default: <code>100ms</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="modalities-7">Modalities</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>noise: float</code></td>
+<td>An uncalibrated noise level. Should not enough samples be ready when getting this modality even after waiting <code>timeout</code> milliseconds this will throw an exception.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="buttons">Buttons</h3>
+
+<p>The XDK features two buttons. Pressed and released are encoded by <code>true</code> and <code>false</code> in Mita. Button presses can be detected using event handlers, i.e. <code>every button_one.pressed</code>.</p>
+
+<h4 id="modalities-8">Modalities</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>is_pressed: bool</code></td>
 <td>True if the button is pressed in this very right moment. False otherwise.</td>
 </tr>
 </tbody>
@@ -998,7 +1140,7 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <p>The XDK features three custom usable LEDs in red, orange and yellow. On and off are encoded using <code>true</code> and <code>false</code> in Mita.</p>
 
-<h4 id="modalities-7">Modalities</h4>
+<h4 id="modalities-9">Modalities</h4>
 
 <table>
 <thead>
@@ -1012,19 +1154,19 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <tbody>
 <tr>
-<td><code>light_up : bool</code></td>
+<td><code>light_up: bool</code></td>
 <td>Represents one of the three LEDs.</td>
-<td><code>color : LedColor</code></td>
+<td><code>color: LedColor</code></td>
 <td>One of <code>Yellow</code>, <code>Orange</code> or <code>Red</code>.</td>
 </tr>
 </tbody>
 </table>
 
-<h3 id="ble">BLE</h3>
+<h3 id="adc">ADC</h3>
 
-<p>BLE (Bluetooth Low Energy) allows the XDK to communicate over short range, up to 50m, with various devices like smartphones. In BLE a server continuously advertises all characteristics and clients can connect without requiring further interaction or authentification.</p>
+<p>The XDK&rsquo;s ADC (Analog Digital Converter) can measure voltages against internal or external potentials.</p>
 
-<h4 id="configuration-6">Configuration</h4>
+<h4 id="configuration-8">Configuration</h4>
 
 <table>
 <thead>
@@ -1038,26 +1180,8 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 <tbody>
 <tr>
 <td></td>
-<td><code>deviceName : string</code></td>
-<td>The name of the device as advertised via GAP.</td>
-</tr>
-
-<tr>
-<td></td>
-<td><code>macAddress : string</code></td>
-<td>MAC address of the device. Must start with <code>FC-D6-BD</code>. You may use either colon <code>:</code> or dash <code>-</code> as byte separators.</td>
-</tr>
-
-<tr>
-<td></td>
-<td><code>serviceUID : uint32</code></td>
-<td>The last four bytes of the UUID of the GATT service we&rsquo;ll create.</td>
-</tr>
-
-<tr>
-<td></td>
-<td><code>advertisingInterval : int16</code></td>
-<td>The GAP advertisement interval. Default: <code>1000</code>.</td>
+<td><code>externalReferenceVoltage: uint16</code></td>
+<td>The reference voltage to measure against when you use an external reference voltage in a signal in [mV].</td>
 </tr>
 </tbody>
 </table>
@@ -1076,41 +1200,40 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <tbody>
 <tr>
-<td><code>bool_characteristic() : bool</code></td>
-<td>A boolean GATT characteristic.</td>
-<td><code>UUID : uint32</code></td>
-<td>The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.</td>
+<td><code>channel: uint16</code></td>
+<td>An ADC channel, read only. [mV]</td>
+<td><code>channel: ADC_Channel</code></td>
+<td>Which channel to measure.</td>
 </tr>
 
 <tr>
-<td><code>uint32_characteristic() : uint32</code></td>
-<td>An unsigned integer GATT characteristic.</td>
-<td><code>UUID : uint32</code></td>
-<td>The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.</td>
+<td></td>
+<td></td>
+<td><code>referenceVoltage: ADC_Reference_Voltage</code></td>
+<td>Which voltage to measure against. Default: <code>2.5V</code> internal voltage reference.</td>
 </tr>
 
 <tr>
-<td><code>int32_characteristic() : int32</code></td>
-<td>A signed integer GATT characteristic.</td>
-<td><code>UUID : uint32</code></td>
-<td>The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.</td>
+<td></td>
+<td></td>
+<td><code>resolution: ADC_Resolution</code></td>
+<td>Default: <code>12 bit</code></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>sampleTime: ADC_SampleTime</code></td>
+<td>Over how many <em>clock</em> cycles the ADC samples its input. Default: <code>16</code> cycles.</td>
 </tr>
 </tbody>
 </table>
 
-<h3 id="wlan">WLAN</h3>
+<h3 id="ble">BLE</h3>
 
-<p>WLAN is one of the hardware connectivities available on the XDK. Configuration is done using <a href="../../language/types/#sum-types">sum types</a>. Even though the concept of sum types may be daunting they are actually very easy to use.
-Say you want to configure <code>authentification</code>. Content assist (<code>CTRL+Space</code>) offers you three different choices: <code>None</code>, <code>Enterprise</code> and <code>Personal</code>. Each accepts a different number of parameters. For example to configure a WLAN with WPA2 Personal you would write this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">WLAN</span> <span class="p">{</span>
-  <span class="nx">authentification</span> <span class="o">=</span> <span class="nx">Personal</span><span class="p">(</span><span class="nx">psk</span> <span class="o">=</span> <span class="s2">&#34;mySecretKey&#34;</span><span class="p">);</span>
-  <span class="cm">/* ... */</span>
-<span class="p">}</span></code></pre></div>
-<p>Configuring IP address works the same: you can choose from either <code>Dhcp</code> or <code>Static</code>.</p>
+<p>BLE (Bluetooth Low Energy) allows the XDK to communicate over short range, up to 50m, with various devices like smartphones. In BLE a server continuously advertises all characteristics and clients can connect without requiring further interaction or authentication.</p>
 
-<p>Content assist will help you fill in all parameters.</p>
-
-<h4 id="configuration-7">Configuration</h4>
+<h4 id="configuration-9">Configuration</h4>
 
 <table>
 <thead>
@@ -1123,75 +1246,27 @@ Say you want to configure <code>authentification</code>. Content assist (<code>C
 
 <tbody>
 <tr>
-<td><strong>Required</strong></td>
-<td><code>authentification : Authentification</code></td>
-<td>How to authenticate to the WLAN network.</td>
-</tr>
-
-<tr>
-<td><strong>Required</strong></td>
-<td><code>ssid : string</code></td>
-<td>The SSID of the WLAN network we want to connect to.</td>
+<td></td>
+<td><code>deviceName: string</code></td>
+<td>The name of the device as advertised via GAP.</td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>isHostPgmEnabled : bool</code></td>
-<td>If true, server certificate will be uploaded to the WLAN chip CC3100. Make sure to update service pack of the WLAN and then upload the certificate. Certificate must placed under <code>XDK110/common/certs/XDKDummy</code>. Default: <code>false</code>.</td>
+<td><code>macAddress: string</code></td>
+<td>MAC address of the device. Must start with <code>FC-D6-BD</code>. You may use either colon <code>:</code> or dash <code>-</code> as byte separators.</td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>ipConfiguration : IpConfiguration</code></td>
-<td>How to configure IP address. Default: <code>Dhcp()</code>.</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="mqtt">MQTT</h3>
-
-<p>MQTT is a messaging protocol for low bandwidth networks. Current implementation is based on the serval stack.</p>
-
-<h4 id="configuration-8">Configuration</h4>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><strong>Required</strong></td>
-<td><code>transport : WLAN</code></td>
-<td>The transport layer used for communication.</td>
-</tr>
-
-<tr>
-<td><strong>Required</strong></td>
-<td><code>url : string</code></td>
-<td>The URL pointing to the MQTT broker, for example: <code>mqtt://does-not.exist:1883</code>.</td>
-</tr>
-
-<tr>
-<td><strong>Required</strong></td>
-<td><code>clientId : string</code></td>
-<td>A unique name the broker can use to identify devices. No two clients may have the same name per broker.</td>
+<td><code>serviceUID: uint32</code></td>
+<td>The last four bytes of the UUID of the GATT service we&rsquo;ll create.</td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>cleanSession : bool</code></td>
-<td>The clean session flag indicates to the broker whether the client wants to establish a clean session or a persistent session where all subscriptions and messages (QoS 1 &amp; 2) are stored for the client. Default: <code>false</code>.</td>
-</tr>
-
-<tr>
-<td></td>
-<td><code>keepAliveInterval : uint32</code></td>
-<td>The keep alive interval (in seconds) is the time the client commits to for when sending regular pings to the broker. The broker responds to the pings enabling both sides to determine if the other one is still alive and reachable. Default: <code>60</code>.</td>
+<td><code>advertisingInterval: int16</code></td>
+<td>The GAP advertisement interval. Default: <code>1000</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -1210,28 +1285,42 @@ Say you want to configure <code>authentification</code>. Content assist (<code>C
 
 <tbody>
 <tr>
-<td><code>topic : string</code></td>
-<td>Publishes a message to a particular topic.</td>
-<td><code>name : string</code></td>
-<td>The topic&rsquo;s name.</td>
+<td><code>bool_characteristic(): bool</code></td>
+<td>A boolean GATT characteristic.</td>
+<td><code>UUID: uint32</code></td>
+<td>The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.</td>
 </tr>
 
 <tr>
-<td></td>
-<td></td>
-<td><code>qos : uint32</code></td>
-<td>Default: <code>0</code></td>
+<td><code>uint32_characteristic(): uint32</code></td>
+<td>An unsigned integer GATT characteristic.</td>
+<td><code>UUID: uint32</code></td>
+<td>The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.</td>
+</tr>
+
+<tr>
+<td><code>int32_characteristic(): int32</code></td>
+<td>A signed integer GATT characteristic.</td>
+<td><code>UUID: uint32</code></td>
+<td>The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.</td>
 </tr>
 </tbody>
 </table>
 
-<h3 id="rest-over-http">REST over HTTP</h3>
+<h3 id="wlan">WLAN</h3>
 
-<p>Using REST you can easily talk to servers over HTTP. REST defines a stateless interface with a simple URL scheme. Normally a REST server consists of a versioned endpoint like <code>http://api.github.com/v3</code> which then provides different resources, for example <code>api.github.com/v3/repos/eclipse/mita/branches</code> and <code>/repos/eclipse/mita/issues</code>.</p>
+<p>WLAN is one of the hardware connectivities available on the XDK. Configuration is done using <a href="../../language/types/#sum-types">sum types</a>. Even though the concept of sum types may be daunting they are actually very easy to use.
+Say you want to configure <code>authentication</code>. Content assist (<code>CTRL+Space</code>) offers you three different choices: <code>None</code>, <code>Enterprise</code> and <code>Personal</code>. Each accepts a different number of parameters. For example to configure a WLAN with WPA2 Personal you would write this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">net</span>: <span class="kt">WLAN</span> <span class="p">{</span>
+  <span class="nx">ssid</span> <span class="o">=</span> <span class="s2">&#34;MyWlan&#34;</span><span class="p">;</span>
+  <span class="nx">authentication</span> <span class="o">=</span> <span class="nx">Personal</span><span class="p">(</span><span class="nx">psk</span> <span class="o">=</span> <span class="s2">&#34;mySecretKey&#34;</span><span class="p">);</span>
+  <span class="cm">/* ... */</span>
+<span class="p">}</span></code></pre></div>
+<p>Configuring IP address works the same: you can choose from either <code>Dhcp</code> or <code>Static</code>.</p>
 
-<p>Currently only writing is supported.</p>
+<p>Content assist will help you fill in all parameters.</p>
 
-<h4 id="configuration-9">Configuration</h4>
+<h4 id="configuration-10">Configuration</h4>
 
 <table>
 <thead>
@@ -1245,19 +1334,259 @@ Say you want to configure <code>authentification</code>. Content assist (<code>C
 <tbody>
 <tr>
 <td><strong>Required</strong></td>
-<td><code>transport : WLAN</code></td>
+<td><code>authentication: Authentication</code></td>
+<td>How to authenticate to the WLAN network.</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>ssid: string</code></td>
+<td>The SSID of the WLAN network we want to connect to.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>isHostPgmEnabled: bool</code></td>
+<td>If true, server certificate will be uploaded to the WLAN chip CC3100. Make sure to update service pack of the WLAN and then upload the certificate. Certificate must placed under <code>XDK110/common/certs/XDKDummy</code>. Default: <code>false</code>.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>ipConfiguration: IpConfiguration</code></td>
+<td>How to configure IP address. Default: <code>Dhcp()</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="mqtt">MQTT</h3>
+
+<p>MQTT is a messaging protocol for low bandwidth networks. The current implementation is based on the serval stack. MQTT requires a setup WLAN resource.</p>
+
+<h4 id="example">Example</h4>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">net</span>: <span class="kt">WLAN</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+
+<span class="nx">setup</span> <span class="nx">backend</span>: <span class="kt">MQTT</span> <span class="p">{</span>
+  <span class="nx">transport</span> <span class="o">=</span> <span class="nx">net</span><span class="p">;</span>
+  <span class="nx">url</span> <span class="o">=</span> <span class="s2">&#34;mqtt://iot.eclipse.org&#34;</span><span class="p">;</span>
+  <span class="nx">clientId</span> <span class="o">=</span> <span class="s2">&#34;XDK42&#34;</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">telemetry</span> <span class="o">=</span> <span class="nx">topic</span><span class="p">(</span><span class="s2">&#34;telemetry&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">every</span> <span class="mi">100</span> <span class="nx">milliseconds</span> <span class="p">{</span>
+  <span class="nx">backend</span><span class="p">.</span><span class="nx">telemetry</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">accelerometer</span><span class="p">.</span><span class="nx">magnitude</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<h4 id="configuration-11">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Required</strong></td>
+<td><code>transport: WLAN</code></td>
 <td>The transport layer used for communication.</td>
 </tr>
 
 <tr>
 <td><strong>Required</strong></td>
-<td><code>endpointBase : string</code></td>
+<td><code>url: string</code></td>
+<td>The URL pointing to the MQTT broker, for example: <code>mqtt://does-not.exist:1883</code>.</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>clientId: string</code></td>
+<td>A unique name the broker can use to identify devices. No two clients may have the same name per broker.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>authentication: MqttAuthentication</code></td>
+<td>Username/Password authentication or unauthenticated, for example <code>authentication = Login(&quot;user&quot;, &quot;pass&quot;)</code>. Default: <code>None()</code>.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>cleanSession: bool</code></td>
+<td>The clean session flag indicates to the broker whether the client wants to establish a clean session or a persistent session where all subscriptions and messages (QoS 1 &amp; 2) are stored for the client. Default: <code>false</code>.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>keepAliveInterval: uint32</code></td>
+<td>The keep alive interval (in seconds) is the time the client commits to for when sending regular pings to the broker. The broker responds to the pings enabling both sides to determine if the other one is still alive and reachable. Default: <code>60</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="signals-2">Signals</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Parameters</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>topic: string</code></td>
+<td>Publishes a message to a particular topic.</td>
+<td><code>name: string</code></td>
+<td>The topic&rsquo;s name.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>qos: uint32</code></td>
+<td>Default: <code>0</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="eclipse-hono">Eclipse Hono</h3>
+
+<p>Mita implements a <code>HonoMqtt</code> resource you can use to easily connect to an <a href="https://www.eclipse.org/hono/">Eclipse Hono</a> service via MQTT.</p>
+
+<h4 id="example-1">Example</h4>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">net</span>: <span class="kt">WLAN</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+
+<span class="nx">setup</span> <span class="nx">backend</span>: <span class="kt">HonoMqtt</span> <span class="p">{</span>
+  <span class="nx">transport</span> <span class="o">=</span> <span class="nx">net</span><span class="p">;</span>
+  <span class="nx">url</span> <span class="o">=</span> <span class="s2">&#34;mqtt://iot.eclipse.org&#34;</span><span class="p">;</span>
+  <span class="nx">clientId</span> <span class="o">=</span> <span class="s2">&#34;XDK42&#34;</span><span class="p">;</span>
+  <span class="nx">authentication</span> <span class="o">=</span> <span class="nx">Authenticated</span><span class="p">(</span><span class="nx">username</span><span class="o">=</span><span class="s2">&#34;consumer@HONO&#34;</span><span class="p">,</span> <span class="nx">password</span><span class="o">=</span><span class="s2">&#34;verysecret&#34;</span><span class="p">);</span>
+
+  <span class="kd">var</span> <span class="nx">telemetry</span> <span class="o">=</span> <span class="nx">telemetry</span><span class="p">(</span><span class="nx">qos</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">every</span> <span class="mi">100</span> <span class="nx">milliseconds</span> <span class="p">{</span>
+  <span class="nx">backend</span><span class="p">.</span><span class="nx">telemetry</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">accelerometer</span><span class="p">.</span><span class="nx">magnitude</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<h4 id="configuration-12">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Required</strong></td>
+<td><code>transport: WLAN</code></td>
+<td>The transport layer used for communication.</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>url: string</code></td>
+<td>The URL pointing to the MQTT broker, for example: <code>mqtt://does-not.exist:1883</code>.</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>clientId: string</code></td>
+<td>A unique name the broker can use to identify devices. No two clients may have the same name per broker.</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>authentication: HonoAuthentication</code></td>
+<td>Credentials or identification for authentication to the Hono network.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="signals-3">Signals</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Parameters</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>telemetry: string</code></td>
+<td>Publishes a message to a particular topic.</td>
+<td><code>qos: uint32</code></td>
+<td>Default: <code>0</code></td>
+</tr>
+
+<tr>
+<td><code>event: string</code></td>
+<td>Publishes a message to a particular topic.</td>
+<td><code>qos: uint32</code></td>
+<td>Default: <code>0</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="rest-over-http">REST over HTTP</h3>
+
+<p>Using REST you can easily talk to servers over HTTP. REST defines a stateless interface with a simple URL scheme. Normally a REST server consists of a versioned endpoint like <code>http://api.github.com/v3</code> which then provides different resources, for example <code>api.github.com/v3/repos/eclipse/mita/branches</code> and <code>/repos/eclipse/mita/issues</code>.</p>
+
+<p>Currently only writing is supported.</p>
+
+<h4 id="example-2">Example</h4>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">net</span>: <span class="kt">WLAN</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+
+<span class="nx">setup</span> <span class="nx">backend</span>: <span class="kt">HttpRestClient</span> <span class="p">{</span>
+  <span class="nx">transport</span> <span class="o">=</span> <span class="nx">net</span><span class="p">;</span>
+  <span class="nx">endpointBase</span> <span class="o">=</span> <span class="s2">&#34;http://jsonplaceholder.typicode.com&#34;</span><span class="p">;</span>
+  
+  <span class="kd">var</span> <span class="nx">posts</span> <span class="o">=</span> <span class="nx">resource</span><span class="p">(</span><span class="s2">&#34;/posts&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">every</span> <span class="mi">100</span> <span class="nx">milliseconds</span> <span class="p">{</span>
+  <span class="nx">backend</span><span class="p">.</span><span class="nx">branches</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">accelerometer</span><span class="p">.</span><span class="nx">magnitude</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<h4 id="configuration-13">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Required</strong></td>
+<td><code>transport: WLAN</code></td>
+<td>The transport layer used for communication.</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>endpointBase: string</code></td>
 <td>The server URL base to which REST requests are made.</td>
 </tr>
 
 <tr>
 <td></td>
-<td><code>headerContent : string</code></td>
+<td><code>headerContent: string</code></td>
 <td>A custom header which is added to each HTTP request. Example: <code>&quot;X-Auth: MySecretToken\nX-Version: 1.0&quot;</code>.</td>
 </tr>
 </tbody>
@@ -1277,23 +1606,23 @@ Say you want to configure <code>authentification</code>. Content assist (<code>C
 
 <tbody>
 <tr>
-<td><code>resource : string</code></td>
+<td><code>resource: string</code></td>
 <td>A REST resource on the server.</td>
-<td><code>endpoint : string</code></td>
+<td><code>endpoint: string</code></td>
 <td>The REST path to the resource.</td>
 </tr>
 
 <tr>
 <td></td>
 <td></td>
-<td><code>writeMethod : HttpMethod</code></td>
+<td><code>writeMethod: HttpMethod</code></td>
 <td>Which method to use when writing. Default: <code>POST</code></td>
 </tr>
 
 <tr>
 <td></td>
 <td></td>
-<td><code>readMethod : HttpMethod</code></td>
+<td><code>readMethod: HttpMethod</code></td>
 <td>Which method to use when reading. Default: <code>GET</code></td>
 </tr>
 </tbody>
@@ -1305,7 +1634,17 @@ Say you want to configure <code>authentification</code>. Content assist (<code>C
 
 <p>GPIO provides bit-wise communication with the environment. Low (0V) and high (3.3V) are represented by <code>false</code> and <code>true</code>.</p>
 
-<h4 id="signals-2">Signals</h4>
+<h4 id="example-3">Example</h4>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">test</span>: <span class="kt">GPIO</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">out</span> <span class="o">=</span> <span class="nx">digitalOut</span><span class="p">(</span><span class="nx">pin</span> <span class="o">=</span> <span class="nx">PA1</span><span class="p">,</span> <span class="nx">initialValue</span> <span class="o">=</span> <span class="kc">false</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">inp</span> <span class="o">=</span> <span class="nx">digitalIn</span><span class="p">(</span><span class="nx">pin</span> <span class="o">=</span> <span class="nx">PB2</span><span class="p">,</span> <span class="nx">mode</span> <span class="o">=</span> <span class="nx">PullDown</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">every</span> <span class="mi">100</span> <span class="nx">milliseconds</span> <span class="p">{</span>
+  <span class="nx">test</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">test</span><span class="p">.</span><span class="nx">inp</span><span class="p">.</span><span class="nx">read</span><span class="p">();</span>
+<span class="p">}</span></code></pre></div>
+<h4 id="signals-4">Signals</h4>
 
 <table>
 <thead>
@@ -1319,30 +1658,30 @@ Say you want to configure <code>authentification</code>. Content assist (<code>C
 
 <tbody>
 <tr>
-<td><code>digitalIn : bool</code></td>
+<td><code>digitalIn: bool</code></td>
 <td>A GPIO-pin configured in input mode.</td>
-<td><code>pin : GPIOPin</code></td>
+<td><code>pin: GPIOPin</code></td>
 <td>which pin to configure.</td>
 </tr>
 
 <tr>
 <td></td>
 <td></td>
-<td><code>mode : GPIOMode</code></td>
+<td><code>mode: GPIOMode</code></td>
 <td>whether this pin is pull up, pull down or floating.</td>
 </tr>
 
 <tr>
-<td><code>digitalOut : bool</code></td>
+<td><code>digitalOut: bool</code></td>
 <td>A GPIO-pin configured in output mode.</td>
-<td><code>pin : GPIOPin</code></td>
+<td><code>pin: GPIOPin</code></td>
 <td>which pin to configure.</td>
 </tr>
 
 <tr>
 <td></td>
 <td></td>
-<td><code>initialValue : bool</code></td>
+<td><code>initialValue: bool</code></td>
 <td>The pin&rsquo;s initial value after startup. Default is low (<code>false</code>).</td>
 </tr>
 </tbody>
@@ -1352,7 +1691,7 @@ Say you want to configure <code>authentification</code>. Content assist (<code>C
 
 <p>The I2C bus provides access to interfaced devices via I2C.</p>
 
-<h4 id="configuration-10">Configuration</h4>
+<h4 id="configuration-14">Configuration</h4>
 
 <table>
 <thead>
@@ -1372,13 +1711,13 @@ Say you want to configure <code>authentification</code>. Content assist (<code>C
 
 <tr>
 <td></td>
-<td><code>byteOrder : ByteOrder</code></td>
+<td><code>byteOrder: ByteOrder</code></td>
 <td>Byte ordering for multi-byte words. Default is little endian, the XDK&rsquo;s internal order.</td>
 </tr>
 </tbody>
 </table>
 
-<h4 id="signals-3">Signals</h4>
+<h4 id="signals-5">Signals</h4>
 
 <table>
 <thead>
@@ -1394,35 +1733,35 @@ Say you want to configure <code>authentification</code>. Content assist (<code>C
 <tr>
 <td><code>register_</code><em>intType</em><code>:</code><em>intType</em></td>
 <td>A device register of size and sign specified by <em>intType</em>.</td>
-<td><code>address : uint8</code></td>
+<td><code>address: uint8</code></td>
 <td>the register&rsquo;s address.</td>
 </tr>
 
 <tr>
 <td></td>
 <td></td>
-<td><code>I2CMode : I2CMode</code></td>
+<td><code>I2CMode: I2CMode</code></td>
 <td>whether this register is read, write, both or none. This only has an effect on validation, not on initialization.</td>
 </tr>
 
 <tr>
 <td><code>array_register_</code> <em>intType</em> <code>: array&lt;</code><em>intType</em><code>&gt;</code></td>
 <td>A device register consisting of multiple words of size and sign specified by <em>intType</em>.</td>
-<td><code>address : uint8</code></td>
+<td><code>address: uint8</code></td>
 <td>the register&rsquo;s starting address.</td>
 </tr>
 
 <tr>
 <td></td>
 <td></td>
-<td><code>I2CMode : I2CMode</code></td>
+<td><code>I2CMode: I2CMode</code></td>
 <td>whether this register is read, write, both or none. This only has an effect on validation, not on initialization.</td>
 </tr>
 
 <tr>
 <td></td>
 <td></td>
-<td><code>length : uint8</code></td>
+<td><code>length: uint8</code></td>
 <td>how many words this register consists of.</td>
 </tr>
 </tbody>

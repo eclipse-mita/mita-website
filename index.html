@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Eclipse Mita</title>
-    <meta name="generator" content="Hugo 0.42.1" />
+    <meta name="generator" content="Hugo 0.40.1" />
 
     
     <meta name="description" content="The documentation of Eclipse Mita.">
@@ -347,6 +347,19 @@
 
 
 
+<a  title="Arduino Uno" href="./platforms/arduinouno/">
+	
+	Arduino Uno
+</a>
+
+
+
+      
+        
+        
+
+
+
 <a  title="XDK110" href="./platforms/xdk110/">
 	
 	XDK110
@@ -387,7 +400,7 @@ It aims to increase programmer productivity, enables fast exploration of use-cas
     <span class="kd">var</span> <span class="nx">shockDetected</span> <span class="o">=</span> <span class="nx">bool_characteristic</span><span class="p">(</span><span class="nx">UUID</span><span class="o">=</span><span class="mh">0xCAFE</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="nx">every</span> <span class="nx">accelerometer</span><span class="p">.</span><span class="nx">activity</span> <span class="p">{</span>
+<span class="nx">every</span> <span class="nx">accelerometer</span><span class="p">.</span><span class="nx">any_motion</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="nx">accelerometer</span><span class="p">.</span><span class="nx">magnitude</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">5000</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">smartphone</span><span class="p">.</span><span class="nx">shockDetected</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
     <span class="p">}</span>

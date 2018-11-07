@@ -122,6 +122,16 @@ every accelerometer.any_motion { } every 60 seconds { } Time comes in different 
     </item>
     
     <item>
+      <title>Arduino Uno</title>
+      <link>/platforms/arduinouno/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/platforms/arduinouno/</guid>
+      <description>The Arduino Uno is a popular platform for &amp;ldquo;physical computing&amp;rdquo; and first steps in embedded computing. It is based on an 8-bit Atmega microcontroller and ships with a powerful hardware abstraction library. Currently, the Mita Arduino Uno platform supports basic functionality, namely working with buttons and GPIO pins.
+Sensor: button_one (Button) Modalities    Name Description     is_pressed : bool True if the button is pressed in this very right moment.</description>
+    </item>
+    
+    <item>
       <title>Exceptions</title>
       <link>/language/exceptions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
