@@ -408,6 +408,7 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 <th>Sensors</th>
 <th>Connectivities</th>
 <th>Buses</th>
+<th>IO</th>
 </tr>
 </thead>
 
@@ -416,17 +417,20 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 <td><a href="#accelerometer-bma280">Accelerometer</a></td>
 <td><a href="#led">LED</a></td>
 <td><a href="#GPIO">GPIO</a></td>
+<td><a href="#sd-card">SD Card</a></td>
 </tr>
 
 <tr>
 <td><a href="#gyroscope-calibrated-sensor-fusion">Gyroscope</a></td>
 <td><a href="#adc">ADC</a></td>
 <td><a href="#I2C">I2C</a></td>
+<td></td>
 </tr>
 
 <tr>
 <td><a href="#magnetometer-bmm150">Magnetometer</a></td>
 <td><a href="#ble">BLE</a></td>
+<td></td>
 <td></td>
 </tr>
 
@@ -434,10 +438,12 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 <td><a href="#environment-bme280">Humidity</a></td>
 <td><a href="#wlan">WLAN</a></td>
 <td></td>
+<td></td>
 </tr>
 
 <tr>
 <td><a href="#light-max44009">Light</a></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -446,11 +452,13 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 <td><a href="#environment-bme280">Pressure</a></td>
 <td><a href="#mqtt">MQTT</a></td>
 <td></td>
+<td></td>
 </tr>
 
 <tr>
 <td><a href="#environment-bme280">Temperature</a></td>
 <td><a href="#eclipse-hono">Eclipse Hono over MQTT</a></td>
+<td></td>
 <td></td>
 </tr>
 
@@ -458,10 +466,12 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 <td><a href="#noise-sensor">Noise sensor</a></td>
 <td><a href="#rest-over-http">REST over HTTP</a></td>
 <td></td>
+<td></td>
 </tr>
 
 <tr>
 <td><a href="#buttons">Two buttons</a></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -960,23 +970,18 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <tbody>
 <tr>
-<td><code>temperature: int32</code></td>
+<td><code>temperature : int32</code></td>
 <td>The temperature reported by the BME280.</td>
 </tr>
 
 <tr>
-<td><code>pressure: uint32</code></td>
+<td><code>pressure : uint32</code></td>
 <td>The pressure reported by the BME280.</td>
 </tr>
 
 <tr>
-<td><code>humidity: float</code></td>
-<td>The humidity reported by the BME280.</td>
-</tr>
-
-<tr>
-<td><code>humidity_fixed_point: uint32</code></td>
-<td>The humidity reported by the BME280 in fixed-point representation: divide by 1024 to get the percentage.</td>
+<td><code>humidity : uint32</code></td>
+<td>The humidity reported by the BME280 in percentage.</td>
 </tr>
 </tbody>
 </table>
@@ -1763,6 +1768,133 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 <td></td>
 <td><code>length: uint8</code></td>
 <td>how many words this register consists of.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="io">IO</h2>
+
+<h3 id="sd-card">SD Card</h3>
+
+<p>SD cards can be used to log data without connectivity. Only FAT32 is supported.</p>
+
+<p>There are different kinds of file access:</p>
+
+<ul>
+<li>read or write</li>
+<li>resuming/appending or rewinding</li>
+<li>text or binary</li>
+</ul>
+
+<p>Resuming only applies to read access to files. It means that, when you do consecutive reads, the second reads picks up where the first left of.</p>
+
+<p>Appending only applies to write access to files. It means that, when you write to an already existing file, you will always append content.</p>
+
+<p>Rewinding applies to both kinds of accesses to files. It means that reads or writes always start at the beginning of the file. When writing, the file will always be truncated first.</p>
+
+<p>Text means you will get null terminated strings, where binary will give you blocks of bytes.</p>
+
+<p>In all cases, writing will ensure that the file exists and create it if it doesn&rsquo;t.</p>
+
+<p>You can declare multiple files with the same path; this way you can read and write at the same time or emulate pipes.</p>
+
+<p>Files will not stay open between calls, this means that you can safely declare a file with write access multiple times, for example to read it in both text- and binary-mode.</p>
+
+<h4 id="configuration-15">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Parameters</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>resumingTextRead: string</code></td>
+<td>Provides read access to a file. Continues reading from last position.</td>
+<td><code>filePath: string</code></td>
+<td>The absolute path to the file.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>blockSize: uint32</code></td>
+<td>The size of the buffer to be read at once.</td>
+</tr>
+
+<tr>
+<td><code>appendingTextWrite: string</code></td>
+<td>Provides write access to a file. Appends to existing files.</td>
+<td><code>filePath: string</code></td>
+<td>The absolute path to the file.</td>
+</tr>
+
+<tr>
+<td><code>rewindingTextRead: string</code></td>
+<td>Provides read access to a file. Always reads from the start of the file.</td>
+<td><code>filePath: string</code></td>
+<td>The absolute path to the file.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>fileSize: uint32</code></td>
+<td>The size of the buffer to be read at once.</td>
+</tr>
+
+<tr>
+<td><code>rewindingTextWrite: string</code></td>
+<td>Provides write access to a file. Always truncates the file.</td>
+<td><code>filePath: string</code></td>
+<td>The absolute path to the file.</td>
+</tr>
+
+<tr>
+<td><code>resumingBinaryRead: array&lt;uint8&gt;</code></td>
+<td>Provides read access to a file. Continues reading from last position. Reads bytes instead of text.</td>
+<td><code>filePath: string</code></td>
+<td>The absolute path to the file.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>blockSize: uint32</code></td>
+<td>The size of the buffer to be read at once.</td>
+</tr>
+
+<tr>
+<td><code>appendingBinaryWrite: array&lt;uint8&gt;</code></td>
+<td>Provides write access to a file. Appends to existing files. Reads bytes instead of text.</td>
+<td><code>filePath: string</code></td>
+<td>The absolute path to the file.</td>
+</tr>
+
+<tr>
+<td><code>rewindingBinaryRead: array&lt;uint8&gt;</code></td>
+<td>Provides read access to a file. Always reads from the start of the file. Reads bytes instead of text.</td>
+<td><code>filePath: string</code></td>
+<td>The absolute path to the file.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>fileSize: uint32</code></td>
+<td>The size of the buffer to be read at once.</td>
+</tr>
+
+<tr>
+<td><code>rewindingBinaryWrite: array&lt;uint8&gt;</code></td>
+<td>Provides write access to a file. Always truncates the file. Reads bytes instead of text.</td>
+<td><code>filePath: string</code></td>
+<td>The absolute path to the file.</td>
 </tr>
 </tbody>
 </table>
