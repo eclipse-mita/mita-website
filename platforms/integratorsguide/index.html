@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Integrators Guide - Eclipse Mita</title>
+    <meta name="generator" content="Hugo 0.54.0" />
+
+    
+    <meta name="description" content="The documentation of Eclipse Mita.">
+    
+    <link rel="canonical" href="../../platforms/integratorsguide/">
+    
+
+    <meta property="og:url" content="/platforms/integratorsguide/">
+    <meta property="og:title" content="Eclipse Mita">
+    <meta property="og:image" content="/images/mita.svg">
+    <meta name="apple-mobile-web-app-title" content="Eclipse Mita">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('/fonts/icon.eot');
+        src: url('/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('/fonts/icon.woff')
+               format('woff'),
+             url('/fonts/icon.ttf')
+               format('truetype'),
+             url('/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="../../stylesheets/application.css">
+    <link rel="stylesheet" href="../../stylesheets/temporary.css">
+    <link rel="stylesheet" href="../../stylesheets/palettes.css">
+    <link rel="stylesheet" href="../../stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script src="../../javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-blue-grey palette-accent-light-blue">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Integrators Guide
+      </div>
+    </div>
+
+    
+    <div class="button button-twitter" role="button" aria-label="Twitter">
+       <a href="https://twitter.com/eclipse_mita" title="@eclipse_mita on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+    </div>
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/eclipse/mita" title="@eclipse/mita on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="../../" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="../../images/mita.svg">
+        </div>
+      
+      <div class="name">
+        <strong>Eclipse Mita </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Download" href="http://github.com/eclipse/mita">
+	
+	Download
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Concepts" href="../../concepts/">
+	
+	Concepts
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Language</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Introduction" href="../../language/introduction/">
+	
+	Introduction
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Basics" href="../../language/basics/">
+	
+	Basics
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Packages" href="../../language/packages/">
+	
+	Packages
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="System Setup" href="../../language/setup/">
+	
+	System Setup
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Types" href="../../language/types/">
+	
+	Types
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Arrays" href="../../language/arrays/">
+	
+	Arrays
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Functions" href="../../language/functions/">
+	
+	Functions
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Foreign Function Interface" href="../../language/foreignfunctioninterface/">
+	
+	Foreign Function Interface
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Events" href="../../language/events/">
+	
+	Events
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Exceptions" href="../../language/exceptions/">
+	
+	Exceptions
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Platforms</span>
+    <ul>
+      
+        
+        
+
+
+
+<a class="current" title="Integrators Guide" href="../../platforms/integratorsguide/">
+	
+	Integrators Guide
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+      
+        
+        
+
+
+
+<a  title="Arduino Uno" href="../../platforms/arduinouno/">
+	
+	Arduino Uno
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="XDK110" href="../../platforms/xdk110/">
+	
+	XDK110
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="x86" href="../../platforms/x86/">
+	
+	x86
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Integrators Guide </h1>
+
+			
+
+<h2 id="introduction">Introduction</h2>
+
+<p>One of Mita&rsquo;s key features is the clean separation of core language and platform specific code.
+Mita isn&rsquo;t written just for one particular device, instead users specify for which device they write code by importing an available platform.
+This integrators guide will tell you how to write your own platform for Mita, e.g. how you can provide developers with the different concepts/devices/features specific to your platform and its resources.</p>
+
+<h2 id="concepts">Concepts</h2>
+
+<h3 id="platform">Platform</h3>
+
+<p>If you want to enable Mita on hardware that it was not available for, you need to implement a Mita platform.
+In Mita a platform refers to particular device, describes its available hardware resources and integrates the software layer for that device.
+Mita platforms abstract things fundamental features of an IoT software stack, for example how events, exceptions, or logging are handled, how we compile code for that platform or how time is dealt with.
+They further describe <em>system resources</em> such as communication hardware, sensors, GPIO, busses (think I2C or SPI) as and application layer protocols.</p>
+
+<h3 id="system-resources">System Resources</h3>
+
+<p>A platform contains a number of system resources accompanied. System resources are things like sensors and network protocols. They are the basic building blocks developers can interact with and configure in Mita.</p>
+
+<p>There are different kinds of system resources: <code>sensor</code>, <code>connectivity</code>, <code>io</code> and <code>bus</code>.
+These kinds are descriptive only. While you should use the kind which best fits your system ressource, that type won&rsquo;t make them behave any different.
+The only exception is the <code>platform</code> system resource: it has a special syntax and defines which resources you actually export to the user.</p>
+
+<p>System resources can be marked as non-instantiable, singletons (instantiable once) and instantiable.
+If your system resource describes hardware available on the device, e.g. a sensor, this system resource can not be <a href="#instantiability">instantiated</a> or only once (see below for more details).</p>
+
+<p>System resources contain different things:</p>
+
+<ul>
+<li><code>generator</code> and <code>validator</code> are strings specifying the fully qualified Java class names of your generators and validators.</li>
+<li><code>sizeInferrer</code> specifies the fully qualified Java class name of an inferer that computes the size of things specified by your platform. You don&rsquo;t need to worry about this unless you build advanced signals or modalities though.</li>
+<li><code>configuration-item</code>s are things a user can configure once per setup. They can be used to specify sensor ranges, WLAN credentials or backend URLs. You can also use them to express dependencies between resources: for example the XDK&rsquo;s MQTT resource requires a WLAN resource to be set up. You can mark configuration items as <code>required</code>.</li>
+<li><code>event</code>s can be handled by the user with <code>every</code> blocks. For now they are quite simple in that they cannot be instantiated or carry a payload.</li>
+<li><code>modality</code> specifies something that can be read from your resource. They can only be used with <code>singleton</code> resources.</li>
+<li><code>signal</code>s are bi-directional communication channels of a system resource. THey can be instantiated multiple times in the system resource setup. They can be configured with arguments which makes them look like function calls.</li>
+</ul>
+
+<h4 id="instantiability">Instantiability</h4>
+
+<p>There are two views on instantiability. One is how it affects users, the other is what kind of resource you are specifying.</p>
+
+<ul>
+<li><code>singleton</code> resources can only be reffered to as themselves, i.e. when they are set up they don&rsquo;t get another name. Typical singletons are sensors, which can be configured and offer events and modalities but no signals. They do not need configuration to function and no other resources depend on them.</li>
+<li><code>many</code> and <code>named-singleton</code> resources need to be set up to be used. Once set up they can be referenced by their configured name. They can offer signals but no modalities. You can only specify dependencies between <em>instantiable</em> resources, no matter if they&rsquo;re <code>singleton</code> or <code>many</code>.</li>
+</ul>
+
+<h4 id="modalities">Modalities</h4>
+
+<p>Modalities are runtime state that can be read from a system resource: they represent the state of the resource at some point in time.
+Therefore when a user reads from different modalities of a resource the resource has to guarantee that all values are from the same sample.
+Mita caters to this requirement by implementing generators for different Mita expressions: modality preparations that first read and save all modality values for your resource and modality accesses which then access these stored values.</p>
+
+<p>The Mita generators ensure that subsequent reads of the same modality are from different samples if the resource can provide any.
+Modalities are of the type that is read from them, for example the XDK&rsquo;s accelerometer has a <code>magnitude</code> modality of type <code>uint32</code> since magnitudes are always positive whereas single axes are signed <code>int32</code>s.</p>
+
+<h4 id="signals">Signals</h4>
+
+<p>Signals are &ldquo;bidirectional channels to the outside world&rdquo;.
+They are used to define HTTP REST resources, files on a SD card or LEDs.
+Users can instantiate signals as often as they like, and both read and write signals.
+Each signal instance is configured on its own using a function call like syntax.</p>
+
+<p>Signals are of the type that is read from and written to them, for example LEDs are of type <code>bool</code> and MQTT topics of type <code>string</code>.</p>
+
+<h4 id="aliases">Aliases</h4>
+
+<p>Aliases are a special kind of system resource that can be used to specify a fixed number of instances of non-instantiable resources.
+This means that you don&rsquo;t have to duplicate your button definition for the 10 buttons available on your device but can instead create 10 aliases.
+You can also use this to rename a resource if you want to make the technical name of a sensor more accessible to your users (e.g. rename <code>BMA280</code> to <code>accelerometer</code>).</p>
+
+<h3 id="platform-description-language">Platform Description Language</h3>
+
+<p>You define your platform in a <code>.platform</code> file.
+Here you describe the system resources available on your platform as well as the data structures it requires.
+For a complete syntax reference consult <code>org.eclipse.mita.platform/src/org/eclipse/mita/platform/PlatformDSL.xtext</code> or existing platform definitions.</p>
+
+<p>Platform files start with the namespace the defined platform lives in via a <code>package &lt;ID&gt;;</code> statement.</p>
+
+<p>Then you can define as many system resources and types as you like.
+Type definitions are the same as in standard Mita code.
+System resources are specified with their kind, one of <code>sensor</code>, <code>connectivity</code>, <code>io</code> and <code>bus</code>, optionally their instantiability and their name.
+Then their properties follow in brackets: <code>generator &lt;string&gt;</code>, optionally <code>validator &lt;string&gt;</code> and <code>sizeInferrer &lt;string&gt;</code>, and then configuration items, signals, events and modalities.</p>
+
+<p>There is one special system resource you define in a platform: the platform itself.
+It defines the Java module that binds your standard generators for startup, time, exceptions etc., a global validator and all system resources exported to the user.
+Since it is a system resource it can have events like <code>startup</code> and configuration items like power modes or fault behaviour.
+All types you define in your <code>.platform</code> file are exported.</p>
+
+<h3 id="generators">Generators</h3>
+
+<p>Generators are at the core of your platform implementation.
+They are written using <a href="https://www.eclipse.org/xtend/">Eclipse Xtend</a> and generate the C code.
+Generators return C code as <code>CodeFragments</code> which not only hold generated code but also a list of C includes the code requires as well as some preamble that will be prepended to the generated C files.</p>
+
+<p>Every platform needs to implement the following six generators: <a href="#event-loop-generator"><code>IPlatformEventLoopGenerator</code></a>, <a href="#exception-generator"><code>IPlatformExceptionGenerator</code></a>, <a href="#logging-generator"><code>IPlatformLoggingGenerator</code></a>, <a href="#makefile-generator"><code>IPlatformMakefileGenerator</code></a>, <a href="#startup-generator"><code>IPlatformStartupGenerator</code></a>, and <a href="#platform-time-generator"><code>IPlatformTimeGenerator</code></a>.
+These generators are bound in your platform module which should extend <code>EmptyPlatformGeneratorModule</code>.</p>
+
+<h4 id="event-loop-generator">Event Loop Generator</h4>
+
+<p>The <a href="../concepts/index.md#event-loop">event loop</a> is a Mita program&rsquo;s core driver.
+All events that happen on the platform (including time) are handled sequentially by this event loop. The event loop generator is responsible implementing the event loop. There are two main patterns for this implementation:</p>
+
+<ul>
+<li><em>using a queue:</em> if your platform supports queues, for example because your RTOS does, this is the easiest way of implementing event loops. Each time an event happens, a function pointer pointing to the handler is enqueued in the central event queue. A single event handler task continuously blocks/deques from this event queue and executes one handler after the other. The XDK110 platform implements this pattern.</li>
+<li><em>using even flags:</em> if you do not have tasks or queues available, boolean event flags can be used. To this end your event loop generator will generate a flag (global boolean variable) for each event. When an event happens that flag is set to true. A central loop checks each flag and if that flag is set it executes the corresponding handler. Unfortunately extending this pattern to support multiple events of the same type, yet handled in sequence is not easy to implement. The Arduino platform implements this pattern.</li>
+</ul>
+
+<h4 id="exception-generator">Exception Generator</h4>
+
+<p>Unlike C Mita supports exceptions. The exception generator translates Mita exceptions to C code.
+This generator defines the C type which represents exceptions on your platform, a special <code>NO_EXCEPTION</code> value, as well as runtime representations for each exception using in a Mita program.</p>
+
+<p>Exceptions typically map to special return values in C. Many platforms already have provisions for such a return code mechanism.
+The task of your exception generator then is is it to make use of those retcode provisions.</p>
+
+<h4 id="logging-generator">Logging Generator</h4>
+
+<p>Mita has platform level logging support which is primarily used to produce diagnostic output during device startup/initialization.
+If your platform does not support this type of logging (e.g. because it has no wired connection or enough bandwidth), an &ldquo;empty&rdquo; implementation that simply swallows all debug output is perfectly legal.</p>
+
+<h4 id="makefile-generator">Makefile Generator</h4>
+
+<p>Mita assumes that your platform uses some kind of build system, specifically Makefiles. The Makefile generator has to integrate Mita&rsquo;s generated code into your platform&rsquo;s build system.
+This generator has access to all Mita code written by the user, and is passed a list of C files to compile. This comes in handy if you need to change compile-time flags according to which system resources are used.</p>
+
+<p>Mita&rsquo;s current dependency on <code>make</code> is not dogmatic. If you require another mechanism for building applications plase file an issue/PR.</p>
+
+<h4 id="startup-generator">Startup Generator</h4>
+
+<p>A Mita program boots using a two-phase initialization procedure:</p>
+
+<ul>
+<li>In <code>main</code>, which you generate, you initialize your event system and should enqueue <code>Mita_initialize</code> and <code>Mita_goLive</code>. Since after <code>Mita_goLive</code> the system is fully running you could also inject an event like <code>platform.startup</code> here.</li>
+<li><code>Mita_initialize</code> calls the setup methods of all used system resources. It uses cross links between them to calculate some order in which to do this. It is assumed that unused resources don&rsquo;t need to be initialized and that all startup dependencies are declared with configuration items explicitly. If you have implicit dependencies your platform generators need to handle them themselves.</li>
+<li><code>Mita_goLive</code> calls the enable methods of all used system resources. After a resource has been enabled it may start to fire events. The order of enabling follows the same rules as with initialization.</li>
+</ul>
+
+<p>The startup generator produces the glue code required to implement this mechanism on your platform.
+Specifically, it generates the <code>main</code> function which serves as entrypoint into the program.
+Here you initialize your event loop, enqueue at least the two neccessary functions <code>Mita_initialize</code> and <code>Mita_goLive</code>, and start the event loop (e.g. by starting the task scheduler of your RTOS).
+Global variables are initialized after all resources have been enabled.</p>
+
+<h4 id="time-generator">Time Generator</h4>
+
+<p>The time generator provides the most basic resource that must be available on all platforms: time. Time is set up in three phases:
+- <code>Setup</code> should be used to create timers and other data structures you require globally and for each time event. Those timers must not be running yet.
+- <code>GoLive</code> enables all previously set up timers,
+- <code>Enable</code> needs to start all per-event timers.</p>
+
+<h4 id="resource-specific-generators">Resource Specific Generators</h4>
+
+<p>Each system resource comes with its own generator.
+System resources are prepared in two stages: <code>setup</code> and <code>enable</code> which correspond to the <em>initialize</em> and <em>go live</em> phases of the startup generator.</p>
+
+<p>When you generate code for those phases you have access to some prepared information:
+- <code>configuration</code> can be queried for configured values. You can either get preprocessed information like strings or integers, or the raw expressions. If the user did not configure anything you will get the default value if your platform configures one.
+- <code>eventHandler</code> is a list of all handlers your system resource&rsquo;s events.
+- The configured system resource <code>component</code> and the <code>setup</code> of the system resource.</p>
+
+<p>Beyond that your generator will need to implement different methods depending to which features it offers:</p>
+
+<ul>
+<li><p><strong>Events:</strong> You can configure any events a resource offers in <code>setup</code>, however events should only fire after a resource has been enabled.
+Beyond that it is your responsibility to put any callbacks your event needs in a preamble of one of those stages and to inject user specified events into the event loop.
+To help you with this <code>GeneratorUtils.getHandlerName(EventHandlerDeclaration)</code> provides the C name of an event handler.</p></li>
+
+<li><p><strong>Signals:</strong> If the resource has signals you will need to implement <code>generateSignalInstanceGetter</code> and <code>generateSignalInstanceSetter</code> which read or write signal instances.
+The Mita generator will call these methods once per signal instance so you can generate code for different configurations of different signals.
+For this you can use <code>ModelUtils.getArgumentValue(SignalInstance sigInst, String argumentName)</code> to get the arguments a signal is configured with.
+Beyond that you can walk the model to get things like configuration or referenced system resources.</p></li>
+
+<li><p><strong>Modalities:</strong>
+To generate code for modalities you need to implement <code>generateAccessPreparationFor</code> and <code>generateModalityAccessFor</code>.
+The first function is called whenever all modalities of a resource should be read.
+It should store these values somewhere on the stack.
+The code generated in <code>generateModalityAccessFor</code> will then query these variables to produce a value to the user program.
+To get a unique name for your variables you can use <code>GeneratorUtils.getUniqueIdentifier(ModalityAccessPreparation)</code>.</p></li>
+</ul>
+
+<h3 id="validation">Validation</h3>
+
+<p>Validation enables you to guide developers and find issues before flashing code to a device.
+Mita itself checks for basic issues, e.g. for array access out of bounds.
+Since validation is more laborious and error prone to implement that type checking you should prefer the latter over the former.</p>
+
+<p>Say you want to provide WLAN as a system resource. There are different kinds of authentication to WLAN: pre-shared key or enterprise. As an initial draft you might offer three configuration items:</p>
+
+<pre><code>configuration-item isEnterprise: bool
+configuration-item username: string
+required configuration-item password: string
+</code></pre>
+
+<p>This covers both cases: the password is used as the pre-shared key unless isEnterprise is set to <code>true</code>.
+However, now you have to validate that, if <code>isEnterprise</code> is <code>true</code> the user also configured <code>username</code> and should produce the same error message as default validation for required configuration items.
+This is error prone and not consistent for the user since as only one of those fields was marked required.</p>
+
+<p>A better approach would be to introduce a sum type that combines all three configuration items into one:</p>
+
+<pre><code>alt WlanAuthentication {
+	  Enterprise: {username: string, password: string}
+	| WithKey: {preSharedKey: string}
+}
+
+required configuration-item authentication: WlanAuthentication
+</code></pre>
+
+<p>This takes care of everything at once: passwords are no longer the same as pre-shared keys, authentication is required and both the user and type checker know that if you chose enterprise authentication you need two values, not one.</p>
+
+<p>Should types not be enough to correctly validate resource setups, for example for value ranges or number of accesses, platforms can specify both a global validator as well as validators per system resource.
+The first is specified in your platform resource and is called per <code>.mita</code> file whereas the second is specified per resource and called per setup of that resource.</p>
+
+<p>Validators implement <code>IResourceValidator</code>, defining one method <code>validate</code>. System resource validators get each resource setup as the <code>context</code> argument.
+They then can walk the model to find bad configuration or usage and provide errors, warnings and information via the <code>ValidationMessageAcceptor</code>.
+No C code will be generated as long as errors are present.</p>
+
+<h2 id="hands-on">Hands On</h2>
+
+<p>Now that we have learned about the building blocks of platform definitions, let&rsquo;s put everything together and create a simple platform for the <a href="https://en.wikipedia.org/wiki/Arduino_Uno">Arduino Uno</a> board.
+The next sections demonstrate how to setup your working environment and walk you through the development of a new platform definition.</p>
+
+<h3 id="technical-setup">Technical Setup</h3>
+
+<p>First of all, we need to setup our development environment.
+The easiest way is to use the Eclipse Installer with our setup file.
+This will automatically download an Eclipse IDE, clone the Mita repository and import all projects into your workspace.
+The whole process is described in our <a href="contributing.md#set-up-your-developer-workspace">contribution guide</a>.</p>
+
+<p>Once you have your mita development workspace running, you can create a new project in which you are going to define your platform:
+- Go to <em>File -&gt; New -&gt; Project..</em> and select <em>Plug-in Development -&gt; Plug-in Project</em>.
+- Click <em>Next &gt;</em> and specify a project name. In this example we choose <em>my.arduino.platform</em>.
+- Click <em>Finish</em>.</p>
+
+<p>In the new project, create a new file with the ending <em>.platform</em>, such as <em>myarduino.platform</em>. Open the file <em>myarduino.platform</em> and insert the following code snippet:</p>
+
+<pre><code>package platforms.myarduino;
+
+platform Arduino {
+
+}
+</code></pre>
+
+<p>We will define some proper contents soon, but first of all let&rsquo;s make a further change to our development environment. You probably noticed that the platform file is opened as a plain text file. This is not very convenient as you will not get any content proposals or validation upon editing. To change this, there are two ways: (1) Install the latest Mita release into your development IDE or (2) start a runtime environment and import your platform project into your runtime workspace. Since at time of writing this guide there is no official Mita release yet, we will show you how to go with the second way:
+- In your development IDE, click <em>Run -&gt; Run Configurations..</em>. The <em>Run Configurations</em> dialog will appear.
+- In the <em>Run Configurations</em> dialog, right-click on <em>Eclipse Application</em> and select <em>New</em>.
+- Give the new run configuration a name, e.g. <em>Mita Runtime</em>.
+- Press <em>Run</em>.</p>
+
+<p>The run configuration starts a new Eclipse instance in which all the plugins from your development workspace are installed. In this runtime instance, you can import the platform project we just created:
+- On first startup, you will probably see a welcome page. Close the <em>Welcome</em> tab.
+- Go to <em>File -&gt; Import..</em> and select <em>General -&gt; Existing Project into Workspace</em>. Click <em>Next &gt;</em>.
+- Click on the top right <em>Browse&hellip;</em> button to select the project you created above. If you do not know where this project is located on your file system, go back to your development IDE, right-click on the project and select <em>Properties</em>. From the <em>Properties</em> dialog you can copy the project location and paste it into the <em>Import</em> dialog in your runtime IDE.
+- Make sure the option <em>Copy projects into workspace</em> is <em>not</em> enabled. In that way you can work on the same files from your development and runtime workspace.
+- Click <em>Finish</em>.</p>
+
+<p>Your plaform project is now imported into your runtime workspace. Open the <em>myarduino.platform</em> file. On the first time, a dialog asking you to apply the Xtext nature will pop up. Close that dialog by pressing <em>Yes</em>. You should now see syntax highlighting. In particular, you should see an error marker on line 5, saying that the parameter <em>module</em> is missing. Let&rsquo;s fix that by adding <code>module &quot;&quot;</code> to the platform definition:</p>
+
+<pre><code>package platforms.myarduino;
+
+platform Arduino {
+  module &quot;&quot;
+}
+</code></pre>
+
+<p>Changes in your runtime workspace are also reflected in your developer workspace. This means you can switch between the two whatever fits better. Usually, it is best to write the platform definition in the runtime workspace because of the language features you get from the platform editor. However, writing code generators makes sense in the developer workspace as you will often refer to already existing Mita generators.</p>
+
+<p>The next step is to register the new platform so that it can be imported in a Mita application. To register the platform create a new file <em>plugin.xml</em> in your platform project and paste the following contribution:</p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;?eclipse version=&quot;3.4&quot;?&gt;
+&lt;plugin&gt;
+   &lt;extension
+         point=&quot;org.eclipse.mita.library.extension.type_library&quot;&gt;
+      &lt;Library
+            description=&quot;Arduino Platform Definition&quot;
+            id=&quot;platforms.myarduino&quot;
+            name=&quot;Arduino Platform Definition&quot;
+            optional=&quot;true&quot;
+            version=&quot;1.0.0&quot;&gt;
+         &lt;ResourceURI
+               uri=&quot;platform:/plugin/my.arduino.platform/myarduino.platform&quot;&gt;
+         &lt;/ResourceURI&gt;
+      &lt;/Library&gt;
+   &lt;/extension&gt;
+&lt;/plugin&gt;
+</code></pre>
+
+<p>This piece of XML code registers the platform defined in the <em>myarduino.platform</em> file (see ResourceURI) under the ID <code>platforms.myarduino</code>. In case your <em>MANIFEST.MF</em> file contains an error now, open that file, click on the error marker and select the proposed solution. Save that file. Your project should have no errors.</p>
+
+<p>As XML is static, we need to restart the runtime IDE in order to load the new extension.</p>
+
+<p>After a restart, your new Arduino platform should be visible by any Mita application. We can test this by creating a new Mita application:
+- Create a new C project with <em>File -&gt; New -&gt; Project.. -&gt; C/C++ -&gt; C Project</em>. Name it <em>my.arduino.app</em> and click <em>Finish</em>.
+- In the new project, create a Mita application file with <em>File -&gt; New -&gt; Other..</em> and select <em>Mita -&gt; Mita Application File</em>. The <em>Platform</em> drop-down should now contain an entry for your platform: <em>platforms.myarduino</em>. Select it and click on <em>Finish</em>. The newly created file should have the following contents:</p>
+
+<pre><code>package my.pkg;
+
+import platforms.myarduino;
+</code></pre>
+
+<p>Of course, this application does not do anything yet. Please note, at this point your application file might contain an error due to missing code generator contributions. Please ignore this error for now. We will cover code generation soon.</p>
+
+<h3 id="writing-a-platform-definition">Writing a platform definition</h3>
+
+<p>Now that you have set up your development environment, let&rsquo;s start writing your first platform definition. As a first step, we will define that our Arduino board comes with two buttons which emit events when they get pressed or released. Please recall, a platform is a collection of system resources accompanied by type definitions. System resources can be of the kind <code>sensor</code>, <code>connectivity</code>, <code>io</code> and <code>bus</code>.</p>
+
+<p>A button falls into the <code>sensor</code> category. Sensors can specify modalities and events. Modalities define the state of a sensor, they can be read out in a Mita program. In the button case, it is a boolean that defines whether the button is currently pressed or not. Events are used in Mita as triggers in <code>every {..}</code> code blocks. A button sends an event when it gets pressed, or released. Hence, our button definition looks as follows:</p>
+
+<pre><code>sensor Button {
+	generator &quot;&quot;
+	modality is_pressed : bool
+	event pressed
+	event released
+}
+</code></pre>
+
+<p>Ignore the <code>generator</code> part for now. We will cover that soon.</p>
+
+<p>Now that we have defined what a button is capable of, we can express that our platform consists of two of them. For this, we create an <code>alias</code> for each button and export it in the platform resource:</p>
+
+<pre><code>alias button_one for Button
+alias button_two for Button
+
+platform Arduino {
+	module &quot;&quot;
+	has button_one
+	has button_two
+}
+</code></pre>
+
+<p>Putting both parts together, our first version of the Arduino platform is defined as:</p>
+
+<pre><code>package platforms.myarduino;
+
+sensor Button {
+	generator &quot;&quot;
+	modality is_pressed : bool
+	event pressed
+	event released
+}
+
+alias button_one for Button
+alias button_two for Button
+
+platform Arduino {
+	module &quot;&quot;
+	has button_one
+	has button_two
+}
+</code></pre>
+
+<p>You can test this directly by adding some code to your Mita application in <em>my.arduino.app/application.mita</em>:</p>
+
+<pre><code>package my.pkg;
+
+import platforms.myarduino;
+
+every button_one.pressed {
+  println(&quot;Hello World&quot;);
+}
+</code></pre>
+
+<h3 id="contributing-platform-code-generators">Contributing platform code generators</h3>
+
+<p>Code generators build the core of your platform implementation. When contributing a platform you need to provide a couple of resource-independant code generators as well as one code generator per system resource of your platform definition.</p>
+
+<p>The standard code generators are bound in a platform generator module. The module is registered in the <code>module</code> part of your platform definition. To create a platform generator module, right-click on the <em>src</em> folder in the <em>my.arduino.platform</em> project and create a new Xtend file. Give the module a name, such as <em>MyArduinoPlatformGeneratorModule</em> and click on <em>Finish</em>. As a starting point, define the following bindings in your module:</p>
+
+<pre><code>class MyArduinoPlatformGeneratorModule extends EmptyPlatformGeneratorModule {
+
+  override bindIPlatformEventLoopGenerator() {
+    MyArduinoEventLoopGenerator
+  }
+  override bindIPlatformExceptionGenerator() {
+    MyArduinoExceptionGenerator
+  }
+  override bindIPlatformStartupGenerator() {
+    MyArduinoStartupGenerator
+  }
+}
+</code></pre>
+
+<p>For this to compile you need to add the following dependencies to your <em>MANIFEST.MF</em> file:
+- org.eclipse.mita.program,
+- com.google.guava,
+- org.eclipse.xtext.xbase.lib,
+- org.eclipse.xtend.lib,
+- org.eclipse.xtend.lib.macro</p>
+
+<p>Additionally, you need to create the three code generators <em>MyArduinoEventLoopGenerator</em>, <em>MyArduinoExceptionGenerator</em> and <em>MyArduinoStartupGenerator</em>. As an initial starting point, you can copy the contents from the generators defined in the <em>org.eclipse.mita.platform.arduino</em> plugin. Next, you need to register the module in the platform definition:</p>
+
+<pre><code>platform Arduino {
+  module &quot;my.arduino.platform.MyArduinoPlatformGeneratorModule&quot;
+  has button_one
+  has button_two
+}
+</code></pre>
+
+<p>Besides standard platform generators you need to contribute a code generator per system resource. In this example, this means you need to provide a code generator for the Arduino buttons. Resource generators are registered with the <code>generator</code> parameter in the platform definition:</p>
+
+<pre><code>sensor Button {
+  generator &quot;my.arduino.platform.MyArduinoButtonGenerator&quot;
+  modality is_pressed : bool
+  event pressed
+  event released
+}
+</code></pre>
+
+<p>The detailed contents of the code generators is out of the scope of this guide. For a starting point, please refer to the code generators in the <em>org.eclipse.mita.platform.arduino</em> plugin.</p>
+
+<p>Once you have filled your code generators with something useful, you can test them easily by touching the Mita application file. Code is generated automatically on every save action into the <em>src-gen</em> folder of the application project. Please note, you might need to restart your runtime environment to reflect all the changes in the platform definition file.</p>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2019 The Eclipse Mita Project &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="../../language/basics/" title="Basics">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Basics
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="../../language/packages/" title="Packages">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Packages
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="../../javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

@@ -11,6 +11,15 @@
     
     
     <item>
+      <title>Integrators Guide</title>
+      <link>/platforms/integratorsguide/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/platforms/integratorsguide/</guid>
+      <description>Introduction One of Mita&amp;rsquo;s key features is the clean separation of core language and platform specific code. Mita isn&amp;rsquo;t written just for one particular device, instead users specify for which device they write code by importing an available platform. This integrators guide will tell you how to write your own platform for Mita, e.g. how you can provide developers with the different concepts/devices/features specific to your platform and its resources.</description>
+    </item>
+    
+    <item>
       <title>XDK110</title>
       <link>/platforms/xdk110/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -29,6 +38,15 @@ Implemented System Resources Currently implemented sensors, connectivities and b
       <guid>/platforms/arduinouno/</guid>
       <description>The Arduino Uno is a popular platform for &amp;ldquo;physical computing&amp;rdquo; and first steps in embedded computing. It is based on an 8-bit Atmega microcontroller and ships with a powerful hardware abstraction library. Currently, the Mita Arduino Uno platform supports basic functionality, namely working with buttons and GPIO pins.
 Sensor: button_one (Button) Modalities    Name Description     is_pressed : bool True if the button is pressed in this very right moment.</description>
+    </item>
+    
+    <item>
+      <title>x86</title>
+      <link>/platforms/x86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/platforms/x86/</guid>
+      <description>The x86 platform is a basic platform for Windows and Linux. It only supports time events for now.</description>
     </item>
     
   </channel>

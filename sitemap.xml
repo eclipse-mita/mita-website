@@ -11,6 +11,10 @@
   </url>
   
   <url>
+    <loc>/platforms/integratorsguide/</loc>
+  </url>
+  
+  <url>
     <loc>/language/packages/</loc>
   </url>
   
@@ -56,6 +60,10 @@
   
   <url>
     <loc>/language/exceptions/</loc>
+  </url>
+  
+  <url>
+    <loc>/platforms/x86/</loc>
   </url>
   
   <url>

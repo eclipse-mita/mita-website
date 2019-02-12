@@ -31,6 +31,15 @@ fn main() { let x = 42; println(`The value of x is ${x}`); x = 64; println(`The 
     </item>
     
     <item>
+      <title>Integrators Guide</title>
+      <link>/platforms/integratorsguide/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/platforms/integratorsguide/</guid>
+      <description>Introduction One of Mita&amp;rsquo;s key features is the clean separation of core language and platform specific code. Mita isn&amp;rsquo;t written just for one particular device, instead users specify for which device they write code by importing an available platform. This integrators guide will tell you how to write your own platform for Mita, e.g. how you can provide developers with the different concepts/devices/features specific to your platform and its resources.</description>
+    </item>
+    
+    <item>
       <title>Packages</title>
       <link>/language/packages/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -141,6 +150,15 @@ Sensor: button_one (Button) Modalities    Name Description     is_pressed : bool
 exception FooException; Exceptions can be thrown, which returns control flow to the caller. If the exception is not caught by the caller it propagates further. If the exception is never caught it causes a system reset.
 throw FooException; Exceptions can be caught with the familiar try...catch syntax:
 try { throw FooException; } catch(FooException) { println(&amp;#34;Caught FooException&amp;#34;); } Exceptions are implicit, meaning that functions do not have to (and cannot) declare the exceptions they might throw.</description>
+    </item>
+    
+    <item>
+      <title>x86</title>
+      <link>/platforms/x86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/platforms/x86/</guid>
+      <description>The x86 platform is a basic platform for Windows and Linux. It only supports time events for now.</description>
     </item>
     
     <item>

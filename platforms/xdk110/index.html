@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>XDK110 - Eclipse Mita</title>
-    <meta name="generator" content="Hugo 0.40.1" />
+    <meta name="generator" content="Hugo 0.54.0" />
 
     
     <meta name="description" content="The documentation of Eclipse Mita.">
@@ -344,6 +344,19 @@
 
 
 
+<a  title="Integrators Guide" href="../../platforms/integratorsguide/">
+	
+	Integrators Guide
+</a>
+
+
+
+      
+        
+        
+
+
+
 <a  title="Arduino Uno" href="../../platforms/arduinouno/">
 	
 	Arduino Uno
@@ -365,6 +378,19 @@
 
 <ul id="scrollspy">
 </ul>
+
+
+      
+        
+        
+
+
+
+<a  title="x86" href="../../platforms/x86/">
+	
+	x86
+</a>
+
 
 
       
@@ -414,63 +440,63 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <tbody>
 <tr>
-<td><a href="#accelerometer-bma280">Accelerometer</a></td>
-<td><a href="#led">LED</a></td>
-<td><a href="#GPIO">GPIO</a></td>
-<td><a href="#sd-card">SD Card</a></td>
+<td><a href="../../platforms/xdk110/#accelerometer-bma280">Accelerometer</a></td>
+<td><a href="../../platforms/xdk110/#led">LED</a></td>
+<td><a href="../../platforms/xdk110/#GPIO">GPIO</a></td>
+<td><a href="../../platforms/xdk110/#sd-card">SD Card</a></td>
 </tr>
 
 <tr>
-<td><a href="#gyroscope-calibrated-sensor-fusion">Gyroscope</a></td>
-<td><a href="#adc">ADC</a></td>
-<td><a href="#I2C">I2C</a></td>
+<td><a href="../../platforms/xdk110/#gyroscope-calibrated-sensor-fusion">Gyroscope</a></td>
+<td><a href="../../platforms/xdk110/#adc">ADC</a></td>
+<td><a href="../../platforms/xdk110/#I2C">I2C</a></td>
 <td></td>
 </tr>
 
 <tr>
-<td><a href="#magnetometer-bmm150">Magnetometer</a></td>
-<td><a href="#ble">BLE</a></td>
-<td></td>
-<td></td>
-</tr>
-
-<tr>
-<td><a href="#environment-bme280">Humidity</a></td>
-<td><a href="#wlan">WLAN</a></td>
+<td><a href="../../platforms/xdk110/#magnetometer-bmm150">Magnetometer</a></td>
+<td><a href="../../platforms/xdk110/#ble">BLE</a></td>
 <td></td>
 <td></td>
 </tr>
 
 <tr>
-<td><a href="#light-max44009">Light</a></td>
+<td><a href="../../platforms/xdk110/#environment-bme280">Humidity</a></td>
+<td><a href="../../platforms/xdk110/#wlan">WLAN</a></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="../../platforms/xdk110/#light-max44009">Light</a></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 
 <tr>
-<td><a href="#environment-bme280">Pressure</a></td>
-<td><a href="#mqtt">MQTT</a></td>
+<td><a href="../../platforms/xdk110/#environment-bme280">Pressure</a></td>
+<td><a href="../../platforms/xdk110/#mqtt">MQTT</a></td>
 <td></td>
 <td></td>
 </tr>
 
 <tr>
-<td><a href="#environment-bme280">Temperature</a></td>
-<td><a href="#eclipse-hono">Eclipse Hono over MQTT</a></td>
+<td><a href="../../platforms/xdk110/#environment-bme280">Temperature</a></td>
+<td><a href="../../platforms/xdk110/#eclipse-hono">Eclipse Hono over MQTT</a></td>
 <td></td>
 <td></td>
 </tr>
 
 <tr>
-<td><a href="#noise-sensor">Noise sensor</a></td>
-<td><a href="#rest-over-http">REST over HTTP</a></td>
+<td><a href="../../platforms/xdk110/#noise-sensor">Noise sensor</a></td>
+<td><a href="../../platforms/xdk110/#rest-over-http">REST over HTTP</a></td>
 <td></td>
 <td></td>
 </tr>
 
 <tr>
-<td><a href="#buttons">Two buttons</a></td>
+<td><a href="../../platforms/xdk110/#buttons">Two buttons</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -705,7 +731,7 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <p>This sensor is a front end for a software library that improves on accuracy and physical limititations of the built-in sensors using sensor fusion.</p>
 
-<p>Alternatively you can access two hardware sensors directly: <a href="#sensor-gyroscope-bmi160">BMI160</a> and <a href="#sensor-gyroscope-bmg160">BMG160</a></p>
+<p>Alternatively you can access two hardware sensors directly: <a href="../../platforms/xdk110/#sensor-gyroscope-bmi160">BMI160</a> and <a href="../../platforms/xdk110/#sensor-gyroscope-bmg160">BMG160</a></p>
 
 <p>This virtual sensor only offers modalities.</p>
 
@@ -1147,25 +1173,9 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <h4 id="modalities-9">Modalities</h4>
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Parameters</th>
-<th></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>light_up: bool</code></td>
-<td>Represents one of the three LEDs.</td>
-<td><code>color: LedColor</code></td>
-<td>One of <code>Yellow</code>, <code>Orange</code> or <code>Red</code>.</td>
-</tr>
-</tbody>
-</table>
+<p>Name                            | Description                           | Parameters |
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
+<code>light_up: bool</code>                | Represents one of the three LEDs.     | <code>color: LedColor</code>  | One of <code>Yellow</code>, <code>Orange</code> or <code>Red</code>.</p>
 
 <h3 id="adc">ADC</h3>
 
@@ -1193,46 +1203,12 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <h4 id="signals">Signals</h4>
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Parameters</th>
-<th></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>channel: uint16</code></td>
-<td>An ADC channel, read only. [mV]</td>
-<td><code>channel: ADC_Channel</code></td>
-<td>Which channel to measure.</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>referenceVoltage: ADC_Reference_Voltage</code></td>
-<td>Which voltage to measure against. Default: <code>2.5V</code> internal voltage reference.</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>resolution: ADC_Resolution</code></td>
-<td>Default: <code>12 bit</code></td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>sampleTime: ADC_SampleTime</code></td>
-<td>Over how many <em>clock</em> cycles the ADC samples its input. Default: <code>16</code> cycles.</td>
-</tr>
-</tbody>
-</table>
+<p>Name                            | Description                           | Parameters |
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
+<code>channel: uint16</code>  | An ADC channel, read only. [mV]  | <code>channel: ADC_Channel</code>  | Which channel to measure.
+ || <code>referenceVoltage: ADC_Reference_Voltage</code>  | Which voltage to measure against. Default: <code>2.5V</code> internal voltage reference.
+ || <code>resolution: ADC_Resolution</code>  | Default: <code>12 bit</code>
+ || <code>sampleTime: ADC_SampleTime</code>  | Over how many <em>clock</em> cycles the ADC samples its input. Default: <code>16</code> cycles.</p>
 
 <h3 id="ble">BLE</h3>
 
@@ -1278,43 +1254,15 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <h4 id="signals-1">Signals</h4>
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Parameters</th>
-<th></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>bool_characteristic(): bool</code></td>
-<td>A boolean GATT characteristic.</td>
-<td><code>UUID: uint32</code></td>
-<td>The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.</td>
-</tr>
-
-<tr>
-<td><code>uint32_characteristic(): uint32</code></td>
-<td>An unsigned integer GATT characteristic.</td>
-<td><code>UUID: uint32</code></td>
-<td>The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.</td>
-</tr>
-
-<tr>
-<td><code>int32_characteristic(): int32</code></td>
-<td>A signed integer GATT characteristic.</td>
-<td><code>UUID: uint32</code></td>
-<td>The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.</td>
-</tr>
-</tbody>
-</table>
+<p>Name                            | Description                           | Parameters |
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
+<code>bool_characteristic(): bool</code>      | A boolean GATT characteristic.           | <code>UUID: uint32</code>  | The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.
+<code>uint32_characteristic(): uint32</code>  | An unsigned integer GATT characteristic. | <code>UUID: uint32</code>  | The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.
+<code>int32_characteristic(): int32</code>    | A signed integer GATT characteristic.    | <code>UUID: uint32</code>  | The last four bytes of the characteristic UUID. Defaults to the hash code of the VCI name.</p>
 
 <h3 id="wlan">WLAN</h3>
 
-<p>WLAN is one of the hardware connectivities available on the XDK. Configuration is done using <a href="../../language/types/#sum-types">sum types</a>. Even though the concept of sum types may be daunting they are actually very easy to use.
+<p>WLAN is one of the hardware connectivities available on the XDK. Configuration is done using <a href="../../language/types/#sum-tymes">sum types</a>. Even though the concept of sum types may be daunting they are actually very easy to use.
 Say you want to configure <code>authentication</code>. Content assist (<code>CTRL+Space</code>) offers you three different choices: <code>None</code>, <code>Enterprise</code> and <code>Personal</code>. Each accepts a different number of parameters. For example to configure a WLAN with WPA2 Personal you would write this:</p>
 <div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">net</span>: <span class="kt">WLAN</span> <span class="p">{</span>
   <span class="nx">ssid</span> <span class="o">=</span> <span class="s2">&#34;MyWlan&#34;</span><span class="p">;</span>
@@ -1402,7 +1350,7 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 <tr>
 <td><strong>Required</strong></td>
 <td><code>url: string</code></td>
-<td>The URL pointing to the MQTT broker, for example: <code>mqtt://does-not.exist:1883</code>.</td>
+<td>The URL pointing to the MQTT broker, for example: <code>mqtt://does-not.exist:1883</code>. You can use MQTT with TLS by specifying the protocol <code>mqtts://</code> instead of <code>mqtt://</code>. Doing so requires you to specify the expected server certificate with <code>certificatePath</code>.</td>
 </tr>
 
 <tr>
@@ -1419,6 +1367,12 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 
 <tr>
 <td></td>
+<td><code>lastWill: MqttWill</code></td>
+<td>The last will that will be published on a forceful disconnect. Either <code>NoWill()</code> or <code>LastWill(topic=&quot;topic&quot;, message=&quot;message&quot;, qos=1)</code>. Default: <code>NoWill()</code>.</td>
+</tr>
+
+<tr>
+<td></td>
 <td><code>cleanSession: bool</code></td>
 <td>The clean session flag indicates to the broker whether the client wants to establish a clean session or a persistent session where all subscriptions and messages (QoS 1 &amp; 2) are stored for the client. Default: <code>false</code>.</td>
 </tr>
@@ -1428,37 +1382,27 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 <td><code>keepAliveInterval: uint32</code></td>
 <td>The keep alive interval (in seconds) is the time the client commits to for when sending regular pings to the broker. The broker responds to the pings enabling both sides to determine if the other one is still alive and reachable. Default: <code>60</code>.</td>
 </tr>
+
+<tr>
+<td></td>
+<td><code>certificatePath: string</code></td>
+<td>The path to the expected server certificate used for MQTT with TLS. Can be an absolute path like <code>C:\certificates\mosquitto.crt</code> or <code>/etc/ssl/certs/mosquitto.crt</code> or a relative path like <code>certificates/server.crt</code>. In the latter case this will look for the certificate relative to the project root. The certificate needs to be in PEM format (<code>-----BEGIN CERTIFICATE-----</code>/<code>-----END CERTIFICATE-----</code>). <strong>This configuration item is required when using MQTT over TLS.</strong></td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>sntpServer: string</code></td>
+<td>To verify the server&rsquo;s certificate the XDK needs to get the current time over SNTP. Per default it connects to <code>pool.ntp.org:123</code>, however if for some reason like being in a closed network you cannot access this NTP server you can specify your own.</td>
+</tr>
 </tbody>
 </table>
 
 <h4 id="signals-2">Signals</h4>
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Parameters</th>
-<th></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>topic: string</code></td>
-<td>Publishes a message to a particular topic.</td>
-<td><code>name: string</code></td>
-<td>The topic&rsquo;s name.</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>qos: uint32</code></td>
-<td>Default: <code>0</code></td>
-</tr>
-</tbody>
-</table>
+<p>Name                            | Description                           | Parameters |
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
+<code>topic: string</code>  | Publishes a message to a particular topic.  | <code>name: string</code>  | The topic&rsquo;s name.
+ || <code>qos: uint32</code>  | Default: <code>0</code></p>
 
 <h3 id="eclipse-hono">Eclipse Hono</h3>
 
@@ -1519,32 +1463,10 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 
 <h4 id="signals-3">Signals</h4>
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Parameters</th>
-<th></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>telemetry: string</code></td>
-<td>Publishes a message to a particular topic.</td>
-<td><code>qos: uint32</code></td>
-<td>Default: <code>0</code></td>
-</tr>
-
-<tr>
-<td><code>event: string</code></td>
-<td>Publishes a message to a particular topic.</td>
-<td><code>qos: uint32</code></td>
-<td>Default: <code>0</code></td>
-</tr>
-</tbody>
-</table>
+<p>Name                            | Description                           | Parameters |
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
+<code>telemetry: string</code>  | Publishes a message to a particular topic.  | <code>qos: uint32</code>  | Default: <code>0</code>
+<code>event: string</code>  | Publishes a message to a particular topic.  | <code>qos: uint32</code>  | Default: <code>0</code></p>
 
 <h3 id="rest-over-http">REST over HTTP</h3>
 
@@ -1558,7 +1480,7 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 <span class="nx">setup</span> <span class="nx">backend</span>: <span class="kt">HttpRestClient</span> <span class="p">{</span>
   <span class="nx">transport</span> <span class="o">=</span> <span class="nx">net</span><span class="p">;</span>
   <span class="nx">endpointBase</span> <span class="o">=</span> <span class="s2">&#34;http://jsonplaceholder.typicode.com&#34;</span><span class="p">;</span>
-  
+
   <span class="kd">var</span> <span class="nx">posts</span> <span class="o">=</span> <span class="nx">resource</span><span class="p">(</span><span class="s2">&#34;/posts&#34;</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -1599,39 +1521,11 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 
 <h4 id="signal">Signal</h4>
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Parameters</th>
-<th></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>resource: string</code></td>
-<td>A REST resource on the server.</td>
-<td><code>endpoint: string</code></td>
-<td>The REST path to the resource.</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>writeMethod: HttpMethod</code></td>
-<td>Which method to use when writing. Default: <code>POST</code></td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>readMethod: HttpMethod</code></td>
-<td>Which method to use when reading. Default: <code>GET</code></td>
-</tr>
-</tbody>
-</table>
+<p>Name                            | Description                           | Parameters |
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
+<code>resource: string</code>              | A REST resource on the server.        | <code>endpoint: string</code>  | The REST path to the resource.
+ || <code>writeMethod: HttpMethod</code>  | Which method to use when writing. Default: <code>POST</code>
+ || <code>readMethod: HttpMethod</code>   | Which method to use when reading. Default: <code>GET</code></p>
 
 <h2 id="buses-1">Buses</h2>
 
@@ -1651,46 +1545,12 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 <span class="p">}</span></code></pre></div>
 <h4 id="signals-4">Signals</h4>
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Parameters</th>
-<th></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>digitalIn: bool</code></td>
-<td>A GPIO-pin configured in input mode.</td>
-<td><code>pin: GPIOPin</code></td>
-<td>which pin to configure.</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>mode: GPIOMode</code></td>
-<td>whether this pin is pull up, pull down or floating.</td>
-</tr>
-
-<tr>
-<td><code>digitalOut: bool</code></td>
-<td>A GPIO-pin configured in output mode.</td>
-<td><code>pin: GPIOPin</code></td>
-<td>which pin to configure.</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>initialValue: bool</code></td>
-<td>The pin&rsquo;s initial value after startup. Default is low (<code>false</code>).</td>
-</tr>
-</tbody>
-</table>
+<p>Name                            | Description                           | Parameters |
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
+<code>digitalIn: bool</code>               | A GPIO-pin configured in input mode.  | <code>pin: GPIOPin</code>  | which pin to configure.
+ | | <code>mode: GPIOMode</code>  | whether this pin is pull up, pull down or floating.
+<code>digitalOut: bool</code>              | A GPIO-pin configured in output mode. | <code>pin: GPIOPin</code>  | which pin to configure.
+ | | <code>initialValue: bool</code>  | The pin&rsquo;s initial value after startup. Default is low (<code>false</code>).</p>
 
 <h3 id="i2c-1">I2C</h3>
 
@@ -1724,53 +1584,13 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 
 <h4 id="signals-5">Signals</h4>
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Parameters</th>
-<th></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>register_</code><em>intType</em><code>:</code><em>intType</em></td>
-<td>A device register of size and sign specified by <em>intType</em>.</td>
-<td><code>address: uint8</code></td>
-<td>the register&rsquo;s address.</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>I2CMode: I2CMode</code></td>
-<td>whether this register is read, write, both or none. This only has an effect on validation, not on initialization.</td>
-</tr>
-
-<tr>
-<td><code>array_register_</code> <em>intType</em> <code>: array&lt;</code><em>intType</em><code>&gt;</code></td>
-<td>A device register consisting of multiple words of size and sign specified by <em>intType</em>.</td>
-<td><code>address: uint8</code></td>
-<td>the register&rsquo;s starting address.</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>I2CMode: I2CMode</code></td>
-<td>whether this register is read, write, both or none. This only has an effect on validation, not on initialization.</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>length: uint8</code></td>
-<td>how many words this register consists of.</td>
-</tr>
-</tbody>
-</table>
+<p>Name                            | Description                           | Parameters |
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
+<code>register_</code><em>intType</em><code>:</code><em>intType</em>                   | A device register of size and sign specified by <em>intType</em>.                              | <code>address: uint8</code>  | the register&rsquo;s address.
+ | | <code>I2CMode: I2CMode</code>  | whether this register is read, write, both or none. This only has an effect on validation, not on initialization.
+<code>array_register_</code> <em>intType</em> <code>: array&lt;</code><em>intType</em><code>&gt;</code> | A device register consisting of multiple words of size and sign specified by <em>intType</em>. | <code>address: uint8</code>  | the register&rsquo;s starting address.
+ | | <code>I2CMode: I2CMode</code>  | whether this register is read, write, both or none. This only has an effect on validation, not on initialization.
+ | | <code>length: uint8</code>  | how many words this register consists of.</p>
 
 <h2 id="io">IO</h2>
 
@@ -1802,107 +1622,25 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 
 <h4 id="configuration-15">Configuration</h4>
 
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Parameters</th>
-<th></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>resumingTextRead: string</code></td>
-<td>Provides read access to a file. Continues reading from last position.</td>
-<td><code>filePath: string</code></td>
-<td>The absolute path to the file.</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>blockSize: uint32</code></td>
-<td>The size of the buffer to be read at once.</td>
-</tr>
-
-<tr>
-<td><code>appendingTextWrite: string</code></td>
-<td>Provides write access to a file. Appends to existing files.</td>
-<td><code>filePath: string</code></td>
-<td>The absolute path to the file.</td>
-</tr>
-
-<tr>
-<td><code>rewindingTextRead: string</code></td>
-<td>Provides read access to a file. Always reads from the start of the file.</td>
-<td><code>filePath: string</code></td>
-<td>The absolute path to the file.</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>fileSize: uint32</code></td>
-<td>The size of the buffer to be read at once.</td>
-</tr>
-
-<tr>
-<td><code>rewindingTextWrite: string</code></td>
-<td>Provides write access to a file. Always truncates the file.</td>
-<td><code>filePath: string</code></td>
-<td>The absolute path to the file.</td>
-</tr>
-
-<tr>
-<td><code>resumingBinaryRead: array&lt;uint8&gt;</code></td>
-<td>Provides read access to a file. Continues reading from last position. Reads bytes instead of text.</td>
-<td><code>filePath: string</code></td>
-<td>The absolute path to the file.</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>blockSize: uint32</code></td>
-<td>The size of the buffer to be read at once.</td>
-</tr>
-
-<tr>
-<td><code>appendingBinaryWrite: array&lt;uint8&gt;</code></td>
-<td>Provides write access to a file. Appends to existing files. Reads bytes instead of text.</td>
-<td><code>filePath: string</code></td>
-<td>The absolute path to the file.</td>
-</tr>
-
-<tr>
-<td><code>rewindingBinaryRead: array&lt;uint8&gt;</code></td>
-<td>Provides read access to a file. Always reads from the start of the file. Reads bytes instead of text.</td>
-<td><code>filePath: string</code></td>
-<td>The absolute path to the file.</td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td><code>fileSize: uint32</code></td>
-<td>The size of the buffer to be read at once.</td>
-</tr>
-
-<tr>
-<td><code>rewindingBinaryWrite: array&lt;uint8&gt;</code></td>
-<td>Provides write access to a file. Always truncates the file. Reads bytes instead of text.</td>
-<td><code>filePath: string</code></td>
-<td>The absolute path to the file.</td>
-</tr>
-</tbody>
-</table>
+<p>Name                            | Description                           | Parameters |
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
+<code>resumingTextRead: string</code>           | Provides read access to a file. Continues reading from last position.                                 | <code>filePath: string</code> | The absolute path to the file.
+ | | <code>blockSize: uint32</code> | The size of the buffer to be read at once.
+<code>appendingTextWrite: string</code>         | Provides write access to a file. Appends to existing files.                                           | <code>filePath: string</code> | The absolute path to the file.
+<code>rewindingTextRead: string</code>          | Provides read access to a file. Always reads from the start of the file.                              | <code>filePath: string</code> | The absolute path to the file.
+ | | <code>fileSize: uint32</code>  | The size of the buffer to be read at once.
+<code>rewindingTextWrite: string</code>         | Provides write access to a file. Always truncates the file.                                           | <code>filePath: string</code> | The absolute path to the file.
+<code>resumingBinaryRead: array&lt;uint8&gt;</code>   | Provides read access to a file. Continues reading from last position. Reads bytes instead of text.    | <code>filePath: string</code> | The absolute path to the file.
+ | | <code>blockSize: uint32</code> | The size of the buffer to be read at once.
+<code>appendingBinaryWrite: array&lt;uint8&gt;</code> | Provides write access to a file. Appends to existing files. Reads bytes instead of text.              | <code>filePath: string</code> | The absolute path to the file.
+<code>rewindingBinaryRead: array&lt;uint8&gt;</code>  | Provides read access to a file. Always reads from the start of the file. Reads bytes instead of text. | <code>filePath: string</code> | The absolute path to the file.
+ | | <code>fileSize: uint32</code>  | The size of the buffer to be read at once.
+<code>rewindingBinaryWrite: array&lt;uint8&gt;</code> | Provides write access to a file. Always truncates the file. Reads bytes instead of text.              | <code>filePath: string</code> | The absolute path to the file.</p>
 
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2018 The Eclipse Mita Project &ndash;
+				&copy; 2019 The Eclipse Mita Project &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
