@@ -496,7 +496,7 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 
 <tr>
 <td><a href="../../platforms/xdk110/#buttons">Two buttons</a></td>
-<td></td>
+<td><a href="../../platforms/xdk110/#lora">LoRa</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -541,6 +541,26 @@ Due to its versatility it also serves as reference platform for Mita.</p>
 <p>Content assist (<code>CTRL+Space</code>) will provide you with all available configuration items and their valid values.</p>
 
 <p>Temperature, pressure and humidity are available from a single resource: <code>environment</code>.</p>
+
+<h2 id="device-information">Device Information</h2>
+
+<p>The XDK offers some information you can read out via modalities.</p>
+
+<h3 id="power-status">Power Status</h3>
+
+<p>An approximation of whether the device is charging or on battery, and what the battery level is can be read out using <code>XDK110.powerStatus</code>. For example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">every</span> <span class="nx">button_one</span><span class="p">.</span><span class="nx">pressed</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">ps</span> <span class="o">=</span> <span class="nx">XDK110</span><span class="p">.</span><span class="nx">powerStatus</span><span class="p">.</span><span class="nx">read</span><span class="p">();</span>
+    <span class="nx">where</span><span class="p">(</span><span class="nx">ps</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">is</span><span class="p">(</span><span class="nx">PowerStatus</span><span class="p">.</span><span class="nx">Battery</span> <span class="o">-&gt;</span> <span class="nx">level</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">println</span><span class="p">(</span><span class="sb">`Battery level: approx. </span><span class="si">${</span><span class="nx">level</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">is</span><span class="p">(</span><span class="nx">PowerStatus</span><span class="p">.</span><span class="nx">Corded</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">println</span><span class="p">(</span><span class="s2">&#34;Charged&#34;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>   
+<span class="p">}</span></code></pre></div>
+<p>This is only an approximation based on the voltage level read out of channel 7. During charging the reported level can be over 100%.</p>
 
 <h3 id="connectivities">Connectivities</h3>
 
@@ -1457,6 +1477,18 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 <td><code>authentication: HonoAuthentication</code></td>
 <td>Credentials or identification for authentication to the Hono network.</td>
 </tr>
+
+<tr>
+<td></td>
+<td><code>certificatePath: string</code></td>
+<td>The path to the expected server certificate used for MQTT with TLS. Can be an absolute path like <code>C:\certificates\mosquitto.crt</code> or <code>/etc/ssl/certs/mosquitto.crt</code> or a relative path like <code>certificates/server.crt</code>. In the latter case this will look for the certificate relative to the project root. The certificate needs to be in PEM format (<code>-----BEGIN CERTIFICATE-----</code>/<code>-----END CERTIFICATE-----</code>). <strong>This configuration item is required when using MQTT over TLS.</strong></td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>sntpServer: string</code></td>
+<td>To verify the server&rsquo;s certificate the XDK needs to get the current time over SNTP. Per default it connects to <code>pool.ntp.org:123</code>, however if for some reason like being in a closed network you cannot access this NTP server you can specify your own.</td>
+</tr>
 </tbody>
 </table>
 
@@ -1518,7 +1550,7 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 </tbody>
 </table>
 
-<h4 id="signal">Signal</h4>
+<h4 id="signals-4">Signals</h4>
 
 <p>Name                            | Description                           | Parameters |
 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
@@ -1526,13 +1558,144 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
  || <code>writeMethod: HttpMethod</code>  | Which method to use when writing. Default: <code>POST</code>
  || <code>readMethod: HttpMethod</code>   | Which method to use when reading. Default: <code>GET</code></p>
 
+<h3 id="lora">LoRa</h3>
+
+<p>LoRa is a low-power network for IoT. Since bandwidth is usually extremely limited you should only send small messages infrequently.
+In this implementation there are two ways to send data: either raw bytes or <a href="https://mydevices.com/cayenne/docs/lora/#lora-cayenne-low-power-payload">CayenneLPP</a> messages, a serializable predefined format.</p>
+
+<p>Receiving messages is currently not supported.</p>
+
+<h3 id="example-3">Example</h3>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">lora</span>: <span class="kt">LoRa</span> <span class="p">{</span>
+  <span class="nx">region</span> <span class="o">=</span> <span class="nx">EU</span><span class="p">;</span>
+  <span class="nx">loraAppKey</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">];</span>
+  <span class="nx">loraAppEui</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">];</span>
+
+  <span class="kd">var</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">raw</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">Unconfirmed</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">cayenne</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">Confirmed</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">every</span> <span class="mi">1</span> <span class="nx">hour</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">array</span><span class="o">&lt;</span><span class="nx">CayennePayload</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="nx">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">CayennePayload</span><span class="p">.</span><span class="nx">Accelerometer</span><span class="p">(</span>
+    <span class="nx">accelerometer</span><span class="p">.</span><span class="nx">x_axis</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span> <span class="kr">as</span> <span class="nx">int16</span><span class="p">,</span> 
+    <span class="nx">accelerometer</span><span class="p">.</span><span class="nx">y_axis</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span> <span class="kr">as</span> <span class="nx">int16</span><span class="p">,</span> 
+    <span class="nx">accelerometer</span><span class="p">.</span><span class="nx">z_axis</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span> <span class="kr">as</span> <span class="nx">int16</span>
+  <span class="p">);</span>
+  <span class="nx">lora</span><span class="p">.</span><span class="nx">c</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">every</span> <span class="mi">10</span> <span class="nx">minutes</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">data</span>: <span class="kt">array</span><span class="o">&lt;</span><span class="nx">uint8</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0xCA</span><span class="p">,</span> <span class="mh">0xFE</span><span class="p">];</span>
+  <span class="nx">lora</span><span class="p">.</span><span class="nx">r</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<h4 id="configuration-14">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Required</strong></td>
+<td><code>region: Region</code></td>
+<td>Whether you are using the EU or US LoRa module.</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>loraAppKey: array&lt;uint8&gt;</code></td>
+<td>The key of your application in big-endian format (MSB first).</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>loraAppEui: array&lt;uint8&gt;</code></td>
+<td>The EUI of your application in big-endian format (MSB first).</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>loraDeviceEui: array&lt;uint8&gt;</code></td>
+<td>Optionally set the device&rsquo;s EUI. If you don&rsquo;t set this the predefined EUI of your LoRa board will be used.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>adaptiveDataRate: bool</code></td>
+<td>Control whether adaptive data rate is turned on. Default: <code>true</code>.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>bandFrequency: uint16</code></td>
+<td>Configure the band frequency according to your gateway <strong>in MHz</strong>. Valid values are for the EU module: 433 MHz and 868 MHz, and for the US module 915 MHz. Defaults: EU: 868, US: 915</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>rx2Frequency: uint32</code></td>
+<td>Configure the Rx2 frequency according to your gateway <strong>in kHz</strong>. Valid values are for the EU module: 433050 kHz to 434790 kHz and 863000 kHz to 870000 kHz, and for the US module: 923300 kHz to 927500 kHz. Defaults: EU: 869525 kHz, US: 923300 kHz</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>rx2DataRate: uint8</code></td>
+<td>Configure the Rx2 data rate according to your gateway. Valid values are for the EU module: 0 to 7, and for the US module: 8 to 13. Defaults: EU: 0, US: 8</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>dataRate: uint8</code></td>
+<td>Configure the data rate according to your gateway. Valid values are for the EU module: 0 to 7, and for the US module: 0 to 4. Default: 3</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="signals-5">Signals</h4>
+
+<p>Name                            | Description                           | Parameters |
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
+<code>raw: array&lt;uint8&gt;</code>             | Send data input as raw bytes.         | <code>portNum: uint8</code>  | Which port to use. Default: <code>1</code>
+ || <code>confirmation: LoRaMessageConfirmation</code>   | Whether to send confirmed messages. One of <code>Confirmed</code> and <code>Unconfirmed</code>. Default: <code>Unconfirmed</code>
+<code>cayenne: array&lt;CayennePayload&gt;</code> | Send serialized CayenneLPP messages. | <code>portNum: uint8</code>  | Which port to use. Default: <code>1</code>
+ || <code>confirmation: LoRaMessageConfirmation</code>   | Whether to send confirmed messages. One of <code>Confirmed</code> and <code>Unconfirmed</code>. Default: <code>Unconfirmed</code></p>
+
+<h4 id="cayenne-messages">Cayenne Messages</h4>
+
+<p>The following CayenneLPP messages are supported via a <a href="../../language/types/#sum-tymes">sum type</a>:</p>
+
+<pre><code>alt CayennePayload {
+    DigitalInput: uint8
+  | DigitalOutput: uint8
+  | AnalogInput: int16
+  | AnalogOutput: int16
+  | IlluminanceSensor: uint16
+  | PresenceSensor: uint8
+  | TemperatureSensor: int16
+  | HumiditySensor: uint8
+  | Accelerometer: int16, int16, int16
+  | Barometer: uint16
+  | Gyrometer: int16, int16, int16
+  | GpsLocation: {Latitude: int32, Longitude: int32, Altitude: int32}
+}
+</code></pre>
+
+<p>Constructing them works like in the example above or as described in the documentation of <a href="../../language/types/#sum-tymes">sum types</a>.
+For example to create a GPS location message type <code>CayennePayload.GpsLocation(Latitude=lat, Altitude=alt, Longitude=lon)</code>.</p>
+
 <h2 id="buses-1">Buses</h2>
 
 <h3 id="gpio-1">GPIO</h3>
 
 <p>GPIO provides bit-wise communication with the environment. Low (0V) and high (3.3V) are represented by <code>false</code> and <code>true</code>.</p>
 
-<h4 id="example-3">Example</h4>
+<h4 id="example-4">Example</h4>
 <div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">test</span>: <span class="kt">GPIO</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">out</span> <span class="o">=</span> <span class="nx">digitalOut</span><span class="p">(</span><span class="nx">pin</span> <span class="o">=</span> <span class="nx">PA1</span><span class="p">,</span> <span class="nx">initialValue</span> <span class="o">=</span> <span class="kc">false</span><span class="p">);</span>
   <span class="kd">var</span> <span class="nx">inp</span> <span class="o">=</span> <span class="nx">digitalIn</span><span class="p">(</span><span class="nx">pin</span> <span class="o">=</span> <span class="nx">PB2</span><span class="p">,</span> <span class="nx">mode</span> <span class="o">=</span> <span class="nx">PullDown</span><span class="p">);</span>
@@ -1542,7 +1705,7 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
   <span class="nx">test</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
   <span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">test</span><span class="p">.</span><span class="nx">inp</span><span class="p">.</span><span class="nx">read</span><span class="p">();</span>
 <span class="p">}</span></code></pre></div>
-<h4 id="signals-4">Signals</h4>
+<h4 id="signals-6">Signals</h4>
 
 <p>Name                            | Description                           | Parameters |
 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
@@ -1555,7 +1718,7 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 
 <p>The I2C bus provides access to interfaced devices via I2C.</p>
 
-<h4 id="configuration-14">Configuration</h4>
+<h4 id="configuration-15">Configuration</h4>
 
 <table>
 <thead>
@@ -1581,7 +1744,7 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 </tbody>
 </table>
 
-<h4 id="signals-5">Signals</h4>
+<h4 id="signals-7">Signals</h4>
 
 <p>Name                            | Description                           | Parameters |
 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
@@ -1619,7 +1782,7 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 
 <p>Files will not stay open between calls, this means that you can safely declare a file with write access multiple times, for example to read it in both text- and binary-mode.</p>
 
-<h4 id="configuration-15">Configuration</h4>
+<h4 id="configuration-16">Configuration</h4>
 
 <p>Name                            | Description                           | Parameters |
 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;
