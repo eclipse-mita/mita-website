@@ -141,6 +141,17 @@ Sensor: button_one (Button) Modalities    Name Description     is_pressed : bool
     </item>
     
     <item>
+      <title>CGW</title>
+      <link>/platforms/cgw/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/platforms/cgw/</guid>
+      <description>Overview: The CGW The Common GateWay is a Bosch internal development platform, equipped with BMA280, BME280, BLE, CAT-M1/NB-IoT and GPS.
+Implemented System Resources Currently implemented sensors, connectivities and buses of the CGW platform:
+   Sensors Connectivities Buses IO     Accelerometer LED     Environment REST over HTTP      Configuration Startup Delay To debug the startup process you can configure a startup delay so the CGW can connect via USB before setting up devices, connectivity, etc.</description>
+    </item>
+    
+    <item>
       <title>Exceptions</title>
       <link>/language/exceptions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

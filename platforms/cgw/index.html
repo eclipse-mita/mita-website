@@ -1,0 +1,912 @@
+
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>CGW - Eclipse Mita</title>
+    <meta name="generator" content="Hugo 0.54.0" />
+
+    
+    <meta name="description" content="The documentation of Eclipse Mita.">
+    
+    <link rel="canonical" href="../../platforms/cgw/">
+    
+
+    <meta property="og:url" content="/platforms/cgw/">
+    <meta property="og:title" content="Eclipse Mita">
+    <meta property="og:image" content="/images/mita.svg">
+    <meta name="apple-mobile-web-app-title" content="Eclipse Mita">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('/fonts/icon.eot');
+        src: url('/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('/fonts/icon.woff')
+               format('woff'),
+             url('/fonts/icon.ttf')
+               format('truetype'),
+             url('/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="../../stylesheets/application.css">
+    <link rel="stylesheet" href="../../stylesheets/temporary.css">
+    <link rel="stylesheet" href="../../stylesheets/palettes.css">
+    <link rel="stylesheet" href="../../stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script src="../../javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-blue-grey palette-accent-light-blue">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        CGW
+      </div>
+    </div>
+
+    
+    <div class="button button-twitter" role="button" aria-label="Twitter">
+       <a href="https://twitter.com/eclipse_mita" title="@eclipse_mita on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+    </div>
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/eclipse/mita" title="@eclipse/mita on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="../../" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="../../images/mita.svg">
+        </div>
+      
+      <div class="name">
+        <strong>Eclipse Mita </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Download" href="http://github.com/eclipse/mita">
+	
+	Download
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Concepts" href="../../concepts/">
+	
+	Concepts
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Language</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Introduction" href="../../language/introduction/">
+	
+	Introduction
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Basics" href="../../language/basics/">
+	
+	Basics
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Packages" href="../../language/packages/">
+	
+	Packages
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="System Setup" href="../../language/setup/">
+	
+	System Setup
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Types" href="../../language/types/">
+	
+	Types
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Arrays" href="../../language/arrays/">
+	
+	Arrays
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Functions" href="../../language/functions/">
+	
+	Functions
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Foreign Function Interface" href="../../language/foreignfunctioninterface/">
+	
+	Foreign Function Interface
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Events" href="../../language/events/">
+	
+	Events
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Exceptions" href="../../language/exceptions/">
+	
+	Exceptions
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Platforms</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Integrators Guide" href="../../platforms/integratorsguide/">
+	
+	Integrators Guide
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Arduino Uno" href="../../platforms/arduinouno/">
+	
+	Arduino Uno
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a class="current" title="CGW" href="../../platforms/cgw/">
+	
+	CGW
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+      
+        
+        
+
+
+
+<a  title="XDK110" href="../../platforms/xdk110/">
+	
+	XDK110
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="x86" href="../../platforms/x86/">
+	
+	x86
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+            
+
+<h2 id="overview-the-cgw">Overview: The CGW</h2>
+
+<p>The Common GateWay is a Bosch internal development platform, equipped with BMA280, BME280, BLE, CAT-M1/NB-IoT and GPS.</p>
+
+<h3 id="implemented-system-resources">Implemented System Resources</h3>
+
+<p>Currently implemented sensors, connectivities and buses of the CGW platform:</p>
+
+<table>
+<thead>
+<tr>
+<th>Sensors</th>
+<th>Connectivities</th>
+<th>Buses</th>
+<th>IO</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="../../platforms/cgw/#accelerometer-bma280">Accelerometer</a></td>
+<td><a href="../../platforms/cgw/#led">LED</a></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td><a href="../../platforms/cgw/#environment-bme280">Environment</a></td>
+<td><a href="../../platforms/cgw/#rest-over-http">REST over HTTP</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="configuration">Configuration</h2>
+
+<h3 id="startup-delay">Startup Delay</h3>
+
+<p>To debug the startup process you can configure a startup delay so the CGW can connect via USB before setting up devices, connectivity, etc.:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">CGW</span> <span class="p">{</span>
+  <span class="nx">startupDelay</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">;</span> <span class="cm">/* wait 5 seconds before initialization */</span>
+<span class="p">}</span></code></pre></div>
+<h3 id="console-interface">Console Interface</h3>
+
+<p>Console output can be viewed either via RTT or UART. You configure this like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">CGW</span> <span class="p">{</span>
+  <span class="nx">consoleInterface</span> <span class="o">=</span> <span class="p">.</span><span class="nx">UART</span><span class="p">;</span> <span class="c1">// or .RTT
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+<h2 id="connectivities">Connectivities</h2>
+
+<h3 id="led">LED</h3>
+
+<p>The CGW features three custom usable LEDs in red, green and blue. On and off are encoded using <code>true</code> and <code>false</code> in Mita.</p>
+
+<h4 id="modalities">Modalities</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Parameters</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>light_up: bool</code></td>
+<td>Represents one of the three LEDs.</td>
+<td><code>color: LedColor</code></td>
+<td>One of <code>Red</code>, <code>Green</code> or <code>Blue</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="rest-over-http">REST over HTTP</h3>
+
+<p>Using REST you can easily talk to servers over HTTP. REST defines a stateless interface with a simple URL scheme. Normally a REST server consists of a versioned endpoint like <code>http://api.github.com/v3</code> which then provides different resources, for example <code>api.github.com/v3/repos/eclipse/mita/branches</code> and <code>/repos/eclipse/mita/issues</code>.</p>
+
+<p>Currently only writing some content types and POST method is supported. There is a special resource available for BCX for talking to the Bosch IoT Cloud, <code>BcxHttpRestClient</code>.</p>
+
+<h4 id="example">Example</h4>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">net</span>: <span class="kt">Radio</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+
+<span class="nx">setup</span> <span class="nx">backend</span>: <span class="kt">HttpRestClient</span> <span class="p">{</span>
+  <span class="nx">transport</span> <span class="o">=</span> <span class="nx">net</span><span class="p">;</span>
+  <span class="nx">endpointBase</span> <span class="o">=</span> <span class="s2">&#34;http://jsonplaceholder.typicode.com&#34;</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">posts</span> <span class="o">=</span> <span class="nx">resource</span><span class="p">(</span><span class="s2">&#34;/posts&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">every</span> <span class="mi">100</span> <span class="nx">milliseconds</span> <span class="p">{</span>
+  <span class="nx">backend</span><span class="p">.</span><span class="nx">branches</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">accelerometer</span><span class="p">.</span><span class="nx">magnitude</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<h4 id="configuration-1">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Required</strong></td>
+<td><code>transport: WLAN</code></td>
+<td>The transport layer used for communication.</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>endpointBase: string</code></td>
+<td>The server URL base to which REST requests are made.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="signals">Signals</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Parameters</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>resource: string</code></td>
+<td>A REST resource on the server.</td>
+<td><code>endpoint: string</code></td>
+<td>The REST path to the resource.</td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td><code>contentType: ContentType</code></td>
+<td>The content type of your payload. One of <code>.Text, .Json, .Xml, .Octet, .WwwUrl, Multipart</code>. Default: <code>.Json</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="sensors">Sensors</h2>
+
+<h3 id="accelerometer-bma280">Accelerometer (BMA280)</h3>
+
+<p>The BMA280 is a tri axial, low-g acceleration sensor with digital output for consumer applications. It allows measurements of acceleration in three perpendicular axes.</p>
+
+<h4 id="configuration-2">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td><code>range: BMA280_Range</code></td>
+<td>The range of acceleration we want to measure. Default: <code>2G</code></td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>bandwidth: BMA280_Bandwidth</code></td>
+<td>The low-pass filter bandwidth used by the BMA. Default: <code>500Hz</code></td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>any_motion_threshold: uint32</code></td>
+<td>The threshold of acceleration that has to be crossed before an any motion event is triggered. Default: <code>20</code></td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>no_motion_threshold: uint32</code></td>
+<td>The threshold of acceleration that must not be exceeded for a no motion event to be triggered. Default: <code>20</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="modalities-1">Modalities</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td><code>x_axis: int32</code></td>
+<td>The X axis of the BMA280.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>y_axis: int32</code></td>
+<td>The Y axis of the BMA280.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>z_axis: int32</code></td>
+<td>The Z axis of the BMA280.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>magnitude: int32</code></td>
+<td>The L2 norm of the acceleration vector: <code>sqrt(x^2 + y^2 + z^2)</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="events">Events</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>any_motion</code></td>
+<td>The any motion event (also called activity) uses the change between two successive acceleration measurements to detect changes in motion. An event is generated when this change exceeds the any_motion_threshold.</td>
+</tr>
+
+<tr>
+<td><code>no_motion</code></td>
+<td>The no motion event (also called any inactivity) uses the change between two successive acceleration measurements to detect changes in motion. An event is generated when this change consecutively stays below the no_motion_threshold.</td>
+</tr>
+
+<tr>
+<td><code>low_g</code></td>
+<td>The low g event is based on comparing acceleration to a threshold which is most useful for free-fall detection.</td>
+</tr>
+
+<tr>
+<td><code>high_g</code></td>
+<td>The high g event is based on comparing acceleration to a threshold to detect shocks or other high acceleration events.</td>
+</tr>
+
+<tr>
+<td><code>single_tap</code></td>
+<td>A single tap is an event triggered by high activity followed shortly by no activity.</td>
+</tr>
+
+<tr>
+<td><code>double_tap</code></td>
+<td>A double tap consists of two single tap events right after one another.</td>
+</tr>
+
+<tr>
+<td><code>flat</code></td>
+<td>The flat event is triggered when the device is flat on the ground.</td>
+</tr>
+
+<tr>
+<td><code>orientation</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>fifo_full</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>fifo_wml</code></td>
+<td></td>
+</tr>
+
+<tr>
+<td><code>new_data</code></td>
+<td>This event serves the asynchronous reading of data. It is generated after storing a new value of z-axis acceleration data in the data register.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="environment-bme280">Environment (BME280)</h3>
+
+<p>The BME280 is a combined digital <strong>humidity</strong>, <strong>pressure</strong> and <strong>temperature</strong> sensor based on proven sensing principles.</p>
+
+<h4 id="configuration-3">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td></td>
+<td><code>power_mode: BME280_PowerMode</code></td>
+<td>The BME280 power mode. Default: <code>Normal</code>.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>standby_time: uint32</code></td>
+<td>The standby time used in normal mode in milliseconds. Beware that the value supplied here will be clipped to the nearest valid value.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>temperature_oversampling: BME280_Oversampling</code></td>
+<td>Reduces noise in the temperature measurement by over sampling. Higher oversampling settings reduce noise but increase measurement time and power consumption.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>pressure_oversampling: BME280_Oversampling</code></td>
+<td>Reduces noise in the pressure measurement by over sampling. Higher oversampling settings reduce noise but increase measurement time and power consumption.</td>
+</tr>
+
+<tr>
+<td></td>
+<td><code>humidity_oversampling: BME280_Oversampling</code></td>
+<td>Reduces noise in the humidity measurement by over sampling. Higher oversampling settings reduce noise but increase measurement time and power consumption.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="modalities-2">Modalities</h4>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>temperature : int32</code></td>
+<td>The temperature reported by the BME280.</td>
+</tr>
+
+<tr>
+<td><code>pressure : uint32</code></td>
+<td>The pressure reported by the BME280.</td>
+</tr>
+
+<tr>
+<td><code>humidity : uint32</code></td>
+<td>The humidity reported by the BME280 in percentage.</td>
+</tr>
+</tbody>
+</table>
+
+
+			
+<aside class="copyright" role="note">
+  <div class="incubation">
+    <a href="https://www.eclipse.org/projects/what-is-incubation.php" target="_blank">
+      <img src="../../images/incubating.png" />
+    </a>
+  </div>
+  <div class="logo">
+    <a href="https://www.eclipse.org" target="_blank">
+      <img src="../../images/eclipse_foundation_logo.svg" />
+    </a>
+  </div>
+  <p class="notice">
+    
+    Documentation built with
+    <a href="https://www.gohugo.io" target="_blank">Hugo</a>
+    using the
+    <a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+  </p>
+  <p class="quickLinks">
+    <a href="http://www.eclipse.org/legal/privacy.php" target="_blank">
+      &gt; Privacy Policy
+    </a>
+    <a href="http://www.eclipse.org/legal/termsofuse.php" target="_blank">
+      &gt; Terms of Use
+    </a>
+    <a href="http://www.eclipse.org/legal/copyright.php" target="_blank">
+      &gt; Copyright Agent
+    </a>
+    <a href="http://www.eclipse.org/legal" target="_blank">
+      &gt; Legal
+    </a>
+    <a href="https://eclipse.org/security" target="_blank">
+      &gt; Report a Vulnerability
+    </a>
+  </p>
+</aside>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="../../javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
