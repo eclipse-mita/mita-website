@@ -505,6 +505,39 @@
 </tbody>
 </table>
 
+<h3 id="radio">Radio</h3>
+
+<p>The Common Gateway features a u-blox mobile radio capable of both CAT-M1 and NB-IoT technologies.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">setup</span> <span class="nx">net</span>: <span class="kt">Radio</span> <span class="p">{</span>
+  <span class="nx">radioStandard</span> <span class="o">=</span> <span class="p">.</span><span class="nx">CAT_M1</span><span class="p">;</span>
+  <span class="nx">apn</span> <span class="o">=</span> <span class="s2">&#34;internet.m2mportal.de&#34;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<h4 id="configuration-1">Configuration</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Required</strong></td>
+<td><code>radioStandard: RadioStandard</code></td>
+<td>Whether to use NB-IoT or CAT-M1. One of <code>.NB_IoT, .CAT_M1</code>.</td>
+</tr>
+
+<tr>
+<td><strong>Required</strong></td>
+<td><code>apn: string</code></td>
+<td>The APN of your mobile provider.</td>
+</tr>
+</tbody>
+</table>
+
 <h3 id="rest-over-http">REST over HTTP</h3>
 
 <p>Using REST you can easily talk to servers over HTTP. REST defines a stateless interface with a simple URL scheme. Normally a REST server consists of a versioned endpoint like <code>http://api.github.com/v3</code> which then provides different resources, for example <code>api.github.com/v3/repos/eclipse/mita/branches</code> and <code>/repos/eclipse/mita/issues</code>.</p>
@@ -524,7 +557,7 @@
 <span class="nx">every</span> <span class="mi">100</span> <span class="nx">milliseconds</span> <span class="p">{</span>
   <span class="nx">backend</span><span class="p">.</span><span class="nx">branches</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">accelerometer</span><span class="p">.</span><span class="nx">magnitude</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="p">}</span></code></pre></div>
-<h4 id="configuration-1">Configuration</h4>
+<h4 id="configuration-2">Configuration</h4>
 
 <table>
 <thead>
@@ -538,7 +571,7 @@
 <tbody>
 <tr>
 <td><strong>Required</strong></td>
-<td><code>transport: WLAN</code></td>
+<td><code>transport: Radio</code></td>
 <td>The transport layer used for communication.</td>
 </tr>
 
@@ -585,7 +618,7 @@
 
 <p>The BMA280 is a tri axial, low-g acceleration sensor with digital output for consumer applications. It allows measurements of acceleration in three perpendicular axes.</p>
 
-<h4 id="configuration-2">Configuration</h4>
+<h4 id="configuration-3">Configuration</h4>
 
 <table>
 <thead>
@@ -607,18 +640,6 @@
 <td></td>
 <td><code>bandwidth: BMA280_Bandwidth</code></td>
 <td>The low-pass filter bandwidth used by the BMA. Default: <code>500Hz</code></td>
-</tr>
-
-<tr>
-<td></td>
-<td><code>any_motion_threshold: uint32</code></td>
-<td>The threshold of acceleration that has to be crossed before an any motion event is triggered. Default: <code>20</code></td>
-</tr>
-
-<tr>
-<td></td>
-<td><code>no_motion_threshold: uint32</code></td>
-<td>The threshold of acceleration that must not be exceeded for a no motion event to be triggered. Default: <code>20</code></td>
 </tr>
 </tbody>
 </table>
@@ -661,79 +682,11 @@
 </tbody>
 </table>
 
-<h4 id="events">Events</h4>
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>any_motion</code></td>
-<td>The any motion event (also called activity) uses the change between two successive acceleration measurements to detect changes in motion. An event is generated when this change exceeds the any_motion_threshold.</td>
-</tr>
-
-<tr>
-<td><code>no_motion</code></td>
-<td>The no motion event (also called any inactivity) uses the change between two successive acceleration measurements to detect changes in motion. An event is generated when this change consecutively stays below the no_motion_threshold.</td>
-</tr>
-
-<tr>
-<td><code>low_g</code></td>
-<td>The low g event is based on comparing acceleration to a threshold which is most useful for free-fall detection.</td>
-</tr>
-
-<tr>
-<td><code>high_g</code></td>
-<td>The high g event is based on comparing acceleration to a threshold to detect shocks or other high acceleration events.</td>
-</tr>
-
-<tr>
-<td><code>single_tap</code></td>
-<td>A single tap is an event triggered by high activity followed shortly by no activity.</td>
-</tr>
-
-<tr>
-<td><code>double_tap</code></td>
-<td>A double tap consists of two single tap events right after one another.</td>
-</tr>
-
-<tr>
-<td><code>flat</code></td>
-<td>The flat event is triggered when the device is flat on the ground.</td>
-</tr>
-
-<tr>
-<td><code>orientation</code></td>
-<td></td>
-</tr>
-
-<tr>
-<td><code>fifo_full</code></td>
-<td></td>
-</tr>
-
-<tr>
-<td><code>fifo_wml</code></td>
-<td></td>
-</tr>
-
-<tr>
-<td><code>new_data</code></td>
-<td>This event serves the asynchronous reading of data. It is generated after storing a new value of z-axis acceleration data in the data register.</td>
-</tr>
-</tbody>
-</table>
-
 <h3 id="environment-bme280">Environment (BME280)</h3>
 
 <p>The BME280 is a combined digital <strong>humidity</strong>, <strong>pressure</strong> and <strong>temperature</strong> sensor based on proven sensing principles.</p>
 
-<h4 id="configuration-3">Configuration</h4>
+<h4 id="configuration-4">Configuration</h4>
 
 <table>
 <thead>
