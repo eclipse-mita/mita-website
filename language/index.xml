@@ -36,7 +36,7 @@ fn main() { let x = 42; println(`The value of x is ${x}`); x = 64; println(`The 
       
       <guid>/language/packages/</guid>
       <description>In Mita code is organized in packages, which serve multiple purposes:
- Divide the namespace: Mita programs have one global namespace per .x file. Unlike Java for example, there are no means to qualify the name of an element. Packages are used to keep this namespace clean. Only things which are explicitly imported from other packages are visible in that namespace. See Importing Packages for more details. Group code: packages are a formidable way to group code which conceptually belongs together.</description>
+ Divide the namespace: Mita programs have one global namespace per .mita file. Unlike Java for example, there are no means to qualify the name of an element. Packages are used to keep this namespace clean. Only things which are explicitly imported from other packages are visible in that namespace. See Importing Packages for more details. Group code: packages are a formidable way to group code which conceptually belongs together.</description>
     </item>
     
     <item>
@@ -65,8 +65,8 @@ Strings In C there are no strings, but only arrays of characters and some conven
       
       <guid>/language/arrays/</guid>
       <description>Arrays are a fixed-size sequence of objects. In Mita, arrays can hold any type:
-var array1 : array&amp;lt;int32&amp;gt;; struct vec2d { var x : int32; var y : int32; } let array2 : array&amp;lt;vec2d&amp;gt;; Initialization There are multiple ways to initialize and fill arrays:
-let array1 : array&amp;lt;int32&amp;gt; = new array&amp;lt;int32&amp;gt;(size = 10); let array2 : array&amp;lt;int32&amp;gt; = [1,2,3,4]; Length Mita arrays know how long arrays are, unlike C arrays.</description>
+var array1 : array&amp;lt;int32, _&amp;gt;; struct vec2d { var x : int32; var y : int32; } let array2 : array&amp;lt;vec2d, _&amp;gt;; Initialization There are multiple ways to initialize and fill arrays:
+let array1 : array&amp;lt;int32, 10&amp;gt;; // filled with 0s let array2 : array&amp;lt;int32, _&amp;gt; = [1,2,3,4]; Length Mita arrays know how long they are, unlike C arrays.</description>
     </item>
     
     <item>
@@ -109,6 +109,16 @@ every accelerometer.any_motion { } every 60 seconds { } Time comes in different 
 exception FooException; Exceptions can be thrown, which returns control flow to the caller. If the exception is not caught by the caller it propagates further. If the exception is never caught it causes a system reset.
 throw FooException; Exceptions can be caught with the familiar try...catch syntax:
 try { throw FooException; } catch(FooException) { println(&amp;#34;Caught FooException&amp;#34;); } Exceptions are implicit, meaning that functions do not have to (and cannot) declare the exceptions they might throw.</description>
+    </item>
+    
+    <item>
+      <title>Generated Types and Functions</title>
+      <link>/language/generatedthings/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/language/generatedthings/</guid>
+      <description>Introduction Mita compiles to C with static memory management without large state machines or spaghetti code (unless you write that yourself). This is great for understanding how Mita code executes and runtime behaviour, however it imposes some serious limitations on what you can reasonably express in the language itself.
+To extend this there are generated types and functions. They can be used by users very easily and are more flexible than core types and functions, but need to be compiled by a small compiler fragment or generator.</description>
     </item>
     
   </channel>

@@ -332,6 +332,19 @@
 
 
       
+        
+        
+
+
+
+<a  title="Generated Types and Functions" href="../../language/generatedthings/">
+	
+	Generated Types and Functions
+</a>
+
+
+
+      
     </ul>
   
 </li>
@@ -429,32 +442,40 @@
             
 
 <p>Arrays are a fixed-size sequence of objects. In Mita, arrays can hold any type:</p>
-<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">var</span> <span class="nx">array1</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">var</span> <span class="nx">array1</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="p">,</span> <span class="nx">_</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="nx">struct</span> <span class="nx">vec2d</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">x</span> : <span class="kt">int32</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">y</span> : <span class="kt">int32</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="kd">let</span> <span class="nx">array2</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">vec2d</span><span class="o">&gt;</span><span class="p">;</span></code></pre></div>
+<span class="kd">let</span> <span class="nx">array2</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">vec2d</span><span class="p">,</span> <span class="nx">_</span><span class="o">&gt;</span><span class="p">;</span></code></pre></div>
 <h2 id="initialization">Initialization</h2>
 
 <p>There are multiple ways to initialize and fill arrays:</p>
-<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">let</span> <span class="nx">array1</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">array2</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">];</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kd">let</span> <span class="nx">array1</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// filled with 0s
+</span><span class="c1"></span><span class="kd">let</span> <span class="nx">array2</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="p">,</span> <span class="nx">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">];</span></code></pre></div>
 <h2 id="length">Length</h2>
 
-<p>Mita arrays know how long arrays are, unlike C arrays. This allows you to do a lot of things with arrays without knowing their size.</p>
-<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+<p>Mita arrays know how long they are, unlike C arrays. This allows you to do a lot of things with arrays without knowing their size.</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span> : <span class="kt">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="p">,</span> <span class="nx">_</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">result</span> <span class="o">+=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
-<p>The only exception to that is returning arrays. While we try hard to do <a href="../../concepts/#element-size-inference">element size inference</a>, in some cases we fail to correctly infer the size of your array and inform you about it. In that case you need to manually specify the array length:</p>
-<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">returnsArray</span><span class="p">()</span><span class="o">:</span> <span class="nx">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">array1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">);</span>
+<p>The only exception to that is returning arrays. While we try hard to do <a href="../../concepts/#element-size-inference">element size inference</a>, in some cases we fail to correctly infer the size of your array and inform you about it. In that case you need to manually specify the array length in the type:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">returnsArray() {</span>
+  <span class="kd">let</span> <span class="nx">array1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">array</span><span class="o">&lt;</span><span class="nx">int32</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span><span class="p">;</span>
   <span class="k">return</span> <span class="nx">array1</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>If you only want to specify the size you can leave out the type, too:</p>
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="nx">fn</span> <span class="nx">returnsArray() {</span>
+  <span class="kd">var</span> <span class="nx">a</span>: <span class="kt">array</span><span class="o">&lt;</span><span class="nx">_</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">a</span> <span class="o">+=</span> <span class="nx">i</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">a</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
 <h2 id="access">Access</h2>
 

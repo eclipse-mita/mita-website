@@ -332,6 +332,19 @@
 
 
       
+        
+        
+
+
+
+<a  title="Generated Types and Functions" href="../../language/generatedthings/">
+	
+	Generated Types and Functions
+</a>
+
+
+
+      
     </ul>
   
 </li>
@@ -431,12 +444,12 @@
 <p>In Mita code is organized in packages, which serve multiple purposes:</p>
 
 <ul>
-<li><strong>Divide the namespace</strong>: Mita programs have one global namespace per <code>.x</code> file. Unlike Java for example, there are no means to qualify the name of an element. Packages are used to keep this namespace clean. Only things which are explicitly imported from other packages are visible in that namespace. See <a href="#importing-packages">Importing Packages</a> for more details.</li>
+<li><strong>Divide the namespace</strong>: Mita programs have one global namespace per <code>.mita</code> file. Unlike Java for example, there are no means to qualify the name of an element. Packages are used to keep this namespace clean. Only things which are explicitly imported from other packages are visible in that namespace. See <a href="#importing-packages">Importing Packages</a> for more details.</li>
 <li><strong>Group code</strong>: packages are a formidable way to group code which conceptually belongs together. Where other languages have modules or classes, Mita uses packages.</li>
 <li><strong>Hide information</strong>: in Mita visibility of functions, types and the likes is decided on a package level. There are only two levels of visibility: things are either visible outside a package or they are not. This is very similar to how NodeJS manages visibility (think <code>module.export</code>) or how Go does it (uppercase functions/structure members/types get exported). See <a href="#hiding-information-visibility">Hiding Information</a> for more details.</li>
 </ul>
 
-<p>All Mita code belongs to a particular package. Thus, the first line in every <code>.x</code> file is the <code>package</code> statement. The main application logic, for example, by convention is in the <code>main</code> package:</p>
+<p>All Mita code belongs to a particular package. Thus, the first line in every <code>.mita</code> file is the <code>package</code> statement. The main application logic, for example, by convention is in the <code>main</code> package:</p>
 <div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="kr">package</span> <span class="nx">main</span><span class="p">;</span>
 
 <span class="p">...</span></code></pre></div>
@@ -448,10 +461,10 @@ The <a href="{{ &lt; ref &quot;/platforms/xdk110.md&quot; &gt; }}">XDK110 platfo
 
 <p>All in all you are free to name your packages however you like. The files which constitute your package content can be located wherever in the project. However, it is a good idea to replicate the logical package structure in folders. For example:</p>
 <div class="highlight"><pre class="chroma"><code class="language-Pre" data-lang="Pre"><span class="nx">algorithm</span><span class="o">/</span>
- <span class="p">|</span><span class="o">-</span> <span class="nx">api</span><span class="p">.</span><span class="nx">x</span>				<span class="kn">package</span> <span class="nx">algorithm</span>
- <span class="p">|</span><span class="o">-</span> <span class="nx">statistics</span><span class="p">.</span><span class="nx">x</span>		<span class="kn">package</span> <span class="nx">algorithm</span><span class="p">.</span><span class="nx">statistics</span>
- <span class="err">\</span><span class="o">-</span> <span class="nx">structures</span><span class="p">.</span><span class="nx">x</span>		<span class="kn">package</span> <span class="nx">algorithm</span><span class="p">.</span><span class="nx">structures</span>
-<span class="nx">main</span><span class="p">.</span><span class="nx">x</span>					<span class="kn">package</span> <span class="nx">main</span></code></pre></div>
+ <span class="p">|</span><span class="o">-</span> <span class="nx">api</span><span class="p">.</span><span class="nx">mita</span>				<span class="kn">package</span> <span class="nx">algorithm</span>
+ <span class="p">|</span><span class="o">-</span> <span class="nx">statistics</span><span class="p">.</span><span class="nx">mita</span>		<span class="kn">package</span> <span class="nx">algorithm</span><span class="p">.</span><span class="nx">statistics</span>
+ <span class="err">\</span><span class="o">-</span> <span class="nx">structures</span><span class="p">.</span><span class="nx">mita</span>		<span class="kn">package</span> <span class="nx">algorithm</span><span class="p">.</span><span class="nx">structures</span>
+<span class="nx">main</span><span class="p">.</span><span class="nx">mita</span>				<span class="kn">package</span> <span class="nx">main</span></code></pre></div>
 <p>Notice how we use a dot <code>.</code> to indicate a sub-package relationship.
 This is merely a convention and has no influence on visibility or any other implication.</p>
 
@@ -460,7 +473,7 @@ This is merely a convention and has no influence on visibility or any other impl
 <p>Packages divide the namespace, which is the space in which the names of functions and types have to be unique.
 Within a package all type names and functions (save for <a href="{{ &lt; ref &quot;/platforms/xdk110.md&quot; &gt; }}">polymorphism</a>) have to be unique.
 When we import a package, we import all names from that namespace into our local program. Consider the following example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="c1">// file: mypackage.x
+<div class="highlight"><pre class="chroma"><code class="language-TypeScript" data-lang="TypeScript"><span class="c1">// file: mypackage.mita
 </span><span class="c1"></span><span class="kr">package</span> <span class="nx">mypackage</span><span class="p">;</span>
 <span class="p">...</span>
 
@@ -468,14 +481,14 @@ When we import a package, we import all names from that namespace into our local
 	<span class="k">return</span> <span class="mi">42</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">// file: application.x
+<span class="c1">// file: application.mita
 </span><span class="c1"></span><span class="kr">package</span> <span class="nx">main</span><span class="p">;</span>
 <span class="kr">import</span> <span class="nx">mypackage</span><span class="p">;</span>
 
 <span class="nx">every</span> <span class="nx">XDK110</span><span class="p">.</span><span class="nx">startup</span> <span class="p">{</span>
 	<span class="nx">println</span><span class="p">(</span><span class="sb">`The answer: </span><span class="si">${</span><span class="nx">answerTheQuestion</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="p">}</span></code></pre></div>
-<p>If it were not for the <code>import mypackage</code> statement, the <code>answerTheQuestion</code> function would not be visible in <code>application.x</code>.</p>
+<p>If it were not for the <code>import mypackage</code> statement, the <code>answerTheQuestion</code> function would not be visible in <code>application.mita</code>.</p>
 
 <p>To import a package use the <code>import</code> statement. We have seen those in previous examples when we imported the platform, which is mandatory. Thus, every Mita program file must have at least one import: the platform import.
 For example:</p>
@@ -483,7 +496,7 @@ For example:</p>
 <span class="kr">import</span> <span class="nx">platforms</span><span class="p">.</span><span class="nx">xdk110</span><span class="p">;</span>
 
 <span class="p">...</span></code></pre></div>
-<p>You can shadow imported names within the current file. If in the example above <code>application.x</code> defined its own <code>answerTheQuestion()</code> function, all code within <code>application.x</code> would refer to that one instead of the imported function.</p>
+<p>You can shadow imported names within the current file. If in the example above <code>application.mita</code> defined its own <code>answerTheQuestion()</code> function, all code within <code>application.mita</code> would refer to that one instead of the imported function.</p>
 
 <h2 id="hiding-information-visibility">Hiding Information (Visibility)</h2>
 

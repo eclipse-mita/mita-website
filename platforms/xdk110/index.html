@@ -329,6 +329,19 @@
 
 
       
+        
+        
+
+
+
+<a  title="Generated Types and Functions" href="../../language/generatedthings/">
+	
+	Generated Types and Functions
+</a>
+
+
+
+      
     </ul>
   
 </li>
@@ -1490,7 +1503,7 @@ Say you want to configure <code>authentication</code>. Content assist (<code>CTR
 <tr>
 <td></td>
 <td><code>keepAliveInterval: uint32</code></td>
-<td>The keep alive interval (in seconds) is the time the client commits to for when sending regular pings to the broker. The broker responds to the pings enabling both sides to determine if the other one is still alive and reachable. Default: <code>60</code>.</td>
+<td>The keep alive interval (in seconds) is the time the client commits to for when sending regular pings to the broker. The broker responds to the pings enabling both sides to determine if the other one is still alive and reachable. Creates an automatic ping task that pings twice in this interval. Default: <code>60</code>.</td>
 </tr>
 
 <tr>
@@ -1739,7 +1752,7 @@ In this implementation there are two ways to send data: either raw bytes or <a h
 <span class="p">}</span>
 
 <span class="nx">every</span> <span class="mi">1</span> <span class="nx">hour</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">array</span><span class="o">&lt;</span><span class="nx">CayennePayload</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">data</span>: <span class="kt">array</span><span class="o">&lt;</span><span class="nx">CayennePayload</span><span class="p">,</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
   <span class="nx">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">CayennePayload</span><span class="p">.</span><span class="nx">Accelerometer</span><span class="p">(</span>
     <span class="nx">accelerometer</span><span class="p">.</span><span class="nx">x_axis</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span> <span class="kr">as</span> <span class="nx">int16</span><span class="p">,</span> 
     <span class="nx">accelerometer</span><span class="p">.</span><span class="nx">y_axis</span><span class="p">.</span><span class="nx">read</span><span class="p">()</span> <span class="kr">as</span> <span class="nx">int16</span><span class="p">,</span> 
@@ -1749,7 +1762,7 @@ In this implementation there are two ways to send data: either raw bytes or <a h
 <span class="p">}</span>
 
 <span class="nx">every</span> <span class="mi">10</span> <span class="nx">minutes</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">data</span>: <span class="kt">array</span><span class="o">&lt;</span><span class="nx">uint8</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0xCA</span><span class="p">,</span> <span class="mh">0xFE</span><span class="p">];</span>
+  <span class="kd">let</span> <span class="nx">data</span>: <span class="kt">array</span><span class="o">&lt;</span><span class="nx">uint8</span><span class="p">,</span> <span class="nx">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0xCA</span><span class="p">,</span> <span class="mh">0xFE</span><span class="p">];</span>
   <span class="nx">lora</span><span class="p">.</span><span class="nx">r</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 <span class="p">}</span></code></pre></div>
 <h4 id="configuration-14">Configuration</h4>
